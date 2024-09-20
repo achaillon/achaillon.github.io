@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./mpox_daily_dashboard.html" aria-current="page"> 
+    <a class="nav-link" href="./mpox_daily_dashboard2.html"> 
 <span class="menu-text"> </span></a>
   </li>  
 </ul>
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
         
       </div>
     </div>
-<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-at-a-glance" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#at-a-glance" data-scrolling="true" href="#at-a-glance" aria-controls="at-a-glance" aria-selected="true"><span class="nav-link-text">At a glance</span></a></li></ul></div></div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-at-a-glance-as-of-2024-09-17" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#at-a-glance-as-of-2024-09-17" data-scrolling="true" href="#at-a-glance-as-of-2024-09-17" aria-controls="at-a-glance-as-of-2024-09-17" aria-selected="true"><span class="nav-link-text">At a glance as of 2024-09-17</span></a></li><li class="nav-item" role="presentation"><a id="tab-by-facility" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#by-facility" data-scrolling="true" href="#by-facility" aria-controls="by-facility" aria-selected="false"><span class="nav-link-text">By facility</span></a></li></ul></div></div>
 </nav>
 </header></header>
 <!-- content -->
@@ -144,43 +144,11 @@ ul.task-list li input[type="checkbox"] {
 <div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" style=" --bslib-sidebar-width: 12%" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
 <div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div id="at-a-glance" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-at-a-glance">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 15fr) minmax(3em, 15fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="at-a-glance-as-of-2024-09-17" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-at-a-glance-as-of-2024-09-17">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 15fr) minmax(3em, 15fr) minmax(3em, 15fr) minmax(3em, 70fr); grid-auto-columns: minmax(0, 1fr);">
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div data-icon="globe" class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-showcase html-fill-item html-fill-container">
-
-<i class="bi bi-globe"></i></div>
-<div class="value-box-area">
-<p class="value-box-title">
-Total countries
-</p>
-<p class="value-box-value">
-1
-</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-warning showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
-<div class="card-body html-fill-item html-fill-container">
-<div data-icon="clipboard2-pulse" class="html-fill-item html-fill-container value-box-grid">
-<div class="value-box-showcase html-fill-item html-fill-container">
-
-<i class="bi bi-clipboard2-pulse"></i></div>
-<div class="value-box-area">
-<p class="value-box-title">
-Total beds
-</p>
-<p class="value-box-value">
-3009
-</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #DFD3FF;">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-secondary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="hospital" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -191,7 +159,39 @@ Total beds
 Total facilities
 </p>
 <p class="value-box-value">
-3
+5
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="clipboard2-pulse" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-clipboard2-pulse"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total beds
+</p>
+<p class="value-box-value">
+726
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #DFD3FF;">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="person-plus-fill" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-person-plus-fill"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Admission 24hrs
+</p>
+<p class="value-box-value">
+170
 </p>
 </div>
 </div>
@@ -200,23 +200,59 @@ Total facilities
 </div>
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #CC79A7;">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-info showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
-<div data-icon="gender-female" class="html-fill-item html-fill-container value-box-grid">
+<div data-icon="people" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
 
-<i class="bi bi-gender-female"></i></div>
+<i class="bi bi-people"></i></div>
 <div class="value-box-area">
 <p class="value-box-title">
-Women
+Patients
 </p>
 <p class="value-box-value">
-23.4%
+198
 </p>
 </div>
 </div>
 </div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-success showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="person-plus-fill" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-person-plus-fill"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Pregnant women
+</p>
+<p class="value-box-value">
+21
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-info showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="people" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-people"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Children
+</p>
+<p class="value-box-value">
+36
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-success showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
 <div class="card-body html-fill-item html-fill-container">
 <div data-icon="virus" class="html-fill-item html-fill-container value-box-grid">
 <div class="value-box-showcase html-fill-item html-fill-container">
@@ -227,7 +263,7 @@ Women
 Total PLWH
 </p>
 <p class="value-box-value">
-235
+23
 </p>
 </div>
 </div>
@@ -240,25 +276,87 @@ Total PLWH
 <i class="bi bi-person-x"></i></div>
 <div class="value-box-area">
 <p class="value-box-title">
-Total deaths
+Critical conditions
 </p>
 <p class="value-box-value">
-32
+22
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()" style=" background: #BF1932;">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="person-x" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-person-x"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Deaths last 24hrs
+</p>
+<p class="value-box-value">
+11
 </p>
 </div>
 </div>
 </div>
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 50fr) minmax(3em, 50fr);
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Beds over time" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title html-fill-item html-fill-container">Beds over time</div></div>
+<!-- ### Column {width="100%"} --><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Data over time" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Data over time</div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-2dd80c4f65d79556e936" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-2dd80c4f65d79556e936">{"x":{"theme":"inspired","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["2024-05-26","2024-05-30","2024-06-16","2024-06-19","2024-06-28","2024-07-06","2024-07-07","2024-07-08","2024-07-10","2024-07-11","2024-07-16","2024-07-18","2024-07-19","2024-07-21","2024-07-22","2024-07-24","2024-07-26","2024-08-02","2024-08-04","2024-08-05","2024-08-06","2024-08-07","2024-08-08","2024-08-09","2024-08-12","2024-08-13","2024-08-14","2024-08-15","2024-08-16","2024-08-17","2024-08-19","2024-08-20","2024-08-21","2024-08-22","2024-08-23","2024-08-26","2024-08-27","2024-08-28","2024-08-29","2024-08-30","2024-09-02","2024-09-03","2024-09-07","2024-09-10","2024-09-11"],"type":"category","boundaryGap":true,"axisPointer":{"show":true}}],"legend":{"data":["Fake name","Fake name 2","PICU AKUH"]},"series":[{"data":[{"value":["2024-07-06","39"]},{"value":["2024-07-07","46"]},{"value":["2024-07-11","48"]},{"value":["2024-07-18","50"]},{"value":["2024-07-19","48"]},{"value":["2024-07-22","96"]},{"value":["2024-07-26","86"]},{"value":["2024-08-02","41"]},{"value":["2024-08-04","45"]},{"value":["2024-08-06","53"]},{"value":["2024-08-09","46"]},{"value":["2024-08-12","91"]},{"value":["2024-08-13","44"]},{"value":["2024-08-19","46"]},{"value":["2024-08-28","41"]},{"value":["2024-09-02","45"]},{"value":["2024-09-07","45"]},{"value":["2024-09-10","49"]},{"value":["2024-09-11","44"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Fake name","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-05-26","50"]},{"value":["2024-05-30","39"]},{"value":["2024-06-16","44"]},{"value":["2024-06-19","45"]},{"value":["2024-06-28","48"]},{"value":["2024-07-08","93"]},{"value":["2024-07-10","46"]},{"value":["2024-07-16","44"]},{"value":["2024-07-21","45"]},{"value":["2024-07-24","53"]},{"value":["2024-08-04","41"]},{"value":["2024-08-06","45"]},{"value":["2024-08-12","44"]},{"value":["2024-08-13","41"]},{"value":["2024-08-15","94"]},{"value":["2024-08-17","46"]},{"value":["2024-08-19","49"]},{"value":["2024-08-20","40"]},{"value":["2024-08-21","52"]},{"value":["2024-09-10","44"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Fake name 2","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-05","44"]},{"value":["2024-08-06","46"]},{"value":["2024-08-07","48"]},{"value":["2024-08-08","46"]},{"value":["2024-08-09","44"]},{"value":["2024-08-12","39"]},{"value":["2024-08-13","45"]},{"value":["2024-08-14","41"]},{"value":["2024-08-15","47"]},{"value":["2024-08-16","50"]},{"value":["2024-08-19","45"]},{"value":["2024-08-20","40"]},{"value":["2024-08-21","46"]},{"value":["2024-08-22","49"]},{"value":["2024-08-23","48"]},{"value":["2024-08-26","44"]},{"value":["2024-08-27","46"]},{"value":["2024-08-28","53"]},{"value":["2024-08-29","52"]},{"value":["2024-08-30","45"]},{"value":["2024-09-02","44"]},{"value":["2024-09-03","41"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"PICU AKUH","type":"line","coordinateSystem":"cartesian2d"}],"dataZoom":[{"type":"slider"}],"toolbox":{"feature":{"dataZoom":[],"saveAsImage":[]}},"title":[{"text":"Evolution"}],"color":["#be0032","#0067a5","#f3c300"],"grid":[{"left":"10%","bottom":"10","top":"80","right":"10%"}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-97f93b260dc4beb86de0" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-97f93b260dc4beb86de0">{"x":{"theme":"inspired","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["2024-08-01","2024-08-02","2024-08-03","2024-08-04","2024-08-05","2024-08-06","2024-08-07","2024-08-08","2024-08-09","2024-08-10","2024-08-11","2024-08-12","2024-08-13","2024-08-14","2024-08-15","2024-08-16","2024-08-17","2024-08-18","2024-08-19","2024-08-20","2024-08-21","2024-08-22","2024-08-23","2024-08-24","2024-08-25","2024-08-26","2024-08-27","2024-08-28","2024-08-29","2024-08-30","2024-08-31","2024-09-01","2024-09-02","2024-09-03","2024-09-04","2024-09-05","2024-09-06","2024-09-07","2024-09-08","2024-09-09","2024-09-10","2024-09-11","2024-09-12","2024-09-13","2024-09-14","2024-09-15","2024-09-16","2024-09-17"],"type":"time","boundaryGap":true,"axisPointer":{"show":true}}],"legend":{"data":["Admitted (last 24hrs)","Children below 5yrs","Critical conditions","Deaths (last 24hrs)","Discharged (last 24hrs)","Patients (current)","Persons living with HIV","Pregnant women","beds"]},"series":[{"data":[{"value":["2024-08-01","104"]},{"value":["2024-08-02","100"]},{"value":["2024-08-03","141"]},{"value":["2024-08-04","108"]},{"value":["2024-08-05"," 97"]},{"value":["2024-08-06","162"]},{"value":["2024-08-07","106"]},{"value":["2024-08-08","167"]},{"value":["2024-08-09","143"]},{"value":["2024-08-10","148"]},{"value":["2024-08-11","168"]},{"value":["2024-08-12"," 93"]},{"value":["2024-08-13","148"]},{"value":["2024-08-14"," 78"]},{"value":["2024-08-15","118"]},{"value":["2024-08-16"," 89"]},{"value":["2024-08-17","174"]},{"value":["2024-08-18"," 84"]},{"value":["2024-08-19"," 70"]},{"value":["2024-08-20","156"]},{"value":["2024-08-21"," 94"]},{"value":["2024-08-22","108"]},{"value":["2024-08-23","162"]},{"value":["2024-08-24","107"]},{"value":["2024-08-25","116"]},{"value":["2024-08-26","104"]},{"value":["2024-08-27"," 83"]},{"value":["2024-08-28","128"]},{"value":["2024-08-29","118"]},{"value":["2024-08-30","176"]},{"value":["2024-08-31","168"]},{"value":["2024-09-01","191"]},{"value":["2024-09-02","147"]},{"value":["2024-09-03","181"]},{"value":["2024-09-04","130"]},{"value":["2024-09-05","131"]},{"value":["2024-09-06","107"]},{"value":["2024-09-07","192"]},{"value":["2024-09-08","117"]},{"value":["2024-09-09","127"]},{"value":["2024-09-10","132"]},{"value":["2024-09-11","124"]},{"value":["2024-09-12","128"]},{"value":["2024-09-13","118"]},{"value":["2024-09-14","103"]},{"value":["2024-09-15","163"]},{"value":["2024-09-16","116"]},{"value":["2024-09-17","171"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Admitted (last 24hrs)","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","74"]},{"value":["2024-08-02","44"]},{"value":["2024-08-03","57"]},{"value":["2024-08-04","43"]},{"value":["2024-08-05","69"]},{"value":["2024-08-06","41"]},{"value":["2024-08-07","34"]},{"value":["2024-08-08","41"]},{"value":["2024-08-09","53"]},{"value":["2024-08-10","65"]},{"value":["2024-08-11","47"]},{"value":["2024-08-12","48"]},{"value":["2024-08-13","36"]},{"value":["2024-08-14","57"]},{"value":["2024-08-15","56"]},{"value":["2024-08-16","66"]},{"value":["2024-08-17","30"]},{"value":["2024-08-18","52"]},{"value":["2024-08-19","73"]},{"value":["2024-08-20","31"]},{"value":["2024-08-21","28"]},{"value":["2024-08-22","57"]},{"value":["2024-08-23","58"]},{"value":["2024-08-24","51"]},{"value":["2024-08-25","58"]},{"value":["2024-08-26","66"]},{"value":["2024-08-27","30"]},{"value":["2024-08-28","67"]},{"value":["2024-08-29","34"]},{"value":["2024-08-30","62"]},{"value":["2024-08-31","50"]},{"value":["2024-09-01","60"]},{"value":["2024-09-02","58"]},{"value":["2024-09-03","65"]},{"value":["2024-09-04","41"]},{"value":["2024-09-05","44"]},{"value":["2024-09-06","17"]},{"value":["2024-09-07","49"]},{"value":["2024-09-08","59"]},{"value":["2024-09-09","63"]},{"value":["2024-09-10","38"]},{"value":["2024-09-11","65"]},{"value":["2024-09-12","51"]},{"value":["2024-09-13","55"]},{"value":["2024-09-14","43"]},{"value":["2024-09-15","61"]},{"value":["2024-09-16","66"]},{"value":["2024-09-17","37"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Children below 5yrs","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","18"]},{"value":["2024-08-02","17"]},{"value":["2024-08-03"," 7"]},{"value":["2024-08-04"," 8"]},{"value":["2024-08-05","16"]},{"value":["2024-08-06","15"]},{"value":["2024-08-07","16"]},{"value":["2024-08-08","14"]},{"value":["2024-08-09","17"]},{"value":["2024-08-10","12"]},{"value":["2024-08-11","15"]},{"value":["2024-08-12","14"]},{"value":["2024-08-13","10"]},{"value":["2024-08-14","15"]},{"value":["2024-08-15"," 9"]},{"value":["2024-08-16","19"]},{"value":["2024-08-17","14"]},{"value":["2024-08-18","11"]},{"value":["2024-08-19","19"]},{"value":["2024-08-20","17"]},{"value":["2024-08-21","10"]},{"value":["2024-08-22","10"]},{"value":["2024-08-23"," 8"]},{"value":["2024-08-24","10"]},{"value":["2024-08-25","14"]},{"value":["2024-08-26","10"]},{"value":["2024-08-27","16"]},{"value":["2024-08-28","17"]},{"value":["2024-08-29","10"]},{"value":["2024-08-30","11"]},{"value":["2024-08-31","13"]},{"value":["2024-09-01","11"]},{"value":["2024-09-02","10"]},{"value":["2024-09-03","15"]},{"value":["2024-09-04"," 9"]},{"value":["2024-09-05","16"]},{"value":["2024-09-06","11"]},{"value":["2024-09-07","11"]},{"value":["2024-09-08","20"]},{"value":["2024-09-09","13"]},{"value":["2024-09-10","14"]},{"value":["2024-09-11","12"]},{"value":["2024-09-12","14"]},{"value":["2024-09-13","20"]},{"value":["2024-09-14","17"]},{"value":["2024-09-15","11"]},{"value":["2024-09-16","12"]},{"value":["2024-09-17","23"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Critical conditions","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","18"]},{"value":["2024-08-02","22"]},{"value":["2024-08-03","23"]},{"value":["2024-08-04","20"]},{"value":["2024-08-05","33"]},{"value":["2024-08-06","28"]},{"value":["2024-08-07","16"]},{"value":["2024-08-08","16"]},{"value":["2024-08-09","27"]},{"value":["2024-08-10","17"]},{"value":["2024-08-11","31"]},{"value":["2024-08-12","31"]},{"value":["2024-08-13","33"]},{"value":["2024-08-14"," 8"]},{"value":["2024-08-15","26"]},{"value":["2024-08-16","14"]},{"value":["2024-08-17","24"]},{"value":["2024-08-18","30"]},{"value":["2024-08-19","32"]},{"value":["2024-08-20","23"]},{"value":["2024-08-21","29"]},{"value":["2024-08-22","26"]},{"value":["2024-08-23","17"]},{"value":["2024-08-24","22"]},{"value":["2024-08-25","20"]},{"value":["2024-08-26","31"]},{"value":["2024-08-27","31"]},{"value":["2024-08-28","28"]},{"value":["2024-08-29","31"]},{"value":["2024-08-30","29"]},{"value":["2024-08-31","23"]},{"value":["2024-09-01","31"]},{"value":["2024-09-02","14"]},{"value":["2024-09-03","23"]},{"value":["2024-09-04","32"]},{"value":["2024-09-05","21"]},{"value":["2024-09-06","22"]},{"value":["2024-09-07","20"]},{"value":["2024-09-08","23"]},{"value":["2024-09-09","36"]},{"value":["2024-09-10","17"]},{"value":["2024-09-11","18"]},{"value":["2024-09-12","37"]},{"value":["2024-09-13","25"]},{"value":["2024-09-14","11"]},{"value":["2024-09-15","22"]},{"value":["2024-09-16","37"]},{"value":["2024-09-17","12"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Deaths (last 24hrs)","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","136"]},{"value":["2024-08-02"," 82"]},{"value":["2024-08-03","128"]},{"value":["2024-08-04","125"]},{"value":["2024-08-05"," 70"]},{"value":["2024-08-06","126"]},{"value":["2024-08-07","105"]},{"value":["2024-08-08","150"]},{"value":["2024-08-09","110"]},{"value":["2024-08-10","146"]},{"value":["2024-08-11","144"]},{"value":["2024-08-12","106"]},{"value":["2024-08-13","129"]},{"value":["2024-08-14","106"]},{"value":["2024-08-15","109"]},{"value":["2024-08-16","145"]},{"value":["2024-08-17","142"]},{"value":["2024-08-18","132"]},{"value":["2024-08-19"," 99"]},{"value":["2024-08-20","131"]},{"value":["2024-08-21","133"]},{"value":["2024-08-22","101"]},{"value":["2024-08-23"," 77"]},{"value":["2024-08-24","117"]},{"value":["2024-08-25","125"]},{"value":["2024-08-26","168"]},{"value":["2024-08-27","135"]},{"value":["2024-08-28","116"]},{"value":["2024-08-29","142"]},{"value":["2024-08-30","124"]},{"value":["2024-08-31","166"]},{"value":["2024-09-01","129"]},{"value":["2024-09-02"," 98"]},{"value":["2024-09-03","121"]},{"value":["2024-09-04","148"]},{"value":["2024-09-05","112"]},{"value":["2024-09-06","161"]},{"value":["2024-09-07"," 86"]},{"value":["2024-09-08","192"]},{"value":["2024-09-09","147"]},{"value":["2024-09-10"," 83"]},{"value":["2024-09-11","131"]},{"value":["2024-09-12","104"]},{"value":["2024-09-13"," 93"]},{"value":["2024-09-14","167"]},{"value":["2024-09-15","146"]},{"value":["2024-09-16","141"]},{"value":["2024-09-17","144"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Discharged (last 24hrs)","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","209"]},{"value":["2024-08-02","148"]},{"value":["2024-08-03","349"]},{"value":["2024-08-04","241"]},{"value":["2024-08-05","314"]},{"value":["2024-08-06","379"]},{"value":["2024-08-07","261"]},{"value":["2024-08-08","325"]},{"value":["2024-08-09","171"]},{"value":["2024-08-10","302"]},{"value":["2024-08-11","283"]},{"value":["2024-08-12","222"]},{"value":["2024-08-13","199"]},{"value":["2024-08-14","272"]},{"value":["2024-08-15","257"]},{"value":["2024-08-16","364"]},{"value":["2024-08-17","221"]},{"value":["2024-08-18","257"]},{"value":["2024-08-19","216"]},{"value":["2024-08-20","195"]},{"value":["2024-08-21","245"]},{"value":["2024-08-22","375"]},{"value":["2024-08-23","230"]},{"value":["2024-08-24","295"]},{"value":["2024-08-25","194"]},{"value":["2024-08-26","222"]},{"value":["2024-08-27","177"]},{"value":["2024-08-28","307"]},{"value":["2024-08-29","209"]},{"value":["2024-08-30","283"]},{"value":["2024-08-31","103"]},{"value":["2024-09-01","330"]},{"value":["2024-09-02","311"]},{"value":["2024-09-03","393"]},{"value":["2024-09-04","174"]},{"value":["2024-09-05","349"]},{"value":["2024-09-06","260"]},{"value":["2024-09-07","335"]},{"value":["2024-09-08","194"]},{"value":["2024-09-09","308"]},{"value":["2024-09-10","327"]},{"value":["2024-09-11","213"]},{"value":["2024-09-12","330"]},{"value":["2024-09-13","210"]},{"value":["2024-09-14","177"]},{"value":["2024-09-15","281"]},{"value":["2024-09-16","331"]},{"value":["2024-09-17","199"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Patients (current)","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","21"]},{"value":["2024-08-02","12"]},{"value":["2024-08-03","20"]},{"value":["2024-08-04","31"]},{"value":["2024-08-05","35"]},{"value":["2024-08-06","34"]},{"value":["2024-08-07","23"]},{"value":["2024-08-08","36"]},{"value":["2024-08-09","36"]},{"value":["2024-08-10","31"]},{"value":["2024-08-11","32"]},{"value":["2024-08-12","46"]},{"value":["2024-08-13","21"]},{"value":["2024-08-14","36"]},{"value":["2024-08-15","22"]},{"value":["2024-08-16","20"]},{"value":["2024-08-17","25"]},{"value":["2024-08-18","31"]},{"value":["2024-08-19","21"]},{"value":["2024-08-20","23"]},{"value":["2024-08-21","13"]},{"value":["2024-08-22","28"]},{"value":["2024-08-23","29"]},{"value":["2024-08-24","29"]},{"value":["2024-08-25","29"]},{"value":["2024-08-26","30"]},{"value":["2024-08-27","26"]},{"value":["2024-08-28","36"]},{"value":["2024-08-29","21"]},{"value":["2024-08-30","27"]},{"value":["2024-08-31","36"]},{"value":["2024-09-01","28"]},{"value":["2024-09-02","17"]},{"value":["2024-09-03","27"]},{"value":["2024-09-04","23"]},{"value":["2024-09-05","20"]},{"value":["2024-09-06","21"]},{"value":["2024-09-07","20"]},{"value":["2024-09-08","21"]},{"value":["2024-09-09","35"]},{"value":["2024-09-10","16"]},{"value":["2024-09-11","24"]},{"value":["2024-09-12","28"]},{"value":["2024-09-13","23"]},{"value":["2024-09-14","31"]},{"value":["2024-09-15","15"]},{"value":["2024-09-16","16"]},{"value":["2024-09-17","24"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Persons living with HIV","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","29"]},{"value":["2024-08-02","34"]},{"value":["2024-08-03","24"]},{"value":["2024-08-04","17"]},{"value":["2024-08-05","28"]},{"value":["2024-08-06","25"]},{"value":["2024-08-07","37"]},{"value":["2024-08-08","28"]},{"value":["2024-08-09","28"]},{"value":["2024-08-10","24"]},{"value":["2024-08-11","28"]},{"value":["2024-08-12","42"]},{"value":["2024-08-13","29"]},{"value":["2024-08-14","34"]},{"value":["2024-08-15","16"]},{"value":["2024-08-16","16"]},{"value":["2024-08-17","14"]},{"value":["2024-08-18","25"]},{"value":["2024-08-19","26"]},{"value":["2024-08-20","23"]},{"value":["2024-08-21","39"]},{"value":["2024-08-22","13"]},{"value":["2024-08-23","20"]},{"value":["2024-08-24","22"]},{"value":["2024-08-25","38"]},{"value":["2024-08-26","22"]},{"value":["2024-08-27","31"]},{"value":["2024-08-28","24"]},{"value":["2024-08-29","21"]},{"value":["2024-08-30","24"]},{"value":["2024-08-31","34"]},{"value":["2024-09-01","32"]},{"value":["2024-09-02","28"]},{"value":["2024-09-03","30"]},{"value":["2024-09-04","23"]},{"value":["2024-09-05","17"]},{"value":["2024-09-06","17"]},{"value":["2024-09-07","32"]},{"value":["2024-09-08","38"]},{"value":["2024-09-09","25"]},{"value":["2024-09-10","29"]},{"value":["2024-09-11","42"]},{"value":["2024-09-12","35"]},{"value":["2024-09-13","24"]},{"value":["2024-09-14","20"]},{"value":["2024-09-15","24"]},{"value":["2024-09-16","31"]},{"value":["2024-09-17","22"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"Pregnant women","type":"line","coordinateSystem":"cartesian2d"},{"data":[{"value":["2024-08-01","609"]},{"value":["2024-08-02","582"]},{"value":["2024-08-03","621"]},{"value":["2024-08-04","634"]},{"value":["2024-08-05","527"]},{"value":["2024-08-06","691"]},{"value":["2024-08-07","561"]},{"value":["2024-08-08","518"]},{"value":["2024-08-09","623"]},{"value":["2024-08-10","750"]},{"value":["2024-08-11","777"]},{"value":["2024-08-12","638"]},{"value":["2024-08-13","522"]},{"value":["2024-08-14","624"]},{"value":["2024-08-15","598"]},{"value":["2024-08-16","669"]},{"value":["2024-08-17","704"]},{"value":["2024-08-18","499"]},{"value":["2024-08-19","594"]},{"value":["2024-08-20","697"]},{"value":["2024-08-21","625"]},{"value":["2024-08-22","700"]},{"value":["2024-08-23","666"]},{"value":["2024-08-24","738"]},{"value":["2024-08-25","512"]},{"value":["2024-08-26","624"]},{"value":["2024-08-27","571"]},{"value":["2024-08-28","626"]},{"value":["2024-08-29","495"]},{"value":["2024-08-30","680"]},{"value":["2024-08-31","776"]},{"value":["2024-09-01","581"]},{"value":["2024-09-02","733"]},{"value":["2024-09-03","545"]},{"value":["2024-09-04","531"]},{"value":["2024-09-05","696"]},{"value":["2024-09-06","659"]},{"value":["2024-09-07","633"]},{"value":["2024-09-08","451"]},{"value":["2024-09-09","759"]},{"value":["2024-09-10","623"]},{"value":["2024-09-11","619"]},{"value":["2024-09-12","622"]},{"value":["2024-09-13","636"]},{"value":["2024-09-14","809"]},{"value":["2024-09-15","557"]},{"value":["2024-09-16","543"]},{"value":["2024-09-17","727"]}],"yAxisIndex":0,"xAxisIndex":0,"name":"beds","type":"line","coordinateSystem":"cartesian2d"}],"color":["#4E79A7","#F28E2B","#E15759","#76B7B2","#59A14F","#EDC948","#B07AA1","#FF9DA7","#9C755F","#BAB0AC"],"grid":[{"left":"10%","bottom":"10","top":"80","right":"10%"}],"toolbox":{"feature":{"saveAsImage":[]}}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><!-- # Cases distribution {orientation="columns"} -->
+</div>
+</div>
+</div><div id="by-facility" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-by-facility">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 25fr) minmax(3em, 25fr) minmax(3em, 25fr); grid-auto-columns: minmax(0, 1fr);">
+<!-- ## Column {width="100%" .tabset} -->
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Total beds" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Total beds</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-a99083013eca346a12e6" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-a99083013eca346a12e6">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["beds"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["beds","163"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["beds","160"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["beds","156"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["beds","171"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["beds","76"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Patient" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Patient</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-2c8840d36933e5ab8ab4" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-2c8840d36933e5ab8ab4">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Patients (current)"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Patients (current)","17"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Patients (current)","58"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Patients (current)","74"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Patients (current)","38"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Patients (current)","11"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Deaths (last 24 hrs)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Deaths (last 24 hrs)</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-750dbaf4cf05baa27166" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-750dbaf4cf05baa27166">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Deaths (last 24hrs)"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Deaths (last 24hrs)","1"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Deaths (last 24hrs)","4"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Deaths (last 24hrs)","0"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Deaths (last 24hrs)","5"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Deaths (last 24hrs)","1"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -267,22 +365,41 @@ grid-auto-rows: minmax(0, 1fr);">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-<!-- # Cases distribution {orientation="columns"} -->
-</div><div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header dashboard-card-no-title bslib-navs-card-title">
-
-<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-8"><li class="nav-item" role="presentation"><a href="#card-tabset-8-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Total beds" aria-selected="true" class="nav-link active">Total beds</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Total cases" aria-selected="false" class="nav-link">Total cases</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-8-3" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Else" aria-selected="false" class="nav-link">Else</a></li></ul></div>
-
-
-
-<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-8"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-8-1"><div class="card-body html-fill-item html-fill-container" data-title="Total beds">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Admitted (last 24 hrs)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Admitted (last 24 hrs)</div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-83ccf38b30a1e35227cb" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-83ccf38b30a1e35227cb">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["total beds"],"type":"category","boundaryGap":true}],"legend":{"data":["Fake name","Fake name 2","PICU AKUH"]},"series":[{"data":[{"value":["total beds","102"]}],"name":"Fake name","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total beds","55"]}],"name":"Fake name 2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total beds","46"]}],"name":"PICU AKUH","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-e723686ed69d33ace865" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-e723686ed69d33ace865">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Admitted (last 24hrs)"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Admitted (last 24hrs)","40"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Admitted (last 24hrs)","44"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Admitted (last 24hrs)","26"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Admitted (last 24hrs)","49"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Admitted (last 24hrs)","11"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Discharged (last 24 hrs)" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Discharged (last 24 hrs)</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-936e5ee81772ed36aca7" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-936e5ee81772ed36aca7">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Discharged (last 24hrs)"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Discharged (last 24hrs)","2"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Discharged (last 24hrs)","15"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Discharged (last 24hrs)","50"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Discharged (last 24hrs)","35"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Discharged (last 24hrs)","41"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="PLWH" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">PLWH</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-a2e24f6c1bc53678a948" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-a2e24f6c1bc53678a948">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Persons living with HIV"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Persons living with HIV","0"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Persons living with HIV","9"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Persons living with HIV","4"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Persons living with HIV","7"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Persons living with HIV","3"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -292,14 +409,14 @@ grid-auto-rows: minmax(0, 1fr);">
     </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
 </div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-8-2"><div class="card-body html-fill-item html-fill-container" data-title="Total cases">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Pregnant women" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Pregnant women</div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-3b3db63eb30e4faf5bde" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-3b3db63eb30e4faf5bde">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["total cases"],"type":"category","boundaryGap":true}],"legend":{"data":["Fake name","Fake name 2","PICU AKUH"]},"series":[{"data":[{"value":["total cases","150"]}],"name":"Fake name","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total cases","132"]}],"name":"Fake name 2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total cases","13"]}],"name":"PICU AKUH","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-aad659004ac2b3177538" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-aad659004ac2b3177538">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Pregnant women"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Pregnant women","5"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Pregnant women","1"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Pregnant women","5"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Pregnant women","3"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Pregnant women","7"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -307,16 +424,12 @@ grid-auto-rows: minmax(0, 1fr);">
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-8-3"><div class="card-body html-fill-item html-fill-container" data-title="Else">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card cell html-fill-item html-fill-container bslib-card" data-title="Children" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Children</div></div>
 <div class="card-body html-fill-item html-fill-container">
 <div class="cell-output-display html-fill-item html-fill-container">
-<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-cd831804d21f4e9283fc" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-cd831804d21f4e9283fc">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["total  else"],"type":"category","boundaryGap":true}],"legend":{"data":["Fake name","Fake name 2","PICU AKUH"]},"series":[{"data":[{"value":["total  else","87"]}],"name":"Fake name","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total  else","140"]}],"name":"Fake name 2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["total  else","80"]}],"name":"PICU AKUH","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item html-fill-container" id="htmlwidget-343e191027a8decd577a" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-343e191027a8decd577a">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["Children below 5yrs"],"type":"category","boundaryGap":true}],"legend":{"data":["FAC_1","FAC_2","FAC_3","FAC_4","FAC_5"],"show":true,"type":"plain","selectedMode":"single"},"series":[{"data":[{"value":["Children below 5yrs","15"]}],"name":"FAC_1","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Children below 5yrs","0"]}],"name":"FAC_2","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Children below 5yrs","4"]}],"name":"FAC_3","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Children below 5yrs","5"]}],"name":"FAC_4","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["Children below 5yrs","12"]}],"name":"FAC_5","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}],"tooltip":{"trigger":"item"}},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -328,13 +441,6 @@ grid-auto-rows: minmax(0, 1fr);">
 
 </div>
 </div>
-</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
 </div>
 </div>
 </div>
@@ -342,20 +448,20 @@ grid-auto-rows: minmax(0, 1fr);">
 <hr>
 <p><a href="images/mpox2.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/mpox2.jpeg" class="img-fluid"></a></p>
 <hr>
-<p>This dashboard displays statistics for:</p>
+<p>This dashboard displays statistics as of 2024-09-17 for:</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><strong>Total beds:</strong></td>
-<td>3009</td>
+<td><strong>Total facilities:</strong></td>
+<td>5</td>
 </tr>
 <tr class="even">
-<td><strong>Total reporting countries</strong></td>
-<td>1</td>
+<td><strong>Total patients:</strong></td>
+<td>198</td>
 </tr>
 <tr class="odd">
-<td><strong>As of:</strong></td>
-<td>2024-09-14</td>
+<td><strong>Deaths in last 24hrs:</strong></td>
+<td>11</td>
 </tr>
 </tbody>
 </table>
@@ -818,7 +924,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
