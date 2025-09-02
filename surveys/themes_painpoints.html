@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PPE Pain Points Drilldown</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+</head>
+<body>
+<div id="container" style="width:100%; height:800px;"></div>
+
+<script>
+// Insert JSON exported from R here:
+const top_series = 
+[
+  {
+    "name": "Medical Staff",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 9,
+        "drilldown": "Comfort and Ergonomics_Medical Staff"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 14,
+        "drilldown": "Communication and Human Interaction_Medical Staff"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 4,
+        "drilldown": "Policy, Regulation, and Coordination_Medical Staff"
+      },
+      {
+        "name": "Procurement, Supply Chain, and Cost",
+        "y": 6,
+        "drilldown": "Procurement, Supply Chain, and Cost_Medical Staff"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 17,
+        "drilldown": "Safety and Usability_Medical Staff"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Medical Staff"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 10,
+        "drilldown": "Waste Management and Environmental Impact_Medical Staff"
+      }
+    ]
+  },
+  {
+    "name": "Patient",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 7,
+        "drilldown": "Comfort and Ergonomics_Patient"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 14,
+        "drilldown": "Communication and Human Interaction_Patient"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 4,
+        "drilldown": "Policy, Regulation, and Coordination_Patient"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 6,
+        "drilldown": "Safety and Usability_Patient"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Patient"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 9,
+        "drilldown": "Waste Management and Environmental Impact_Patient"
+      }
+    ]
+  },
+  {
+    "name": "WASH/Log",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 9,
+        "drilldown": "Comfort and Ergonomics_WASH/Log"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 14,
+        "drilldown": "Communication and Human Interaction_WASH/Log"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 4,
+        "drilldown": "Policy, Regulation, and Coordination_WASH/Log"
+      },
+      {
+        "name": "Procurement, Supply Chain, and Cost",
+        "y": 7,
+        "drilldown": "Procurement, Supply Chain, and Cost_WASH/Log"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 18,
+        "drilldown": "Safety and Usability_WASH/Log"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_WASH/Log"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 10,
+        "drilldown": "Waste Management and Environmental Impact_WASH/Log"
+      }
+    ]
+  },
+  {
+    "name": "Donors",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 1,
+        "drilldown": "Comfort and Ergonomics_Donors"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 1,
+        "drilldown": "Communication and Human Interaction_Donors"
+      },
+      {
+        "name": "Design, Materials, and Innovation",
+        "y": 4,
+        "drilldown": "Design, Materials, and Innovation_Donors"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 7,
+        "drilldown": "Policy, Regulation, and Coordination_Donors"
+      },
+      {
+        "name": "Procurement, Supply Chain, and Cost",
+        "y": 19,
+        "drilldown": "Procurement, Supply Chain, and Cost_Donors"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 4,
+        "drilldown": "Safety and Usability_Donors"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 1,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Donors"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 9,
+        "drilldown": "Waste Management and Environmental Impact_Donors"
+      }
+    ]
+  },
+  {
+    "name": "Local health authorities",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 1,
+        "drilldown": "Comfort and Ergonomics_Local health authorities"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 12,
+        "drilldown": "Communication and Human Interaction_Local health authorities"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 8,
+        "drilldown": "Policy, Regulation, and Coordination_Local health authorities"
+      },
+      {
+        "name": "Procurement, Supply Chain, and Cost",
+        "y": 20,
+        "drilldown": "Procurement, Supply Chain, and Cost_Local health authorities"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 5,
+        "drilldown": "Safety and Usability_Local health authorities"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Local health authorities"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 9,
+        "drilldown": "Waste Management and Environmental Impact_Local health authorities"
+      }
+    ]
+  },
+  {
+    "name": "Others",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 1,
+        "drilldown": "Comfort and Ergonomics_Others"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 1,
+        "drilldown": "Policy, Regulation, and Coordination_Others"
+      }
+    ]
+  },
+  {
+    "name": "Supply manager",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 3,
+        "drilldown": "Comfort and Ergonomics_Supply manager"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 1,
+        "drilldown": "Communication and Human Interaction_Supply manager"
+      },
+      {
+        "name": "Design, Materials, and Innovation",
+        "y": 4,
+        "drilldown": "Design, Materials, and Innovation_Supply manager"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 8,
+        "drilldown": "Policy, Regulation, and Coordination_Supply manager"
+      },
+      {
+        "name": "Procurement, Supply Chain, and Cost",
+        "y": 20,
+        "drilldown": "Procurement, Supply Chain, and Cost_Supply manager"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 10,
+        "drilldown": "Safety and Usability_Supply manager"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Supply manager"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 9,
+        "drilldown": "Waste Management and Environmental Impact_Supply manager"
+      }
+    ]
+  },
+  {
+    "name": "Community",
+    "data": [
+      {
+        "name": "Comfort and Ergonomics",
+        "y": 2,
+        "drilldown": "Comfort and Ergonomics_Community"
+      },
+      {
+        "name": "Communication and Human Interaction",
+        "y": 14,
+        "drilldown": "Communication and Human Interaction_Community"
+      },
+      {
+        "name": "Policy, Regulation, and Coordination",
+        "y": 3,
+        "drilldown": "Policy, Regulation, and Coordination_Community"
+      },
+      {
+        "name": "Safety and Usability",
+        "y": 1,
+        "drilldown": "Safety and Usability_Community"
+      },
+      {
+        "name": "Stigma, Acceptance, and Community Perception",
+        "y": 3,
+        "drilldown": "Stigma, Acceptance, and Community Perception_Community"
+      },
+      {
+        "name": "Waste Management and Environmental Impact",
+        "y": 9,
+        "drilldown": "Waste Management and Environmental Impact_Community"
+      }
+    ]
+  }
+]
+;
+const drilldowns = 
+[
+  {
+    "id": "Comfort and Ergonomics_Medical Staff",
+    "name": "Comfort and Ergonomics → Medical Staff",
+    "data": [
+      [
+        "Challenging to move/perform patient care tasks",
+        1
+      ],
+      [
+        "Difficulty with some tasks given heat and flexibility of single use PPE",
+        1
+      ],
+      [
+        "Gumboots, although practical, are very uncomfortable especially after multiple users and extreme heat conditions. Is there an alternative?",
+        1
+      ],
+      [
+        "Heat stress - Passive cooling strategies",
+        1
+      ],
+      [
+        "Lack of visibility/peripheral vision",
+        1
+      ],
+      [
+        "Most tricky part remains Face protection (comfort, risks, perception,...)",
+        1
+      ],
+      [
+        "Staff comfort (thermal, movement, etc.)",
+        1
+      ],
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ],
+      [
+        "Uncomfortable and lack of flexibility",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Patient",
+    "name": "Comfort and Ergonomics → Patient",
+    "data": [
+      [
+        "Challenging to move/perform patient care tasks",
+        1
+      ],
+      [
+        "Difficulty with some tasks given heat and flexibility of single use PPE",
+        1
+      ],
+      [
+        "Lack of visibility/peripheral vision",
+        1
+      ],
+      [
+        "Most tricky part remains Face protection (comfort, risks, perception,...)",
+        1
+      ],
+      [
+        "Staff comfort (thermal, movement, etc.)",
+        1
+      ],
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ],
+      [
+        "Uncomfortable and lack of flexibility",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_WASH/Log",
+    "name": "Comfort and Ergonomics → WASH/Log",
+    "data": [
+      [
+        "Challenging to move/perform patient care tasks",
+        1
+      ],
+      [
+        "Difficulty with some tasks given heat and flexibility of single use PPE",
+        1
+      ],
+      [
+        "Gumboots, although practical, are very uncomfortable especially after multiple users and extreme heat conditions. Is there an alternative?",
+        1
+      ],
+      [
+        "Heat stress - Passive cooling strategies",
+        1
+      ],
+      [
+        "Lack of visibility/peripheral vision",
+        1
+      ],
+      [
+        "Most tricky part remains Face protection (comfort, risks, perception,...)",
+        1
+      ],
+      [
+        "Staff comfort (thermal, movement, etc.)",
+        1
+      ],
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ],
+      [
+        "Uncomfortable and lack of flexibility",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Donors",
+    "name": "Comfort and Ergonomics → Donors",
+    "data": [
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Local health authorities",
+    "name": "Comfort and Ergonomics → Local health authorities",
+    "data": [
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Others",
+    "name": "Comfort and Ergonomics → Others",
+    "data": [
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Supply manager",
+    "name": "Comfort and Ergonomics → Supply manager",
+    "data": [
+      [
+        "Lack of visibility/peripheral vision",
+        1
+      ],
+      [
+        "Most tricky part remains Face protection (comfort, risks, perception,...)",
+        1
+      ],
+      [
+        "Time in PPE is limited given temperature constraints of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Comfort and Ergonomics_Community",
+    "name": "Comfort and Ergonomics → Community",
+    "data": [
+      [
+        "Lack of visibility/peripheral vision",
+        1
+      ],
+      [
+        "Most tricky part remains Face protection (comfort, risks, perception,...)",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Medical Staff",
+    "name": "Communication and Human Interaction → Medical Staff",
+    "data": [
+      [
+        "Being able to connect visibly with health care workers",
+        1
+      ],
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ],
+      [
+        "Difficult to hear colleagues and patients",
+        1
+      ],
+      [
+        "Difficult to recognize and communicate with the health team members",
+        1
+      ],
+      [
+        "Doesn't give a sense of trust on the treatment provided",
+        1
+      ],
+      [
+        "Fear",
+        1
+      ],
+      [
+        "Fear/Unable to see providers face",
+        1
+      ],
+      [
+        "Feeling of isolation from loved ones",
+        1
+      ],
+      [
+        "Inability to see the health providers faces",
+        1
+      ],
+      [
+        "Lack of 'human' interaction with patients",
+        1
+      ],
+      [
+        "Lack of visualization ease of staff cadre/role (clinical vs non-clinical)",
+        1
+      ],
+      [
+        "Not easy to communicate with the health provider",
+        1
+      ],
+      [
+        "Potential wrong perception by not seeing clearly the person behind the PPE",
+        1
+      ],
+      [
+        "Stigma, fear",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Patient",
+    "name": "Communication and Human Interaction → Patient",
+    "data": [
+      [
+        "Being able to connect visibly with health care workers",
+        1
+      ],
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ],
+      [
+        "Difficult to hear colleagues and patients",
+        1
+      ],
+      [
+        "Difficult to recognize and communicate with the health team members",
+        1
+      ],
+      [
+        "Doesn't give a sense of trust on the treatment provided",
+        1
+      ],
+      [
+        "Fear",
+        1
+      ],
+      [
+        "Fear/Unable to see providers face",
+        1
+      ],
+      [
+        "Feeling of isolation from loved ones",
+        1
+      ],
+      [
+        "Inability to see the health providers faces",
+        1
+      ],
+      [
+        "Lack of 'human' interaction with patients",
+        1
+      ],
+      [
+        "Lack of visualization ease of staff cadre/role (clinical vs non-clinical)",
+        1
+      ],
+      [
+        "Not easy to communicate with the health provider",
+        1
+      ],
+      [
+        "Potential wrong perception by not seeing clearly the person behind the PPE",
+        1
+      ],
+      [
+        "Stigma, fear",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_WASH/Log",
+    "name": "Communication and Human Interaction → WASH/Log",
+    "data": [
+      [
+        "Being able to connect visibly with health care workers",
+        1
+      ],
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ],
+      [
+        "Difficult to hear colleagues and patients",
+        1
+      ],
+      [
+        "Difficult to recognize and communicate with the health team members",
+        1
+      ],
+      [
+        "Doesn't give a sense of trust on the treatment provided",
+        1
+      ],
+      [
+        "Fear",
+        1
+      ],
+      [
+        "Fear/Unable to see providers face",
+        1
+      ],
+      [
+        "Feeling of isolation from loved ones",
+        1
+      ],
+      [
+        "Inability to see the health providers faces",
+        1
+      ],
+      [
+        "Lack of 'human' interaction with patients",
+        1
+      ],
+      [
+        "Lack of visualization ease of staff cadre/role (clinical vs non-clinical)",
+        1
+      ],
+      [
+        "Not easy to communicate with the health provider",
+        1
+      ],
+      [
+        "Potential wrong perception by not seeing clearly the person behind the PPE",
+        1
+      ],
+      [
+        "Stigma, fear",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Donors",
+    "name": "Communication and Human Interaction → Donors",
+    "data": [
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Local health authorities",
+    "name": "Communication and Human Interaction → Local health authorities",
+    "data": [
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ],
+      [
+        "Difficult to recognize and communicate with the health team members",
+        1
+      ],
+      [
+        "Doesn't give a sense of trust on the treatment provided",
+        1
+      ],
+      [
+        "Fear",
+        1
+      ],
+      [
+        "Fear/Unable to see providers face",
+        1
+      ],
+      [
+        "Feeling of isolation from loved ones",
+        1
+      ],
+      [
+        "Inability to see the health providers faces",
+        1
+      ],
+      [
+        "Lack of 'human' interaction with patients",
+        1
+      ],
+      [
+        "Lack of visualization ease of staff cadre/role (clinical vs non-clinical)",
+        1
+      ],
+      [
+        "Not easy to communicate with the health provider",
+        1
+      ],
+      [
+        "Potential wrong perception by not seeing clearly the person behind the PPE",
+        1
+      ],
+      [
+        "Stigma, fear",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Supply manager",
+    "name": "Communication and Human Interaction → Supply manager",
+    "data": [
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Communication and Human Interaction_Community",
+    "name": "Communication and Human Interaction → Community",
+    "data": [
+      [
+        "Being able to connect visibly with health care workers",
+        1
+      ],
+      [
+        "Different colors means different PPE specifications?",
+        1
+      ],
+      [
+        "Difficult to hear colleagues and patients",
+        1
+      ],
+      [
+        "Difficult to recognize and communicate with the health team members",
+        1
+      ],
+      [
+        "Doesn't give a sense of trust on the treatment provided",
+        1
+      ],
+      [
+        "Fear",
+        1
+      ],
+      [
+        "Fear/Unable to see providers face",
+        1
+      ],
+      [
+        "Feeling of isolation from loved ones",
+        1
+      ],
+      [
+        "Inability to see the health providers faces",
+        1
+      ],
+      [
+        "Lack of 'human' interaction with patients",
+        1
+      ],
+      [
+        "Lack of visualization ease of staff cadre/role (clinical vs non-clinical)",
+        1
+      ],
+      [
+        "Not easy to communicate with the health provider",
+        1
+      ],
+      [
+        "Potential wrong perception by not seeing clearly the person behind the PPE",
+        1
+      ],
+      [
+        "Stigma, fear",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Design, Materials, and Innovation_Donors",
+    "name": "Design, Materials, and Innovation → Donors",
+    "data": [
+      [
+        "Co-creation with big PPE manufacturers could be explored at scale",
+        1
+      ],
+      [
+        "Dilemma: New innovative product that does not yet have certificates or test reports from independent laboratories as evidence of meeting the expected performance level.",
+        1
+      ],
+      [
+        "Public-private partnership opportunities to support the innovation process not always fully explored",
+        1
+      ],
+      [
+        "Rapid manufacturing for scaleability",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Design, Materials, and Innovation_Supply manager",
+    "name": "Design, Materials, and Innovation → Supply manager",
+    "data": [
+      [
+        "Co-creation with big PPE manufacturers could be explored at scale",
+        1
+      ],
+      [
+        "Dilemma: New innovative product that does not yet have certificates or test reports from independent laboratories as evidence of meeting the expected performance level.",
+        1
+      ],
+      [
+        "Public-private partnership opportunities to support the innovation process not always fully explored",
+        1
+      ],
+      [
+        "Rapid manufacturing for scaleability",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Medical Staff",
+    "name": "Safety and Usability → Medical Staff",
+    "data": [
+      [
+        "Ability to safely doff out of PPE",
+        1
+      ],
+      [
+        "Availability of / Standardization of PPE specifications",
+        1
+      ],
+      [
+        "Challenging doffing (difficult to free up the shoulders)",
+        1
+      ],
+      [
+        "Challening decontamination process",
+        1
+      ],
+      [
+        "Complexity of ensemble increases risk for making error and exposure during doffing",
+        1
+      ],
+      [
+        "Different PPE may means different donning and doffing",
+        1
+      ],
+      [
+        "Difficult use for non-specialized staff",
+        1
+      ],
+      [
+        "Doffing is usually difficult for most health and care workers",
+        1
+      ],
+      [
+        "Ensuring proper decon of PPE prior to reuse",
+        1
+      ],
+      [
+        "Fogging",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Lack of different sizes of PPE",
+        1
+      ],
+      [
+        "Limited dexterity in delivery of clinical care",
+        1
+      ],
+      [
+        "Poor occupational health and safety intuitiveness ('designed-in' donning/ doffing cues for safety)",
+        1
+      ],
+      [
+        "Resistence to decontamination",
+        1
+      ],
+      [
+        "Time for donning in case of medical emergency",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Patient",
+    "name": "Safety and Usability → Patient",
+    "data": [
+      [
+        "Fogging",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Lack of different sizes of PPE",
+        1
+      ],
+      [
+        "Limited dexterity in delivery of clinical care",
+        1
+      ],
+      [
+        "Time for donning in case of medical emergency",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_WASH/Log",
+    "name": "Safety and Usability → WASH/Log",
+    "data": [
+      [
+        "Ability to safely doff out of PPE",
+        1
+      ],
+      [
+        "Availability of / Standardization of PPE specifications",
+        1
+      ],
+      [
+        "Challenging doffing (difficult to free up the shoulders)",
+        1
+      ],
+      [
+        "Challening decontamination process",
+        1
+      ],
+      [
+        "Complexity of ensemble increases risk for making error and exposure during doffing",
+        1
+      ],
+      [
+        "Different PPE may means different donning and doffing",
+        1
+      ],
+      [
+        "Difficult to use tools for plumbing or other repairs with some types of PPE gloves. Sometimes the gloves are not tough or ruggedised enough to provide the right balance between protection v dexterity",
+        1
+      ],
+      [
+        "Difficult use for non-specialized staff",
+        1
+      ],
+      [
+        "Doffing is usually difficult for most health and care workers",
+        1
+      ],
+      [
+        "Ensuring proper decon of PPE prior to reuse",
+        1
+      ],
+      [
+        "Fogging",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Lack of different sizes of PPE",
+        1
+      ],
+      [
+        "Limited dexterity in delivery of clinical care",
+        1
+      ],
+      [
+        "Poor occupational health and safety intuitiveness ('designed-in' donning/ doffing cues for safety)",
+        1
+      ],
+      [
+        "Resistence to decontamination",
+        1
+      ],
+      [
+        "Time for donning in case of medical emergency",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Donors",
+    "name": "Safety and Usability → Donors",
+    "data": [
+      [
+        "Availability of / Standardization of PPE specifications",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Resistence to decontamination",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Local health authorities",
+    "name": "Safety and Usability → Local health authorities",
+    "data": [
+      [
+        "Availability of / Standardization of PPE specifications",
+        1
+      ],
+      [
+        "Difficult use for non-specialized staff",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Resistence to decontamination",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Supply manager",
+    "name": "Safety and Usability → Supply manager",
+    "data": [
+      [
+        "Availability of / Standardization of PPE specifications",
+        1
+      ],
+      [
+        "Complexity of ensemble increases risk for making error and exposure during doffing",
+        1
+      ],
+      [
+        "Different PPE may means different donning and doffing",
+        1
+      ],
+      [
+        "Doffing is usually difficult for most health and care workers",
+        1
+      ],
+      [
+        "High variability of types and levels of safety",
+        1
+      ],
+      [
+        "Identification of alternative materials that meet the safety and performance",
+        1
+      ],
+      [
+        "Lack of different sizes of PPE",
+        1
+      ],
+      [
+        "Limited dexterity in delivery of clinical care",
+        1
+      ],
+      [
+        "Poor occupational health and safety intuitiveness ('designed-in' donning/ doffing cues for safety)",
+        1
+      ],
+      [
+        "Resistence to decontamination",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Safety and Usability_Community",
+    "name": "Safety and Usability → Community",
+    "data": [
+      [
+        "Fogging",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Medical Staff",
+    "name": "Policy, Regulation, and Coordination → Medical Staff",
+    "data": [
+      [
+        "Big guys to pull regulations",
+        1
+      ],
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Patient",
+    "name": "Policy, Regulation, and Coordination → Patient",
+    "data": [
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of knowledge and understanding of the PPE",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_WASH/Log",
+    "name": "Policy, Regulation, and Coordination → WASH/Log",
+    "data": [
+      [
+        "Big guys to pull regulations",
+        1
+      ],
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Donors",
+    "name": "Policy, Regulation, and Coordination → Donors",
+    "data": [
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of donor visibility",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ],
+      [
+        "Local legislation/regulation for goods import vs. international market clearances.",
+        1
+      ],
+      [
+        "Local requirements for compliance to national product standards.",
+        1
+      ],
+      [
+        "Requires monitoring",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Local health authorities",
+    "name": "Policy, Regulation, and Coordination → Local health authorities",
+    "data": [
+      [
+        "Big guys to pull regulations",
+        1
+      ],
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of donor visibility",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ],
+      [
+        "Local legislation/regulation for goods import vs. international market clearances.",
+        1
+      ],
+      [
+        "Local requirements for compliance to national product standards.",
+        1
+      ],
+      [
+        "Requires monitoring",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Others",
+    "name": "Policy, Regulation, and Coordination → Others",
+    "data": [
+      [
+        "Big guys to pull regulations",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Supply manager",
+    "name": "Policy, Regulation, and Coordination → Supply manager",
+    "data": [
+      [
+        "Big guys to pull regulations",
+        1
+      ],
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of donor visibility",
+        1
+      ],
+      [
+        "Lack of regulatory convergence (no regulation exists for PPE in the African continent)",
+        1
+      ],
+      [
+        "Local legislation/regulation for goods import vs. international market clearances.",
+        1
+      ],
+      [
+        "Local requirements for compliance to national product standards.",
+        1
+      ],
+      [
+        "Requires monitoring",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Policy, Regulation, and Coordination_Community",
+    "name": "Policy, Regulation, and Coordination → Community",
+    "data": [
+      [
+        "Differences in items provided by MOH and different organizations",
+        1
+      ],
+      [
+        "Lack of Harmonization between agencies",
+        1
+      ],
+      [
+        "Lack of knowledge and understanding of the PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Procurement, Supply Chain, and Cost_Medical Staff",
+    "name": "Procurement, Supply Chain, and Cost → Medical Staff",
+    "data": [
+      [
+        "Availability of the recommended PPE in local market",
+        1
+      ],
+      [
+        "Difficulty in getting Accurate forecasting",
+        1
+      ],
+      [
+        "Ensuring adequate replacement components in case of malfunction/breakage",
+        1
+      ],
+      [
+        "Procurement of PPE not aligning with facilities needs",
+        1
+      ],
+      [
+        "Transportation Time",
+        1
+      ],
+      [
+        "Very expensive considering most items are used one time.",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Procurement, Supply Chain, and Cost_WASH/Log",
+    "name": "Procurement, Supply Chain, and Cost → WASH/Log",
+    "data": [
+      [
+        "Availability of the recommended PPE in local market",
+        1
+      ],
+      [
+        "Difficulty in getting Accurate forecasting",
+        1
+      ],
+      [
+        "Ensuring adequate replacement components in case of malfunction/breakage",
+        1
+      ],
+      [
+        "Lack of clean/dry storage space for PPE",
+        1
+      ],
+      [
+        "Procurement of PPE not aligning with facilities needs",
+        1
+      ],
+      [
+        "Transportation Time",
+        1
+      ],
+      [
+        "Very expensive considering most items are used one time.",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Procurement, Supply Chain, and Cost_Donors",
+    "name": "Procurement, Supply Chain, and Cost → Donors",
+    "data": [
+      [
+        "Availability of the recommended PPE in local market",
+        1
+      ],
+      [
+        "Customs",
+        1
+      ],
+      [
+        "Difficulty in getting Accurate forecasting",
+        1
+      ],
+      [
+        "Ensuring adequate replacement components in case of malfunction/breakage",
+        1
+      ],
+      [
+        "High expenditure",
+        1
+      ],
+      [
+        "High initial cost outlay vs smaller costs outlay for re useable PPE",
+        1
+      ],
+      [
+        "Lack of funding to cover high usage",
+        1
+      ],
+      [
+        "Local manufacturing",
+        1
+      ],
+      [
+        "Local manufacturing capacity building",
+        1
+      ],
+      [
+        "Low visibility on close by stockpiles",
+        1
+      ],
+      [
+        "Opportunity for pooled procurement?",
+        1
+      ],
+      [
+        "Procurement of PPE not aligning with facilities needs",
+        1
+      ],
+      [
+        "Product expiry / remaining shelf-life (stock management)",
+        1
+      ],
+      [
+        "Product traceability, and compliance verification (e.g. labels).",
+        1
+      ],
+      [
+        "Sufficient demand for a product to obtain industry interest",
+        1
+      ],
+      [
+        "Tariff prices for certain types of PPEs",
+        1
+      ],
+      [
+        "Too many pieces to be purchased, shipped, stored, etc.",
+        1
+      ],
+      [
+        "Transportation Time",
+        1
+      ],
+      [
+        "Very expensive considering most items are used one time.",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Procurement, Supply Chain, and Cost_Local health authorities",
+    "name": "Procurement, Supply Chain, and Cost → Local health authorities",
+    "data": [
+      [
+        "Availability of the recommended PPE in local market",
+        1
+      ],
+      [
+        "Customs",
+        1
+      ],
+      [
+        "Difficulty in getting Accurate forecasting",
+        1
+      ],
+      [
+        "Ensuring adequate replacement components in case of malfunction/breakage",
+        1
+      ],
+      [
+        "High expenditure",
+        1
+      ],
+      [
+        "High initial cost outlay vs smaller costs outlay for re useable PPE",
+        1
+      ],
+      [
+        "Lack of clean/dry storage space for PPE",
+        1
+      ],
+      [
+        "Lack of funding to cover high usage",
+        1
+      ],
+      [
+        "Local manufacturing",
+        1
+      ],
+      [
+        "Local manufacturing capacity building",
+        1
+      ],
+      [
+        "Low visibility on close by stockpiles",
+        1
+      ],
+      [
+        "Opportunity for pooled procurement?",
+        1
+      ],
+      [
+        "Procurement of PPE not aligning with facilities needs",
+        1
+      ],
+      [
+        "Product expiry / remaining shelf-life (stock management)",
+        1
+      ],
+      [
+        "Product traceability, and compliance verification (e.g. labels).",
+        1
+      ],
+      [
+        "Sufficient demand for a product to obtain industry interest",
+        1
+      ],
+      [
+        "Tariff prices for certain types of PPEs",
+        1
+      ],
+      [
+        "Too many pieces to be purchased, shipped, stored, etc.",
+        1
+      ],
+      [
+        "Transportation Time",
+        1
+      ],
+      [
+        "Very expensive considering most items are used one time.",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Procurement, Supply Chain, and Cost_Supply manager",
+    "name": "Procurement, Supply Chain, and Cost → Supply manager",
+    "data": [
+      [
+        "Availability of the recommended PPE in local market",
+        1
+      ],
+      [
+        "Customs",
+        1
+      ],
+      [
+        "Difficulty in getting Accurate forecasting",
+        1
+      ],
+      [
+        "Ensuring adequate replacement components in case of malfunction/breakage",
+        1
+      ],
+      [
+        "High expenditure",
+        1
+      ],
+      [
+        "High initial cost outlay vs smaller costs outlay for re useable PPE",
+        1
+      ],
+      [
+        "Lack of clean/dry storage space for PPE",
+        1
+      ],
+      [
+        "Lack of funding to cover high usage",
+        1
+      ],
+      [
+        "Local manufacturing",
+        1
+      ],
+      [
+        "Local manufacturing capacity building",
+        1
+      ],
+      [
+        "Low visibility on close by stockpiles",
+        1
+      ],
+      [
+        "Opportunity for pooled procurement?",
+        1
+      ],
+      [
+        "Procurement of PPE not aligning with facilities needs",
+        1
+      ],
+      [
+        "Product expiry / remaining shelf-life (stock management)",
+        1
+      ],
+      [
+        "Product traceability, and compliance verification (e.g. labels).",
+        1
+      ],
+      [
+        "Sufficient demand for a product to obtain industry interest",
+        1
+      ],
+      [
+        "Tariff prices for certain types of PPEs",
+        1
+      ],
+      [
+        "Too many pieces to be purchased, shipped, stored, etc.",
+        1
+      ],
+      [
+        "Transportation Time",
+        1
+      ],
+      [
+        "Very expensive considering most items are used one time.",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Medical Staff",
+    "name": "Stigma, Acceptance, and Community Perception → Medical Staff",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Patient",
+    "name": "Stigma, Acceptance, and Community Perception → Patient",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_WASH/Log",
+    "name": "Stigma, Acceptance, and Community Perception → WASH/Log",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Donors",
+    "name": "Stigma, Acceptance, and Community Perception → Donors",
+    "data": [
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Local health authorities",
+    "name": "Stigma, Acceptance, and Community Perception → Local health authorities",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Supply manager",
+    "name": "Stigma, Acceptance, and Community Perception → Supply manager",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Stigma, Acceptance, and Community Perception_Community",
+    "name": "Stigma, Acceptance, and Community Perception → Community",
+    "data": [
+      [
+        "Acceptance due to foreign/unfamiliar appearance",
+        1
+      ],
+      [
+        "Acceptance from community",
+        1
+      ],
+      [
+        "Misuse of PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Medical Staff",
+    "name": "Waste Management and Environmental Impact → Medical Staff",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Risk of burning waste while wearing plastic PPE",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Patient",
+    "name": "Waste Management and Environmental Impact → Patient",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_WASH/Log",
+    "name": "Waste Management and Environmental Impact → WASH/Log",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Risk of burning waste while wearing plastic PPE",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Donors",
+    "name": "Waste Management and Environmental Impact → Donors",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Local health authorities",
+    "name": "Waste Management and Environmental Impact → Local health authorities",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Supply manager",
+    "name": "Waste Management and Environmental Impact → Supply manager",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  },
+  {
+    "id": "Waste Management and Environmental Impact_Community",
+    "name": "Waste Management and Environmental Impact → Community",
+    "data": [
+      [
+        "Contamination, high amount waste production",
+        1
+      ],
+      [
+        "Environmental stewardship: (Bioplastic experimentation and responsible, eco-innovation)",
+        1
+      ],
+      [
+        "Environmental: Waste generation (ppe and packaging)",
+        1
+      ],
+      [
+        "Huge amount of waste disposal",
+        1
+      ],
+      [
+        "Lack of safe disposal methods",
+        1
+      ],
+      [
+        "PPE materials used are not recycled and when burned produces toxic Fumes, CO etc",
+        1
+      ],
+      [
+        "Safe disposal, fumes released",
+        1
+      ],
+      [
+        "Waste management & sustainability agenda not always linked",
+        1
+      ],
+      [
+        "Waste management: Disposal of single use PPE",
+        1
+      ]
+    ]
+  }
+]
+;
+
+Highcharts.chart('container', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: 'PPE Themes and Pain Points by Stakeholder'
+  },
+  xAxis: { type: 'category' },
+  yAxis: {
+    min: 0,
+    title: { text: 'Count' },
+    stackLabels: { enabled: true }
+  },
+  legend: { align: 'right', verticalAlign: 'top', layout: 'vertical' },
+  plotOptions: {
+    column: { stacking: 'normal' },
+    series: { borderWidth: 0 }
+  },
+  series: top_series,
+  drilldown: {
+    series: drilldowns
+  }
+});
+</script>
+</body>
+</html>
