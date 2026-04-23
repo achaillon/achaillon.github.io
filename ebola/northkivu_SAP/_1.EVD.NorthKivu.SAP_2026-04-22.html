@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="WHO Clinical Data Platform">
+<meta name="dcterms.date" content="2026-04-01">
+
+<title>Secondary Analysis of Clinical Determinants for Ebola Virus Disease (EVD)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/quarto.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/popper.min.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/bootstrap/bootstrap-10daa034703793678e481cc8cee6d76f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/viz-1.8.2/viz.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/grViz-binding-1.0.11/grViz.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="_1.EVD.NorthKivu.SAP_2026-04-22_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#study-overview" id="toc-study-overview" class="nav-link active" data-scroll-target="#study-overview">1. Study Overview</a></li>
+  <li><a href="#variable-grouping-data-harmonization" id="toc-variable-grouping-data-harmonization" class="nav-link" data-scroll-target="#variable-grouping-data-harmonization">2. Variable Grouping &amp; Data Harmonization</a></li>
+  <li><a href="#statistical-methodology" id="toc-statistical-methodology" class="nav-link" data-scroll-target="#statistical-methodology">3. Statistical Methodology</a>
+  <ul class="collapse">
+  <li><a href="#data-preparation-and-harmonization" id="toc-data-preparation-and-harmonization" class="nav-link" data-scroll-target="#data-preparation-and-harmonization">3.1 Data Preparation and Harmonization</a></li>
+  <li><a href="#predictor-selection-framework" id="toc-predictor-selection-framework" class="nav-link" data-scroll-target="#predictor-selection-framework">3.2 Predictor Selection Framework</a></li>
+  <li><a href="#multivariable-modeling-and-effect-estimation" id="toc-multivariable-modeling-and-effect-estimation" class="nav-link" data-scroll-target="#multivariable-modeling-and-effect-estimation">3.3 Multivariable Modeling and Effect Estimation</a></li>
+  <li><a href="#software-and-reproducibility" id="toc-software-and-reproducibility" class="nav-link" data-scroll-target="#software-and-reproducibility">3.4 Software and Reproducibility</a></li>
+  </ul></li>
+  <li><a href="#pediatric-sub-analysis-proposed" id="toc-pediatric-sub-analysis-proposed" class="nav-link" data-scroll-target="#pediatric-sub-analysis-proposed">4. Pediatric Sub-analysis (Proposed)</a></li>
+  <li><a href="#proposed-analytical-outputs" id="toc-proposed-analytical-outputs" class="nav-link" data-scroll-target="#proposed-analytical-outputs">5. Proposed Analytical Outputs</a></li>
+  <li><a href="#variable-definitions-for-analysistbl-variables" id="toc-variable-definitions-for-analysistbl-variables" class="nav-link" data-scroll-target="#variable-definitions-for-analysistbl-variables">6. Variable Definitions for Analysis(Table&nbsp;2)</a></li>
+  <li><a href="#annexes" id="toc-annexes" class="nav-link" data-scroll-target="#annexes">Annexes</a>
+  <ul class="collapse">
+  <li><a href="#study-documentation-and-reproducibility" id="toc-study-documentation-and-reproducibility" class="nav-link" data-scroll-target="#study-documentation-and-reproducibility">Study Documentation and Reproducibility</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">REFERENCES</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="_1.EVD.NorthKivu.SAP_2026-04-22.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Secondary Analysis of Clinical Determinants for Ebola Virus Disease (EVD)</h1>
+<p class="subtitle lead">Clinical Data Platform - North Kivu Outbreak</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">WHO Clinical Data Platform </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Safe and Scalable Care Unit
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 1, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="page-break-after: always;"></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Mapping &amp; Validation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To ensure the integrity of the secondary analysis, a data dictionary mapping exercise will be conducted:</p>
+<ul>
+<li><strong>Variable Alignment</strong>: REDCap field names from the EVD project (e.g., <code>diarrhoea_anytime</code>) will be mapped to all the variables from the North Kivu outbreak .</li>
+<li><strong>Harmonization Check</strong>: Discrepancies in units (e.g., lab values) or categorical definitions will be resolved and documented in a transparent <code>mapping_logfile.csv</code> to ensure reproducibility.</li>
+<li><strong>Plausibility Filters</strong>: Automated checks will flag biologically implausible values (e.g., Ct values &lt;10 or &gt;45) for manual review or exclusion.</li>
+</ul>
+</div>
+</div>
+<section id="study-overview" class="level1">
+<h1>1. Study Overview</h1>
+<p>This SAP outlines the proposed analysis of the 756 defined patients admitted between August 2018 and July 2019 during the North Kivu EVD outbreak. The goal is to identify <strong>clinical and laboratory determinants of mortality</strong>, with a sub analysis on <strong>pediatric populations</strong>. ## 1.1 Study Flow Diagram(<a href="#fig-flow" class="quarto-xref">Figure&nbsp;1</a>)</p>
+<div class="cell">
+<div id="fig-flow" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-55ea9199f2cebad27da7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-55ea9199f2cebad27da7">{"x":{"diagram":"\ndigraph study_flow {\n  # Global graph settings\n  graph [rankdir = TB, concentrate = true, splines = true, nodesep = 0.5, ranksep = 0.4]\n  \n  # Default node styling\n  node [shape = box, style = \"rounded,filled\", \n        fillcolor = \"#F8F9FA\", color = \"#4C566A\", \n        fontname = \"Helvetica\", fontsize = 12]\n  \n  # Edge styling\n  edge [color = \"#4C566A\", arrowsize = 0.8, fontname = \"Helvetica\", fontsize = 10]\n\n  # Population Nodes\n  Total [label = \"Confirmed EVD Cases\n(N = 756)\", fillcolor = \"#D8DEE9\"]\n  Exclusions [label = \"Excluded: Missing\nClinical Outcomes\", fillcolor = \"#ECEFF4\", shape = octagon]\n  Analytic [label = \"Analytic Cohort\n(n = XX)\", fillcolor = \"#81A1C1\", fontcolor = \"white\"]\n\n  # Strata Nodes\n  Adults [label = \"Adults\n(n = XX)\"]\n  Children [label = \"Children <18y\n(n = XX)\"]\n\n  # Analysis Nodes (Grouped in a cluster for visual separation)\n  subgraph cluster_analysis {\n    label = \"Prospective Statistical Analysis Plan\";\n    style = dashed;\n    color = \"#A3BE8C\";\n    fontname = \"Helvetica-Bold\";\n    \n    Global [label = \"Global Multivariable\nModel\", fillcolor = \"#EBCB8B\"]\n    Pediatric [label = \"Pediatric Clinical\nPhenotyping\", fillcolor = \"#EBCB8B\"]\n    Survival [label = \"Survival Analysis\n(Weibull Models)\", fillcolor = \"#BF616A\", fontcolor = \"white\"]\n  }\n\n  # Workflow connections\n  Total -> Exclusions [label = \" triage\"]\n  Exclusions -> Analytic\n  Analytic -> Adults\n  Analytic -> Children\n  \n  Adults -> Global\n  Children -> Pediatric\n  \n  # Converging on the final outcome analysis\n  Global -> Survival\n  Pediatric -> Survival\n\n  # Layout Hints: Force levels\n  { rank = same; Adults; Children }\n  { rank = same; Global; Pediatric }\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Study Flow Diagram
+</figcaption>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+<section id="variable-grouping-data-harmonization" class="level1">
+<h1>2. Variable Grouping &amp; Data Harmonization</h1>
+<p>To analyze the predictors of EVD outcome and complications, we propose this <strong>Directed Acyclic Graphs&nbsp;(DAG)</strong> (<a href="#fig-dag" class="quarto-xref">Figure&nbsp;2</a>) to illustrate hypothesized causal relationships underlying <strong>EVD pathophysiology and clinical outcomes</strong>.</p>
+<div class="cell">
+<div id="fig-dag" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-01ee68399ad4788a58db" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-01ee68399ad4788a58db">{"x":{"diagram":"\ndigraph flow {\n  graph [rankdir = TB, concentrate=true, splines=true]\n  node [shape=box, style=rounded, fontsize=12, fontname = \"Helvetica\", fixedsize=false]\n\n\n  # Nodes (grouped roughly to help positioning)\n  ImmuneMod [label = \"Immune\\nmodulation\", shape=box]\n  ViralLoad [label = \"Viral load\", shape=box]\n\n  DelDirect [label = \"Deleterious direct\\neffect of virus\", shape=box]\n  OrganFail [label = \"Organ\\nfailure\", shape=box, fontsize=14]\n  Death [label = \"Death\", shape=box]\n\n  PreExist [label = \"Pre-existing\\ncomorbidity\", shape=box]\n  Age [label = \"Age\", shape=box]\n  Sex [label = \"Sex\", shape=box]\n  Nutrition [label = \"Nutrition\", shape=box]\n  DelayedPres [label = \"Delayed\\npresentation\", shape=box]\n  Vaccination [label = \"Vaccination\", shape=box]\n  Antiviral [label = \"Antiviral\\ntherapy\", shape=box]\n  \n  \n  Hypoperf [label = \"Hypoperfusion /\\nshock\", shape=box]\n  Dehydration [label = \"Dehydration\", shape=box]\n  MetElect [label = \"Metabolic / electrolyte\\nderangement\", shape=box]\n  Hypoxa [label = \"Hypoxaemia\", shape=box]\n  Anemia [label = \"Anaemia\", shape=box]\n  SecInf [label = \"Secondary\\ninfection\", shape=box]\n  Bleeding [label = \"Bleeding\", shape=box]\n\n  ORS [label = \"ORS\", shape=box]\n  IVfluid [label = \"IV fluid\", shape=box]\n  Diarrhoea [label = \"Diarrhoea\", shape=box]\n\n  # layout hints using subgraphs to influence rank\n  { rank = same; Vaccination; Antiviral; DelayedPres }\n  { rank = same; ImmuneMod }\n  { rank = same; DelDirect }\n  { rank = same; OrganFail }\n  { rank = same; Death }\n\n  ViralLoad -> DelDirect [label = \"+\", fontsize=10]\n\n\n  # Edges (with + / - labels where your sketch indicates)\n  Vaccination -> ViralLoad [label = \"-\", fontsize=10]\n  Antiviral -> ViralLoad [label = \"-\", fontsize=10]\n  ImmuneMod -> DelDirect [label = \"+/-\", fontsize=10]\n\n  DelDirect -> OrganFail [label = \"+\", fontsize=10]\n  OrganFail -> Death [label = \"+\", fontsize=10]\n\n  # comorbidity, age, sex, nutrition -> organ failure (via pre-existing)\n  Sex -> PreExist [label = \"\", fontsize=10]\n  Age -> PreExist [label = \"+/-\", fontsize=10]\n  Nutrition -> PreExist [label = \"+\", fontsize=10]\n  DelayedPres -> ViralLoad [label = \"+\", fontsize=10]\n  PreExist -> OrganFail [label = \"+\", fontsize=10]\n  Sex -> DelayedPres [label = \"\", fontsize=10]\n\n  # shock / hypoperfusion connections\n  Hypoperf -> OrganFail [label = \"+\", fontsize=10]  # bidirectional influence\n\n  # dehydration, diarrhoea, ORS, IV fluid\n  Diarrhoea -> Dehydration [label = \"+\", fontsize=10]\n  ORS -> Dehydration [label = \"-\", fontsize=10]\n  IVfluid -> Dehydration [label = \"-\", fontsize=10]\n  Dehydration -> Hypoperf [label = \"+\", fontsize=10]\n  Dehydration -> MetElect [label = \"+\", fontsize=10]\n\n  # metabolic/electrolyte -> organ failure\n  MetElect -> OrganFail [label = \"+\", fontsize=10]\n\n  # hypoxaemia, anaemia, secondary infection, bleeding\n  Hypoxa -> OrganFail [label = \"+\", fontsize=10]\n  Anemia -> Hypoxa [label = \"+\", fontsize=10]\n  Bleeding -> Anemia [label = \"+\", fontsize=10]\n  SecInf -> Hypoxa [label = \"+\", fontsize=10]\n  SecInf -> OrganFail [label = \"+\", fontsize=10]\n\n  # dehydration <-> diarrhoea adds support to IV fluid negative/positive effects\n  IVfluid -> MetElect [label = \"-\", fontsize=10]\n\n  # small styling tweaks for emphasis\n  OrganFail [style = \"rounded,filled\", fillcolor = \"#f8d7da\"]\n  Death [style = \"rounded,filled\", fillcolor = \"#BF616A\"]\n\n  # edge arrows styling\n  edge [arrowsize=0.8]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Directed Acyclic Graphs&nbsp;(DAG)
+</figcaption>
+</figure>
+</div>
+</div>
+<p>To ensure model parsimony, we will group sparse clinical variables into syndromic categories (<a href="#tbl-group" class="quarto-xref">Table&nbsp;1</a>):</p>
+<ul>
+<li><p>CNS Signs: Agitation, coma, disorientation, seizures, and irritability.</p></li>
+<li><p>GI Signs: Diarrhea, vomiting, abdominal pain, and anorexia.</p></li>
+<li><p>Renal/Dehydration: Anuria, signs of dehydration, and renal impairment (Creatinine ≥ 1.1 mg/dL).</p></li>
+</ul>
+<div class="cell">
+<div id="tbl-group" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Symptom grouping used for analysis
+</figcaption>
+<div aria-describedby="tbl-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-4611eb4044dff0512e8f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4611eb4044dff0512e8f">{"x":{"filter":"none","vertical":false,"data":[["CNS signs","Bleeding signs","Gastrointestinal signs","Renal signs","Dehydration signs"],["agitation_anytime, coma_p_u_in_avpu_scoring, coma, desorientation_anytime, seizure_anytime, headache_anytime, irritability_confusion_anytime","unusual_bleeding_bruising_anytime, bleeding","diarrhoea_anytime, nausea_vomiting_anytime, abdominal_pain_anytime, anorexia_anytime, dysphagia_anytime","renal_impairment, anuria_anytime","anuria_anytime, signs_of_dehydration_anytime"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Category<\/th>\n      <th>Variables<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Brtip","columnDefs":[{"className":"dt-left","targets":"_all"},{"name":"Category","targets":0},{"name":"Variables","targets":1}],"pageLength":10,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({\n  'background-color': '#2c3e50',\n  'color': '#fff',\n  'text-align': 'left',\n  'font-size': '10px'\n});\n$(this.api().table().body()).css({\n  'font-size': '10px',\n  'font-family': 'Helvetica'\n});\n}","order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.initComplete"],"jsHooks":[]}</script>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+<section id="statistical-methodology" class="level1">
+<h1>3. Statistical Methodology</h1>
+<p>We propose a stepwise modeling workflow (<a href="#fig-stepwise" class="quarto-xref">Figure&nbsp;3</a>) to identify independent predictors of clinical outcomes and complications.</p>
+<div class="cell">
+<div id="fig-stepwise" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-stepwise-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-712177676ee6f573339d" style="width:70%;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-712177676ee6f573339d">{"x":{"diagram":"\ndigraph workflow {\n  graph [layout = dot, rankdir = TB]\n  node [shape=box, style=rounded, fontsize=12, fontname=\"Helvetica\"]\n\n  A [label = \"1. Data cleaning and wrangling\"]\n  B [label = \"2. Univariate model screening\\n• Identify sparse variables\\n• Exclude predictors causing quasi-complete separation\"]\n  C [label = \"3. Collinearity assessment\\n• Variance Inflation Factor (VIF)\\n• GVIF_scaled ≤ 1.68\"]\n  D [label = \"4. LASSO regression\\n• Shrinks weak predictors\\n• Retains strongest associations\"]\n  E [label = \"5. Multivariable logistic regression\\n• Include LASSO-selected predictors\"]\n  F [label = \"OR from multivariable model\"]\n  G [label = \"Adjusted RR (Poisson)\"]\n  H [label = \"Raw RR for binary predictors\"]\n\n  A -> B -> C -> D -> E -> F\n  E -> G\n  E -> H\n  F [style=\"rounded,filled\", fillcolor=\"#f8d7da\"]\n  G [style=\"rounded,filled\", fillcolor=\"#f8d7da\"]\n  H [style=\"rounded,filled\", fillcolor=\"#f8d7da\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stepwise-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Proposed Stepwise Modeling Workflow for EVD Outcomes.
+</figcaption>
+</figure>
+</div>
+</div>
+<section id="data-preparation-and-harmonization" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation-and-harmonization">3.1 Data Preparation and Harmonization</h2>
+<p>Data cleaning and wrangling are performed using the tidyverse ecosystem.<span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> All clinical variables are inspected for consistency, and missingness is addressed through complete-case analysis or multiple imputation, depending on the variable’s importance and the proportion of missing entries.</p>
+</section>
+<section id="predictor-selection-framework" class="level2">
+<h2 class="anchored" data-anchor-id="predictor-selection-framework">3.2 Predictor Selection Framework</h2>
+<p>We will utilize a structured workflow to identify independent predictors:</p>
+<ol type="1">
+<li><p><strong>Univariate screening</strong> : Each potential predictor (demographics, symptoms, and lab values) is evaluated in univariate models. Variables with extreme sparsity or those causing quasi-complete separation are excluded from further modeling.</p></li>
+<li><p><strong>Collinearity assessment</strong>: Multicollinearity among remaining variables is assessed using the car package. <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox and Weisberg 2019</a>)</span></p></li>
+<li><p><strong>LASSO regression</strong>: Least Absolute Shrinkage and Selection Operator (LASSO) regression is applied via the glmnet package. <span class="citation" data-cites="glmnet">(<a href="#ref-glmnet" role="doc-biblioref">Friedman, Hastie, and Tibshirani 2010</a>)</span> This penalized regression technique shrinks coefficients of weaker predictors to zero, retaining only the most stable clinical associations for the final multivariable models.</p></li>
+</ol>
+</section>
+<section id="multivariable-modeling-and-effect-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="multivariable-modeling-and-effect-estimation">3.3 Multivariable Modeling and Effect Estimation</h2>
+<p>The final analytic models will quantify the relationship between selected predictors and EVD outcomes:</p>
+<ul>
+<li><p><strong>Primary Effect Estimation</strong>: To enhance clinical interpretability, we will report <strong>Adjusted Risk Ratios (aRR)</strong> and 95% confidence intervals (CI). These are derived using <strong>Poisson regression with robust standard errors</strong> (via the <code>sandwich</code> and <code>lmtest</code> packages [<span class="citation" data-cites="sandwich">Zeileis, Koll, and Graham (<a href="#ref-sandwich" role="doc-biblioref">2020</a>)</span>]<span class="citation" data-cites="lmtest">(<a href="#ref-lmtest" role="doc-biblioref">Zeileis and Hothorn 2002</a>)</span> ), which provides more reliable estimates than odds ratios in settings where the outcome is not rare.</p></li>
+<li><p><strong>Sensitivity Analysis</strong>: For comparison with historical literature, <strong>Adjusted Odds Ratios (aOR)</strong> will be computed via global multivariable logistic regression.</p></li>
+<li><p><strong>Prognostic Thresholds</strong>: For continuous laboratory markers such as Cycle Threshold (Ct) values, we will utilize <strong>Receiver Operating Characteristic (ROC)</strong> analysis to determine optimal prognostic cut-offs (e.g., Ct <span class="math inline">\(\approx 23\)</span>) for predicting mortality.</p></li>
+</ul>
+</section>
+<section id="software-and-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="software-and-reproducibility">3.4 Software and Reproducibility</h2>
+<p>All analyses are conducted in R version 4.4.1. The use of a scripted, Quarto-based workflow ensures that the transition from the “Light CRF” raw data to the final analytical outputs is fully reproducible and transparent.</p>
+</section>
+</section>
+<section id="pediatric-sub-analysis-proposed" class="level1">
+<h1>4. Pediatric Sub-analysis (Proposed)</h1>
+<p>Given the demographic distribution, we propose a dedicated focus on the XX pediatric cases:</p>
+<ul>
+<li><p>Comparison of Clinical Phenotypes</p></li>
+<li><p>Survival Comparison: Weibull proportional hazards models stratified by age groups (&lt;5, 5-17) to determine if admission delays impact children differently than adults.</p></li>
+</ul>
+</section>
+<section id="proposed-analytical-outputs" class="level1">
+<h1>5. Proposed Analytical Outputs</h1>
+<p>The following outputs are proposed to characterize the North Kivu cohort and identify key clinical determinants of EVD outcomes.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span style="color: #2c3e50;">Expected Output 1: Table 1 - Patient Demographics &amp; Baseline Features</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A comprehensive descriptive table stratified by <strong>Age Group</strong> (Adult vs.&nbsp;Children), <strong>Outcome</strong> (Deceased vs.&nbsp;Recovered), and <strong>Sex</strong> (Male vs.&nbsp;Female).</p>
+</div>
+</div>
+<p><strong>Variables included:</strong></p>
+<ul>
+<li><p><strong>Demographics:</strong> Age at admission (Continuous), Age Group (Categorical), Gender, Patient Occupation, Pregnancy Status.</p></li>
+<li><p><strong>Admission Data:</strong> Admission Delay (Days), Comorbid conditions (Diabetes, HIV, Chronic Pulmonary Disease).</p></li>
+<li><p><strong>Baseline Status:</strong> Fever, Diarrhoea, Shock, Confusion, Bleeding (Binary).</p></li>
+<li><p><strong>Lab/Diagnostic:</strong> Ebola RDT, GeneXpert PCR, Ct (lowest), Ct Below 23, Electrolytes (Hypo/Hyperkaliemia), Renal impairment, Rhabdomyolysis, Severe hypoglycemia, Platelets, Haemoglobin, Calcium.</p></li>
+<li><p><strong>Initial Management:</strong> Experimental treatment type, Antibacterial/Antimalarial treatment, Fluid management, Blood transfusion.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span style="color: #2c3e50;">Expected Output 2: Epicurve and Case Fatality Rate (CFR)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visualization of the outbreak progression by week of admission, with bar colors representing <strong>Outcome at Discharge</strong>. A secondary axis will plot the rolling <strong>CFR</strong> to monitor changes in mortality over time.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span style="color: #2c3e50;">Expected Output 3: Symptom &amp; Complication Prevalence Maps</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bar charts or Heatmaps summarizing the frequency of the following binary clinical features:</p>
+</div>
+</div>
+<ul>
+<li><strong>Symptoms:</strong> Abdominal pain, Agitation, Anorexia, Anuria, Chest Pain, Disorientation, Diarrhoea, Difficulty breathing, Dysphagia, Fatigue, Fever, Headache, Hiccups, Myalgia, Seizure, Signs of shock/dehydration.</li>
+<li><strong>Clinical Signs:</strong> Conjunctival injection, Lymphadenopathy, Jaundice, Oedema (face/neck), Palpable liver, Pharyngeal erythema, Rash, Sunken eyes, Tenting on skin pinch.</li>
+<li><strong>Severe Complications:</strong> Severe thrombocytopenia, Hyper/Hypokaliemia, Renal impairment, Rhabdomyolysis, Severe hypoglycemia.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span style="color: #2c3e50;">Expected Output 4: Prognostic Association Analysis</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visualizations and summary tables for clinical predictors of mortality:</p>
+</div>
+</div>
+<ol type="1">
+<li><strong>Outcome by Admission Delay:</strong> Analysis of survival probability based on the time from symptom onset to ETU admission.</li>
+<li><strong>Outcome by Viral Load (Ct):</strong> Stratification of mortality risk by admission Ct values (e.g., &lt;16, 16-18, 18-20, 20-22).</li>
+<li><strong>Predictor Forest Plot:</strong> Presentation of <strong>Relative Risks (RR)</strong> and 95% CIs for key variables:
+<ul>
+<li><em>Continuous:</em> Ct at Admission, Admission Delay, Days from Treatment Initiation.</li>
+<li><em>Categorical:</em> Specific Experimental Treatments (Remdesivir, Zmapp, mAb114), Presence of Bleeding Signs, Signs of Renal Impairment, Rhabdomyolysis.</li>
+</ul></li>
+</ol>
+</section>
+<section id="variable-definitions-for-analysistbl-variables" class="level1">
+<h1>6. Variable Definitions for Analysis(<a href="#tbl-variables" class="quarto-xref">Table&nbsp;2</a>)</h1>
+<p>To ensure a transparent and reproducible analytical workflow, <a href="#tbl-variables" class="quarto-xref">Table&nbsp;2</a> summarizes the mapping of raw clinical indicators into standardized domains for statistical modeling. Note that this list is non-exhaustive; all available fields from the North Kivu clinical record will be harmonized and remains accessible for exploratory sensitivity analyses.</p>
+<div class="cell">
+<div id="tbl-variables" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Example of variable definitions
+</figcaption>
+<div aria-describedby="tbl-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-acd9d06dcf47bc2e2a5f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-acd9d06dcf47bc2e2a5f">{"x":{"filter":"none","vertical":false,"data":[["Demographics","Clinical Presentation","Laboratory","Interventions"],["Age, Sex, Occupation, Pregnancy","Fever, Diarrhoea, Shock, Confusion, Bleeding","Ct Value, Potassium, Creatinine, Platelets, Hb","Experimental Treatment Type, Admission Delay, IV Fluids"],["Mixed","Binary (Y/N)","Continuous/Ordinal","Categorical/Days"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Category<\/th>\n      <th>Variables<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Brtip","columnDefs":[{"className":"dt-left","targets":"_all"},{"orderable":false,"targets":0},{"name":"Domain","targets":0},{"name":"Variables","targets":1},{"name":"Data Type","targets":2}],"pageLength":10,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({\n  'background-color': '#2c3e50',\n  'color': '#fff',\n  'text-align': 'left',\n  'font-size': '10px'\n});\n$(this.api().table().body()).css({\n  'font-size': '10px',\n  'font-family': 'Helvetica'\n});\n}","order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["options.initComplete"],"jsHooks":[]}</script>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+<section id="annexes" class="level1">
+<h1>Annexes</h1>
+<section id="study-documentation-and-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="study-documentation-and-reproducibility">Study Documentation and Reproducibility</h2>
+<p>To support the transparency of this Statistical Analysis Plan, the full technical documentation is provided below. These resources ensure that the variables summarized in <a href="#tbl-variables" class="quarto-xref">Table&nbsp;2</a> can be mapped directly to the original collection instruments.</p>
+<ul>
+<li><strong><a href="https://achaillon.github.io/ebola/northkivu_SAP/EbolaDRC2019OutbreakNKivu.pdf">Full Clinical Questionnaire (PDF)</a></strong>: This document contains the complete set of questions, branching logic, and field labels used in the REDCap database.</li>
+<li><strong><a href="https://achaillon.github.io/ebola/northkivu_SAP/EVD_ENG_data_dictionary.csv">Data Codebook (CSV)</a></strong>: The structured data dictionary containing variable names, factor levels, and validation rules for the analytic pipeline.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The analysis code (Quarto/R) utilized for this report is version-controlled and can be audited to ensure that the “appropriate” use of data requested by the primary investigators is maintained throughout the study.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="references" class="level1 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">REFERENCES</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-car" class="csl-entry" role="listitem">
+Fox, John, and Sanford Weisberg. 2019. <span>“An <span></span>r<span></span> Companion to Applied Regression.”</span> <a href="https://www.john-fox.ca/Companion/">https://www.john-fox.ca/Companion/</a>.
+</div>
+<div id="ref-glmnet" class="csl-entry" role="listitem">
+Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2010. <span>“Regularization Paths for Generalized Linear Models via Coordinate Descent”</span> 33. <a href="https://doi.org/10.18637/jss.v033.i01">https://doi.org/10.18637/jss.v033.i01</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span></span>Tidyverse<span></span>”</span> 4: 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-lmtest" class="csl-entry" role="listitem">
+Zeileis, Achim, and Torsten Hothorn. 2002. <span>“Diagnostic Checking in Regression Relationships”</span> 2. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
+</div>
+<div id="ref-sandwich" class="csl-entry" role="listitem">
+Zeileis, Achim, Susanne Koll, and Nathaniel Graham. 2020. <span>“Various Versatile Variances: An Object-Oriented Implementation of Clustered Covariances in <span></span>r<span></span>”</span> 95. <a href="https://doi.org/10.18637/jss.v095.i01">https://doi.org/10.18637/jss.v095.i01</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
