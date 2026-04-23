@@ -1,0 +1,813 @@
+field_name,form_name,section_header,field_type,field_label,select_choices_or_calculations,field_note,text_validation_type_or_show_slider_number,text_validation_min,text_validation_max,identifier,branching_logic,required_field,custom_alignment,question_number,matrix_group_name,matrix_ranking,field_annotation
+record_id,admission,,text,"Record ID",,,,,,,,,,,,,record_id
+etu_number,admission,"Demographic details",text,"CTE number",,CTExxx,,,,,,,,,,,etu
+etu_participant_id,admission,,text,"Participant ID",,x.yyyy,,,,,,,,,,,etu_participant_id
+etu_participant_id_check,admission,,text,"Participant ID check",,x.yyyy,,,,,,,,,,,etu_participant_id_check
+sex,admission,,radio,Gender,"1, Male|2, Female",,,,,,,,,,,,demo_group2-sex
+dob_available,admission,,radio,"Date of birth available","1, Yes|0, No|99, Unknown",,,,,,,,,,,,demo_group2-dobavailable
+dob,admission,,text,"Date of Birth",,,date_dmy,,,y,"[dob_available] = '1'",,,,,,dob
+age,admission,,text,"Age at admission",,"in years or months or days",,,,,,,,,,,age
+occupation,admission,,radio,"Patient occupation","1, Healthcare worker|2, Non-healthcare worker|99, Unknown",,,,,,,,,,,,demo_group3-occupation
+occupation_details,admission,,text,"Occupation details",,,,,,,,,,,,,demo_group3-occupation_details
+date_adm_hosp,admission,,text,"Date of admission to hospital",,,date_dmy,,,,,,,,,,initial_admission-admission_hospital
+adm_transferred,admission,,radio,"Was the patient transferred from another facility?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,initial_admission-transferred
+transferred_from,admission,,text,"If yes, name of facility",,,,,,,"[adm_transferred] = '1'",,,,,,transferred_from
+obs_heart,admission,"Vital signs at admission",text,"Heart rate (bpm)",,,integer,,,,,,,,,,obs-heart
+obs_systolic,admission,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,obs-systolic
+obs_diastolic,admission,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,obs-diastolic
+obs_resp_rate,admission,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,obs-resp_rate
+obs_saturation,admission,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,obs-saturation
+obs_temp,admission,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,obs-temperature
+obs_avpu,admission,,text,"Mental status",,"A, V, P, U",,,,,,,,,,,obs-avpu_level
+obs_muac,admission,,text,"Mid-upper arm circumference (MUAC) [mm]",,,integer,,,,,,,,,,obs2-muac
+obs_weight,admission,,text,"Weight (kg)",,,number_1dp,,,,,,,,,,obs2-weight
+obs_height,admission,,text,"Height (cm)",,,integer,,,,,,,,,,obs2-height
+obs_cap_refill,admission,,radio,"Capillary refill >3 sec?","1, Refill less than 3s|2, Refill more than 3s|99, Unknown",,,,,,,,,,,,obs2-caprefil
+admission_date_onset,admission,"Clinical details on admission",text,"Date of onset (first symptoms)",,,date_dmy,,,,,,,,,,admission_group-onset
+admission_date_isolation,admission,,text,"Date of admission to isolation unit",,,date_dmy,,,,,,,,,,admission_group-admission_isolation
+pregnant,admission,,radio,"Is the patient pregnant?","1, Yes|0, No|99, Unknown",,,,,,"[sex] = '2'",,,,,,pregnant
+comorbid_notes,admission,"Comorbid conditions",text,"Notes on comorbidity",,,,,,,,,,,,,comorbid_notes
+comorbid,admission,,radio,"Does the patient have any comorbid conditions?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,comorbid
+comorbid_tb,admission,,radio,Tuberculosis,"1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity1,,overall_comorbid-comorbid_1-tb
+comorbid_hepatitis,admission,,radio,Hepatitis,"1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity1,,overall_comorbid-comorbid_1-hepatitis
+comorbid_diabetes,admission,,radio,Diabetes,"1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity1,,overall_comorbid-comorbid_1-diabetes
+comorbid_hiv,admission,,radio,HIV,"1, Yes and on ART|2, Yes and not on ART|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,,,overall_comorbid-comorbid_1-hiv
+comorbid_liver_disease,admission,,radio,"Chronic liver disease","1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-liver_disease
+comorbid_malignancy,admission,,radio,Malignancy/Chemotherapy,"1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-malignancy
+comorbid_heart_failure,admission,,radio,"Chronic heart failure including congenital disease","1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-heart_failure
+comorbid_pulmo_disease,admission,,radio,"Chronic pulmonary disease ","1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-pulmonary_disease
+comorbid_ckd,admission,,radio,"Chronic kindey disease","1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-ckd
+comorbid_neurological,admission,,radio,"Chronic neurological condtion","1, Yes|0, No|99, Unknown",,,,,,"[comorbid] = '1'",,,,comorbidity,,overall_comorbid-comorbid_2-neurological
+comorbid_other,admission,,text,"Other, please specify",,,,,,,"[comorbid] = '1'",,,,,,overall_comorbid-comorbid_2-other_comorbid
+symptoms_note,admission,"Symptoms on presentation",text,"Notes on symptoms",,,,,,,,,,,,,symptoms_note
+symptoms_fever,admission,,radio,Fever,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-fever
+symptoms_fatigue,admission,,radio,Fatigue,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-fatigue
+symptoms_weakness,admission,,radio,Weakness,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-weakness
+symptoms_malaise,admission,,radio,Malaise,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-malaise
+symptoms_myalgia,admission,,radio,Myalgia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-myalgia
+symptoms_anorexia,admission,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_1-anorexia
+symptoms_sore_throat,admission,,radio,"Sore Throat","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_2-sore_throat
+symptoms_headache,admission,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_2-headache
+symptoms_chest_pain,admission,,radio,"Chest Pain","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_2-chest_pain
+symptoms_body_pain,admission,,radio,"Body Pain","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_2-body_pain
+symptoms_hiccups,admission,,radio,Hiccups,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_adm,,symptoms_2-hiccups
+symptoms_cough,admission,,radio,Cough,"1, Yes and productive|2, Yes and not productive|0, No|99, Unknown",,,,,,,,,,,,symptoms_2-cough
+symptoms_sob,admission,,radio,"Difficulty breathing","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-sob
+symptoms_dysphagia,admission,,radio,"Difficulty swallowing","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-dysphagia
+symptoms_abdo_pain,admission,,radio,"Abdominal pain","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-abdo_pain
+symptoms_diarrhoea,admission,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-diarrhoea
+symptoms_nausea,admission,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-nausea
+symptoms_vomiting,admission,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-vomiting
+symptoms_irriability,admission,,radio,Irriability/Confusion,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_admisson,,symptoms_3-irriability
+signs_note,admission,"Other signs on presentation",text,"Notes on signs",,,,,,,,,,,,,signs_note
+signs_pharyngeal_eryth,admission,,radio,"Pharyngeal erythema","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-pharyngeal_erythema
+signs_pharyngeal_exudate,admission,,radio,"Pharyngeal exudate","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-pharyngeal_exudate
+signs_conjunct_inj,admission,,radio,"Conjunctival injection/bleeding","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-conjunctival_injections
+signs_odema_face,admission,,radio,"Odema of face/neck","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-odema_face
+signs_tender_abdo,admission,,radio,"Tender abdomen","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-tender_abdo
+signs_sunken_eyes,admission,,radio,"Sunken eyes or fontanelle","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-sunken_eyes
+signs_tenting_skinpinch,admission,,radio,"Tenting on skinpinch","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_1-tenting_skinpinch
+signs_liver,admission,,radio,"Palpable liver","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-liver
+signs_spleen,admission,,radio,"Palpable spleen","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-spleen
+signs_rash,admission,,radio,Rash,"1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-rash
+signs_jaundice,admission,,radio,Jaundice,"1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-jaundice
+signs_lymph_nodes,admission,,radio,"Enlarged lymph nodes","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-lymph_nodes
+signs_lower_odema,admission,,radio,"Lower extremity oedema","1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-lower_odema
+signs_bleeding,admission,,radio,Bleeding,"1, Yes|0, No|99, Unknown",,,,,,,,,,signes_adm,,signs_2-bleeding
+bleed_nose,admission,"Bleeding sites",radio,Nose,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_mouth,admission,,radio,Mouth,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_vagina,admission,,radio,Vagina,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_rectum,admission,,radio,Rectum,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_sputum,admission,,radio,Sputum,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_urine,admission,,radio,Urine,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_ivf,admission,,radio,"IVF sites","1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+bleed_other,admission,,radio,Other,"1, Yes|0, No|99, Unknown",,,,,,"[signs_bleeding] = '1'",,,,bleeding_sites,,
+main_lab_notes,admission,,text,"Lab Notes",,,,,,,,,,,,,main_lab_notes
+any_sample,admission,"Specimen collection and results",radio,"Specimen collection done for EVD patients?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,any_sample
+samples_which_sample,admission,,radio,"What samples?","1, Blood|2, Urine|3, Buccal swab|88, Other",,,,,,"[any_sample] = '1'",,,,,,samples_taken-sample_type_group-which_sample
+samples_sample_other,admission,,text,"If other, specify",,,,,,,"[samples_which_sample] = '88'",,,,,,samples_taken-sample_type_group-sample_other
+samples_ebola_rdt,admission,"Ebola testing",radio,"Ebola RDT","1, Oraquick|98, Not done|88, Other",,,,,,,,,,,,samples_taken-ebola_rdt
+samples_ebola_rdt_other,admission,,text,"Other test done, please specify",,,,,,,"[samples_ebola_rdt] = '88'",,,,,,samples_taken-ebola_rdt_other
+samples_ebola_rdt_date,admission,,text,"Date of Ebola RDT",,,date_dmy,,,,"[samples_ebola_rdt] = '1'",,,,,,samples_taken-ebola_rdt_group-ebola_rdt_date
+samples_ebola_rdt_result,admission,,radio,"Result of Ebola RDT","1, Positive|0, Negative|2, Indeterminate",,,,,,"[samples_ebola_rdt] = '1'",,,,,,samples_taken-ebola_rdt_group-ebola_rdt_result
+samples_ebola_pcr,admission,,radio,"Ebola PCR","1, GeneXpert|98, Not done|88, Other",,,,,,,,,,,,samples_taken-ebola_pcr
+samples_ebola_pcr_other,admission,,text,"Other PCR, please specify",,,,,,,"[samples_ebola_pcr] = '88'",,,,,,samples_taken-ebola_pcr_other
+samples_pcr_xpert_date,admission,,text,"Date of GeneXpert PCR",,,date_dmy,,,,"[samples_ebola_pcr] = '1'",,,,,,samples_taken-xpert_pcr-xpert_date
+samples_pcr_xpert_result,admission,,radio,"Result of GeneXpert PCR","1, Positive|0, Negative|2, Indeterminate",,,,,,"[samples_ebola_pcr] = '1'",,,,,,samples_taken-xpert_pcr-xpert_result
+samples_xpert_gp_ct,admission,,text,"GP Ct value of GeneXpert",,,number_1dp,,,,"[samples_ebola_pcr] = '1'",,,,,,samples_taken-xpert_ct_values-xpert_gp_ct
+samples_xpert_np_ct,admission,,text,"NP Ct value of GeneXpert",,,number_1dp,,,,"[samples_ebola_pcr] = '1'",,,,,,samples_taken-xpert_ct_values-xpert_np_ct
+samples_other_pcr_date,admission,,text,"Other PCR date",,,date_dmy,,,,"[samples_ebola_rdt] = '88'",,,,,,samples_taken-other_pcr-other_pcr_date
+samples_other_pcr_result,admission,,radio,"Other PCR result","1, Positive|0, Negative|2, Indeterminate",,,,,,"[samples_ebola_pcr] = '88'",,,,,,samples_taken-other_pcr-other_pcr_result
+samples_other_pcr_ct,admission,,text,"Ct value of other PCR",,,number_1dp,,,,"[samples_ebola_pcr] = '88'",,,,,,samples_taken-other_pcr_ct
+samples_malaria_rdt,admission,,radio,"Malaria RDT","1, Yes|0, No|99, Unknown",,,,,,,,,,,,samples_taken-malaria_rdt
+samples_malaria_rdt_date,admission,,text,"Date of Malaria RDT",,,date_dmy,,,,"[samples_malaria_rdt] = '1'",,,,,,samples_taken-malaria_rdt_group-malaria_rdt_date
+samples_malaria_rdt_res,admission,,radio,"Result of Malaria RDT","1, Positive|0, Negative|2, Indeterminate",,,,,,"[samples_malaria_rdt] = '1'",,,,,,samples_taken-malaria_rdt_group-malaria_rdt_result
+samples_other_infection,admission,,radio,"Did the patient test positive to any other infection?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,samples_taken-other_infection_details
+other_tests_note,admission,,text,"If yes, please specify.",,,,,,,"[samples_other_infection] = '1'",,,,,,other_tests_note
+urinedip,admission,"Other clinical tests",radio,Urinedip,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,urinedip
+haemaglobinuria,admission,,radio,Haemaglobinuria,"1, Positive|0, Negative|98, Not done",,,,,,,,,,,,autre_tests-haemaglobinuria
+proteinuria,admission,,radio,Proteinuria,"1, Positive|0, Negative|98, Not done",,,,,,,,,,,,autre_tests-proteinuria
+haematuria,admission,,radio,Haematuria,"1, Positive|0, Negative|98, Not done",,,,,,,,,,,,autre_tests-haematuria
+abg,admission,,radio,"Blood gas","1, Arterial|2, Venous|98, Not done",,,,,,,,,,,,abg
+ph,admission,,text,pH,,,number_1dp,,,,"[abg] = '1' or [abg] = '2'",,,,,,ph
+pco2,admission,,text,pCO2,,,integer,,,,"[abg] = '1' or [abg] = '2'",,,,,,pco2
+pao2,admission,,text,PaO2,,,integer,,,,"[abg] = '1' or [abg] = '2'",,,,,,pao2
+hco3,admission,,text,HCO3,,,integer,,,,"[abg] = '1' or [abg] = '2'",,,,,,hco3
+abg_o2,admission,,text,"Oxygen therapy at time of blood gas (L/min)",,,integer,,,,,,,,,,abg_o2
+biochem_today,admission,"Laboratory tests on admission or Hospital Day 1",radio,"Biochemistry done?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,biochem_today
+labunit,admission,,radio,Labunit,"1, SI|2, US",,,,,,,,,,,,labunit
+alt_result_si,admission,,text,"ALT/SGPT (U/L)",,,number,,,,"[labunit] = '1'",,,,,,biochem_SI-alt_result_SI
+ast_result_si,admission,,text,"AST/SGO (U/L)",,,number,,,,"[labunit] = '1'",,,,,,biochem_SI-ast_result_SI
+bilirubin_result_si,admission,,text,"Bilirubin (&micromol/L)",,,number_1dp,,,,"[labunit] = '1'",,,,,,biochem_SI-bilirubin_result_SI
+creat_result_si,admission,,text,"Creatinine (&micromol/L)",,,number_1dp,,,,"[labunit] = '1'",,,,,,biochem_SI-creat_result_SI
+potassium_result_si,admission,,text,"Potassium (mmol/L)",,,number_1dp,,,,"[labunit] = '1'",,,,,,biochem_SI-potassium_result_SI
+urea_result_si,admission,,text,"Urea (mmol/L)",,,integer,,,,"[labunit] = '1'",,,,,,biochem_SI-urea_result_SI
+ck_result_si,admission,,text,"Creatinine kinase (U/L)",,,integer,,,,"[labunit] = '1'",,,,,,biochem_SI-ck_result_SI
+calcium_result_si,admission,,text,"Calcium (mmol/L)",,,number_1dp,,,,"[labunit] = '1'",,,,,,biochem_SI-calcium_result_SI
+sodium_result_si,admission,,text,"Sodium (mmol/L)",,,integer,,,,"[labunit] = '1'",,,,,,biochem_SI-sodium_result_SI
+glucose_result_si,admission,,text,"Glucose (mmol/L)",,,integer,,,,"[labunit] = '1'",,,,,,biochem_SI-glucose_result_SI
+lactate_result_si,admission,,text,"Lactate (mmol/L)",,,integer,,,,"[labunit] = '1'",,,,,,biochem_SI-lactate_result_SI
+alt_result_us,admission,,text,"ALT/SGPT (U/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-alt_result_US
+ast_result_us,admission,,text,"AST/SGO (U/L) US",,,number,,,,"[labunit] = '2'",,,,,,biochem_US-ast_result_US
+bilirubin_result_us,admission,,text,"Bilirubin (&micromol/L) US",,,number_1dp,,,,"[labunit] = '2'",,,,,,biochem_US-bilirubin_result_US
+creat_result_us,admission,,text,"Creatinine ( &micromol/L) US",,,number_1dp,,,,"[labunit] = '2'",,,,,,biochem_US-creat_result_US
+potassium_result_us,admission,,text,"Potassium (mmol/L) US",,,number_1dp,,,,"[labunit] = '2'",,,,,,biochem_US-potassium_result_US
+urea_result_us,admission,,text,"Urea (mmol/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-urea_result_US
+ck_result_us,admission,,text,"Creatinine kinase (U/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-ck_result_US
+calcium_result_us,admission,,text,"Calcium (mmol/L) US",,,number_1dp,,,,"[labunit] = '2'",,,,,,biochem_US-calcium_result_US
+sodium_result_us,admission,,text,"Sodium (mmol/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-sodium_result_US
+glucose_result_us,admission,,text,"Glucose (mmol/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-glucose_result_US
+lactate_result_us,admission,,text,"Lactate (mmol/L) US",,,integer,,,,"[labunit] = '2'",,,,,,biochem_US-lactate_result_US
+cbc_today,admission,,radio,"CBC done today?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,cbc_today
+cbc_hb_result,admission,,text,"Haemoglobin (g/L)",,,number_1dp,,,,"[cbc_today] = '1'",,,,,,cbc-hb_result
+cbc_wbc_result,admission,,text,"WBC count (x10⁹/L)",,,number_1dp,,,,"[cbc_today] = '1'",,,,,,cbc-wcc_result
+cbc_plts_result,admission,,text,"Platelets (x10⁹/L)",,,integer,,,,"[cbc_today] = '1'",,,,,,cbc-plts_result
+clotting_today,admission,,radio,"Clotting panel done?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,clotting_today
+clotting_pt_result,admission,,text,"PT Result",,,,,,,"[clotting_today] = '1'",,,,,,clotting-pt_result
+clotting_aptt_result,admission,,text,"aPTT Result",,,,,,,"[clotting_today] = '1'",,,,,,clotting-aptt_result
+complications,admission,Complications,radio,Complications,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,complication
+complic_bleeding,admission,,radio,Bleeding,"1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-bleeding_complication
+complic_shock,admission,,radio,Shock,"1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-shock
+complic_meningitis,admission,,radio,Meningitis,"1, Yes|0, No|99, Unknown","Menigitis defined either clinically or with lumbar puncture",,,,,"[complications] = '1'",,,,,,complications_group-meningitis
+complic_confusion,admission,,radio,Confusion,"1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-confusion
+complic_convulsions,admission,,radio,Convulsions,"1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-convulsions
+complic_coma,admission,,radio,"Coma (P/U in AVPU scoring)","1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-coma
+complic_bacteraemia,admission,,radio,Bacteraemia,"1, Yes|0, No|99, Unknown",,,,,,"[complications] = '1'",,,,,,complications_group-bacteraemia
+complic_other,admission,,text,"Other Complications",,,,,,,"[complications] = '1'",,,,,,complications_group-other_complication
+main_treatments_note,admission,"Treatment information",text,"Treatment Note",,,,,,,,,,,,,main_treatments_note
+treatments_antibiotic,admission,,radio,"Antibacterial treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-antibiotic
+antibiotic_name_1,admission,,text,"Antibiotic 1",,,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_name
+antibiotic_dose_1,admission,,text,"Dose of antibiotic 1",,,integer,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose
+antibiotic_unit_1,admission,,radio,"Unit of antibiotic 1","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose_unit
+antibiotic_oth_dose_1,admission,,text,"Other dose/unit of antibiotic 1",,,,,,,"[treatments_antibiotic] = '1'",,,,,,
+antibiotic_route_1,admission,,radio,"Route of antibiotic 1","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_route
+antibiotic_frequency_1,admission,,radio,"Frequency of antibiotic 1","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_frequency
+antibiotic_oth_freq_1,admission,,text,"Other frequency of antibiotic 1",,,,,,,"[antibiotic_frequency_1] = '88'",,,,,,
+antibiotic_name_2,admission,,text,"Antibiotic 2",,,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_other_name
+antibiotic_dose_2,admission,,text,"Dose of antibiotic 2",,,integer,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_other_dose
+antibiotic_unit_2,admission,,radio,"Unit of antibiotic 2","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose_unit
+antibiotic_oth_dose_2,admission,,text,"Other dose/unit of antibiotic 2",,,,,,,"[treatments_antibiotic] = '1'",,,,,,
+antibiotic_route_2,admission,,radio,"Route of antibiotic 2","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_route
+antibiotic_frequency_2,admission,,radio,"Frequency of antibiotic 2","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_frequency_other
+antibiotic_oth_freq_2,admission,,text,"Other frequency of antibiotic 2",,,,,,,"[antibiotic_frequency_2] = '88'",,,,,,
+antibiotic_name_3,admission,,text,"Antibiotic 3",,,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_other_name
+antibiotic_dose_3,admission,,text,"Dose of antibiotic 3",,,integer,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_other_dose
+antibiotic_unit_3,admission,,radio,"Unit of antibiotic 3","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose_unit
+antibiotic_oth_dose_3,admission,,text,"Other dose/unit of antibiotic 3",,,,,,,"[treatments_antibiotic] = '1'",,,,,,
+antibiotic_route_3,admission,,radio,"Route of anitbiotic 3","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_route
+antibiotic_frequency_3,admission,,radio,"Frequency of antibiotic 3","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_frequency_other
+antibiotic_oth_freq_3,admission,,text,"Other frequency of antibiotic 3",,,,,,,"[antibiotic_frequency_3] = '88'",,,,,,
+treatments_antimalarial,admission,,radio,"Antimalarial treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-antimalarial
+treatments_other_rx,admission,,radio,"Other type of treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-other_rx
+treatments_exper_rx,admission,,radio,"Ebola experimental treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-experimental_rx
+antimalarial_treat_type,admission,,radio,"Type of antimalarial treatment","1, Artesunate|2, Arthemeter|3, Arthemeter/Lumefantrine|4, Artesunate/Amodiaquine",,,,,,"[treatments_antimalarial] = '1'",,,,,,antimalarial_data
+other_rx_name_1,admission,,text,"Name of medication 1",,,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_name
+other_rx_dose_1,admission,,text,"Dose of medication 1",,,number,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose
+other_rx_unit_1,admission,,radio,"Unit of medication 1","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose_unit
+other_rx_other_1,admission,,text,"Other dose/unit of medication 1",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_route_1,admission,,radio,"Route of medication 1","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_route
+other_rx_frequency_1,admission,,radio,"Frequency of medication 1","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency
+other_rx_frequ_oth_1,admission,,text,"Other frequency of medication 1",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_name_2,admission,,text,"Name of medication 2",,,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_name
+other_rx_dose_2,admission,,text,"Dose of medication 2",,,integer,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose
+other_rx_unit_2,admission,,radio,"Unit of medication 2","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose_unit
+other_rx_other_2,admission,,text,"Other dose/unit of medication 2",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_route_2,admission,,radio,"Route of medication 2","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_route
+other_rx_frequency_2,admission,,radio,"Frequency of medication 2","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency
+other_rx_frequ_oth_2,admission,,text,"Other frequency of medication 2",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_name_3,admission,,text,"Name of medication 3",,,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_name
+other_rx_dose_3,admission,,text,"Dose of medication 3",,,integer,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose
+other_rx_unit_3,admission,,radio,"Unit of medication 3","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose_unit
+other_rx_other_3,admission,,text,"Other dose/unit of medication 3",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_route_3,admission,,radio,"Route of medication 3","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_route
+other_rx_frequency_3,admission,,radio,"Frequency of medication 3","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency
+other_rx_frequ_oth_3,admission,,text,"Other frequency of medication 3",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_name_4,admission,,text,"Name of medication 4",,,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_name
+other_rx_dose_4,admission,,text,"Dose of medication 4",,,integer,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose
+other_rx_unit_4,admission,,radio,"Unit of medication 4","1, Gram|2, Milligram|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose_unit
+other_rx_other_4,admission,,text,"Other dose/unit of medication 4",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+other_rx_route_4,admission,,radio,"Route of medication 4","1, Oral|2, IV|99, Unknown",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_route
+other_rx_frequency_4,admission,,radio,"Frequency of medication 4","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[treatments_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency
+other_rx_frequ_oth_4,admission,,text,"Other frequency of medication 4",,,,,,,"[treatments_other_rx] = '1'",,,,,,
+experimental_rx_name,admission,,radio,"Type of Ebola experimental treament","1, Zmapp|2, Remdesivir (GS-5734)|3, REGN3470-3471-3479|4, mAb114",,,,,,"[treatments_exper_rx] = '1'",,,,,,experimental_rx_data-experimental_rx_name
+other_treatment_note2,admission,,text,"Other treatment notes",,,,,,,,,,,,,other_treatment_note2
+ors,admission,"Other treatments",radio,"Oral/orogastric fluids","1, Yes|0, No|99, Unknown",,,,,,,,,,,,ors
+oral_fluid_type,admission,,radio,"Fluid Type","1, ORS|2, Water|88, Other",,,,,,"[ors] = '1'",,,,,,oral_fluid_type
+ors_fluid_amount,admission,,text,"Amount of ORS fluid (ml)",,,integer,,,,"[oral_fluid_type] = '1'",,,,,,ORS_fluid_amount
+h20_fluid_amount,admission,,text,"Amount of water (ml)",,,integer,,,,"[oral_fluid_type] = '2'",,,,,,H20_fluid_amount
+other_fluid_amount,admission,,text,"Amount of other fluids (ml)",,,integer,,,,"[oral_fluid_type] = '88'",,,,,,Other_fluid_amount
+ivf,admission,,radio,IVF,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,ivf
+ivf_nacl,admission,"Type of IVF",radio,NaCl,"1, Yes|0, No|99, Unknown",,,,,,"[ivf] = '1'",,,,type_ivf,,
+ivf_ringers,admission,,radio,"Ringer's lactate","1, Yes|0, No|99, Unknown",,,,,,"[ivf] = '1'",,,,type_ivf,,
+ivf_d5ns,admission,,radio,D5NS,"1, Yes|0, No|99, Unknown",,,,,,"[ivf] = '1'",,,,type_ivf,,
+ivf_d5lr,admission,,radio,D5LR,"1, Yes|0, No|99, Unknown",,,,,,"[ivf] = '1'",,,,type_ivf,,
+ivf_other,admission,,radio,Other,"1, Yes|0, No|99, Unknown",,,,,,"[ivf] = '1'",,,,type_ivf,,
+iv_nacl_amount,admission,,text,"Amount of NaCl (ml)",,,integer,,,,"[ivf_nacl] = '1'",,,,,,iv_NACL_amount
+iv_ringers_amount,admission,,text,"Amount of Ringer's lactate (ml)",,,integer,,,,"[ivf_ringers] = '1'",,,,,,iv_ringers_amount
+iv_d5ns_amount,admission,,text,"Amount of D5NS (ml)",,,integer,,,,"[ivf_d5ns] = '1'",,,,,,iv_D5NS_amount
+iv_d5lr_amount,admission,,text,"Amount  of D5LR (ml)",,,integer,,,,"[ivf_d5lr] = '1'",,,,,,iv_D5LR_amount
+route_ivf,admission,,radio,"Access type of IVF","1, Intra-osseous|2, Peripheral|3, Central|99, Unknown",,,,,,,,,,,,other_treatments_group-route_ivf
+oxygen,admission,,radio,"Oxygen therapy","1, Yes|0, No|99, Unknown",,,,,,,,,,,,oxygen
+oxygen_flow,admission,,text,"Oxygen Flow (L/min)",,,integer,,,,"[oxygen] = '1'",,,,,,oxygen_group-oxygen_flow
+oxygen_route,admission,,radio,"Oxygen Route","1, Nasal cannula|2, Face mask|3, Face mask with reservoir bag|99, Unknown",,,,,,"[oxygen] = '1'",,,,,,oxygen_group-oxygen_route
+blood_transfusion,admission,,radio,"Blood transfusion","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-blood
+rrt,admission,,radio,"Renal replacement therapy","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-rrt
+vasopressors,admission,,radio,Vasopressors/inotropes,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-vasopressors
+ventilation,admission,,radio,"Invasive mechanical ventilation","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-ventilation
+form_completed_by,admission,,text,"Form completed by",,,,,,,,,,,,,pers_qui_rempli-nom_pers_rempli
+alt_date,daily_clinical_assessment,"EDV - Daily Clinical dataset",text,"Date of assessment",,,date_dmy,,,,,,,,,,alt_date
+morn_obs_note,daily_clinical_assessment,"Morning measurement",text,"Morning note",,,,,,,,,,,,,Matin_obs-Matin_note
+morn_obs_heart,daily_clinical_assessment,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,Matin_obs-am_heart
+morn_obs_systolic,daily_clinical_assessment,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,Matin_obs-am_systolic
+morn_obs_diastolic,daily_clinical_assessment,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,Matin_obs-am_diastolic
+morn_obs_resp_rate,daily_clinical_assessment,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,Matin_obs-am_resp_rate
+morn_obs_saturation,daily_clinical_assessment,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,Matin_obs-am_saturation
+morn_obs_temp,daily_clinical_assessment,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,Matin_obs-am_temperature
+morn_obs_avpu,daily_clinical_assessment,,text,"Mental status",,"A, V, P, U",alpha_only,,,,,,,,,,Matin_obs-am_avpu_level
+mid_obs_note,daily_clinical_assessment,"Midday measurement",text,"Midday Note",,,,,,,,,,,,,Midi_obs-Midi_note
+mid_obs_heart,daily_clinical_assessment,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,Midi_obs-mid_heart
+mid_obs_systolic,daily_clinical_assessment,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,Midi_obs-mid_systolic
+mid_obs_diastolic,daily_clinical_assessment,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,Midi_obs-mid_diastolic
+mid_obs_resp_rate,daily_clinical_assessment,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,Midi_obs-mid_resp_rate
+mid_obs_saturation,daily_clinical_assessment,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,Midi_obs-mid_saturation
+mid_obs_temp,daily_clinical_assessment,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,Midi_obs-mid_temperature
+mid_obs_avpu,daily_clinical_assessment,,text,"Mental status",,"A, V, P, U",alpha_only,,,,,,,,,,Midi_obs-mid_avpu_level
+eve_obs_note,daily_clinical_assessment,"Evening measurement",text,"Evening Note",,,,,,,,,,,,,Soir_obs-soir_note
+eve_obs_heart,daily_clinical_assessment,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,Soir_obs-pm_heart
+eve_obs_systolic,daily_clinical_assessment,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,Soir_obs-pm_systolic
+eve_obs_diastolic,daily_clinical_assessment,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,Soir_obs-pm_diastolic
+eve_obs_resp_rate,daily_clinical_assessment,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,Soir_obs-pm_resp_rate
+eve_obs_saturation,daily_clinical_assessment,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,Soir_obs-pm_saturation
+eve_obs_temp,daily_clinical_assessment,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,Soir_obs-pm_temperature
+eve_obs_avpu,daily_clinical_assessment,,text,"Mental status ",,"A, V, P, U",alpha_only,,,,,,,,,,Soir_obs-pm_avpu_level
+fatigue_morn,daily_clinical_assessment,"Morning symptoms",radio,Fatigue,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+weakness_morn,daily_clinical_assessment,,radio,Weakness,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+myalgia_morn,daily_clinical_assessment,,radio,Myalgia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+anorexia_morn,daily_clinical_assessment,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+headache_morn,daily_clinical_assessment,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+nausea_morn,daily_clinical_assessment,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+dysphagia_morn,daily_clinical_assessment,,radio,Dysphagia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+vomiting_morn,daily_clinical_assessment,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+diff_breath_morn,daily_clinical_assessment,,radio,"Difficulty breathing","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+diarrhoea_morn,daily_clinical_assessment,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+bleeding_morn,daily_clinical_assessment,,radio,"Unusual bleeding/bruising","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+dehydrat_morn,daily_clinical_assessment,,radio,"Signs of dehydration","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+shock_morn,daily_clinical_assessment,,radio,"Signs of shock","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+anuria_morn,daily_clinical_assessment,,radio,Anuria,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+desorient_morn,daily_clinical_assessment,,radio,Desorientation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+agitation_morn,daily_clinical_assessment,,radio,Agitation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+seizure_morn,daily_clinical_assessment,,radio,Seizure,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_morning,,
+fatigue_mid,daily_clinical_assessment,"Midday symptoms",radio,Fatigue,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+weakness_mid,daily_clinical_assessment,,radio,Weakness,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+myalgia_mid,daily_clinical_assessment,,radio,Myalgia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+anorexia_mid,daily_clinical_assessment,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+headache_mid,daily_clinical_assessment,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+nausea_mid,daily_clinical_assessment,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+dysphagia_mid,daily_clinical_assessment,,radio,Dysphagia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+vomiting_mid,daily_clinical_assessment,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+diff_breath_mid,daily_clinical_assessment,,radio,"Difficulty breathing","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+diarrhoea_mid,daily_clinical_assessment,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+bleeding_mid,daily_clinical_assessment,,radio,"Unsual bleeding/bruising","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+dehydrat_mid,daily_clinical_assessment,,radio,"Signs of dehydration","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+shock_mid,daily_clinical_assessment,,radio,"Signs of shock","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+anuria_mid,daily_clinical_assessment,,radio,Anuria,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+desorient_mid,daily_clinical_assessment,,radio,Desorientation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+agitation_mid,daily_clinical_assessment,,radio,Agitation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+seizure_mid,daily_clinical_assessment,,radio,Seizure,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_midday,,
+fatigue_eve,daily_clinical_assessment,"Evening symptoms",radio,Fatigue,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+weakness_eve,daily_clinical_assessment,,radio,Weakness,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+myalgia_eve,daily_clinical_assessment,,radio,Myalgia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+anorexia_eve,daily_clinical_assessment,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+headache_eve,daily_clinical_assessment,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+nausea_eve,daily_clinical_assessment,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+dysphagia_eve,daily_clinical_assessment,,radio,Dysphagia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+vomiting_eve,daily_clinical_assessment,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+diff_breath_eve,daily_clinical_assessment,,radio,"Difficulty breathing","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+diarrhoea_eve,daily_clinical_assessment,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+bleeding_eve,daily_clinical_assessment,,radio,"Unusual bleeding/bruising","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+dehydrat_eve,daily_clinical_assessment,,radio,"Signs of dehydration","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+shock_eve,daily_clinical_assessment,,radio,"Signs of shock","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+anuria_eve,daily_clinical_assessment,,radio,Anuria,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+desorient_eve,daily_clinical_assessment,,radio,Desorientation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+agitation_eve,daily_clinical_assessment,,radio,Agitation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+seizure_eve,daily_clinical_assessment,,radio,Seizure,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_eve,,
+new_labs,daily_clinical_assessment,"New lab results",radio,"Lab done?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,new_labs
+daily_ebola_pcr,daily_clinical_assessment,,radio,"Ebola PCR","1, GeneXpert|0, Not done|88, Other",,,,,,"[new_labs] = '1'",,,,,,new_labs_group-ebola_pcr
+daily_ebola_pcr_other,daily_clinical_assessment,,text,"Other PCR",,,,,,,"[daily_ebola_pcr_other] = '88'",,,,,,new_labs_group-ebola_pcr_other
+daily_pcr_xpert_date,daily_clinical_assessment,,text,"Date of GeneXpert PCR",,,date_dmy,,,,"[daily_ebola_pcr] = '1'",,,,,,new_labs_group-xpert_pcr-xpert_date
+daily_pcr_xpert_result,daily_clinical_assessment,,radio,"Result of GeneXpert PCR","1, Positive|0, Negative|2, Indeterminate",,,,,,"[daily_ebola_pcr] = '1'",,,,,,new_labs_group-xpert_pcr-xpert_result
+daily_xpert_gp_ct,daily_clinical_assessment,,text,"GP Ct value of GeneXpert PCR",,,number_1dp,,,,"[daily_ebola_pcr] = '1'",,,,,,new_labs_group-xpert_ct_values-xpert_gp_ct
+daily_xpert_np_ct,daily_clinical_assessment,,text,"NP Ct value of GeneXpert PCR",,,number_1dp,,,,"[daily_ebola_pcr] = '1'",,,,,,new_labs_group-xpert_ct_values-xpert_np_ct
+daily_other_pcr_date,daily_clinical_assessment,,text,"Date of other PCR",,,,,,,"[daily_ebola_pcr_other] = '88'",,,,,,new_labs_group-other_pcr-other_pcr_date
+daily_other_pcr_result,daily_clinical_assessment,,radio,"Result of other PCR","1, Positive|0, Negative|2, Indeterminate",,,,,,"[daily_ebola_pcr_other] = '88'",,,,,,new_labs_group-other_pcr-other_pcr_result
+daily_other_pcr_ct,daily_clinical_assessment,,text,"Ct value of other PCR",,,,,,,"[daily_ebola_pcr_other] = '88'",,,,,,new_labs_group-other_pcr_ct
+daily_malaria_rdt,daily_clinical_assessment,,radio,"Malaria RDT","1, Yes|0, No|99, Unknown",,,,,,,,,,,,new_labs_group-malaria_rdt
+daily_malaria_rdt_date,daily_clinical_assessment,,text,"Date of Malaria RDT",,,,,,,"[daily_malaria_rdt] = '1'",,,,,,new_labs_group-malaria_rdt_group-malaria_rdt_date
+daily_malaria_rdt_result,daily_clinical_assessment,,text,"Result of Malaria RDT",,,,,,,"[daily_malaria_rdt] = '1'",,,,,,new_labs_group-malaria_rdt_group-malaria_rdt_result
+daily_biochem_today,daily_clinical_assessment,,radio,"Biochemistry done today?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,new_labs_group-biochem_today
+daily_labunit,daily_clinical_assessment,,radio,Labunit,"1, SI|2, US",,,,,,"[daily_biochem_today] = '1'",,,,,,new_labs_group-labunit
+daily_alt_si,daily_clinical_assessment,,text,"ALT/SGPT (U/L)",,,integer,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-alt_result_SI
+daily_ast_si,daily_clinical_assessment,,text,"AST/SGO (U/L)",,,integer,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_si-ast_result_si
+daily_bilirubin_si,daily_clinical_assessment,,text,"Bilirubin (&micromol/L)",,,number_1dp,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-bilirubin_result_SI
+daily_creat_si,daily_clinical_assessment,,text,"Creatinine (&micromol/L)",,,number_1dp,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-creat_result_SI
+daily_potassium_si,daily_clinical_assessment,,text,"Potassium (mmol/L)",,,number_1dp,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-potassium_result_SI
+daily_urea_si,daily_clinical_assessment,,text,"Urea (mmol/L)",,,integer,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-urea_result_SI
+daily_ck_si,daily_clinical_assessment,,text,"Creatinine kinase (U/L)",,,number,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-ck_result_SI
+daily_calcium_si,daily_clinical_assessment,,text,"Calcium (mmol/L)",,,number_1dp,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-calcium_result_SI
+daily_sodium_si,daily_clinical_assessment,,text,"Sodium (mmol/L)",,,number,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-sodium_result_SI
+daily_glucose_si,daily_clinical_assessment,,text,"Glucose (mmol/L)",,,integer,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-glucose_result_SI
+daily_lactate_si,daily_clinical_assessment,,text,"Lactate (mmol/L)",,,number,,,,"[daily_labunit] = '1'",,,,,,new_labs_group-biochem_SI-lactate_result_SI
+daily_alt_us,daily_clinical_assessment,,text,"ALT/SGPT (U/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-alt_result_US
+daily_ast_us,daily_clinical_assessment,,text,"AST/SGO (U/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-ast_result_US
+daily_bilirubin_us,daily_clinical_assessment,,text,"Bilirubin (&micromol/L) US",,,number_1dp,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-bilirubin_result_US
+daily_creat_us,daily_clinical_assessment,,text,"Creatinine (&micromol/L) US",,,number_1dp,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-creat_result_US
+daily_potassium_us,daily_clinical_assessment,,text,"Potassium (mmol/L) US",,,number_1dp,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-potassium_result_US
+daily_urea_us,daily_clinical_assessment,,text,"Urea (mmol/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-urea_result_US
+daily_ck_us,daily_clinical_assessment,,text,"Creatinine kinase (U/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-ck_result_US
+daily_calcium_us,daily_clinical_assessment,,text,"Calcium (mmol/L) US",,,number_1dp,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-calcium_result_US
+daily_sodium_us,daily_clinical_assessment,,text,"Sodium (mmol/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-sodium_result_US
+daily_glucose_us,daily_clinical_assessment,,text,"Glucose (mmol/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-glucose_result_US
+daily_lactate_us,daily_clinical_assessment,,text,"Lactate (mmol/L) US",,,number,,,,"[daily_labunit] = '2'",,,,,,new_labs_group-biochem_US-lactate_result_US
+daily_cbc_today,daily_clinical_assessment,,radio,"CBC done today?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,new_labs_group-cbc_today
+daily_hb,daily_clinical_assessment,,text,"Haemoglobin (g/L)",,,number_1dp,,,,"[daily_cbc_today] = '1'",,,,,,new_labs_group-cbc-hb_result
+daily_wbc,daily_clinical_assessment,,text,"WBC count (x10⁹/L)",,,number_1dp,,,,"[daily_cbc_today] = '1'",,,,,,new_labs_group-cbc-wcc_result
+daily_plts,daily_clinical_assessment,,text,"Platelets (x10⁹/L)",,,number,,,,"[daily_cbc_today] = '1'",,,,,,new_labs_group-cbc-plts_result
+daily_clotting,daily_clinical_assessment,,radio,"Clotting panel done?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,new_labs_group-clotting_today
+daily_clotting_pt,daily_clinical_assessment,,text,"PT Result",,,,,,,"[daily_clotting] = '1'",,,,,,new_labs_group-clotting-pt_result
+daily_clotting_aptt,daily_clinical_assessment,,text,"aPTT Result",,,,,,,"[daily_clotting] = '1'",,,,,,new_labs_group-clotting-aptt_result
+daily_treatments_note,daily_clinical_assessment,"Treatment information",text,"Treatment note",,,,,,,,,,,,,main_treatments_note
+daily_treat_antibiotic,daily_clinical_assessment,,radio,"Antibacterial treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-antibiotic
+daily_treat_antimalarial,daily_clinical_assessment,,radio,"Antimalarial treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-antimalarial
+daily_treat_other_rx,daily_clinical_assessment,,radio,"Other type of treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-other_rx
+daily_treat_exp_rx,daily_clinical_assessment,,radio,"Ebola experimental treatment","1, Yes|0, No|99, Unknown",,,,,,,,,,,,possible_treatments-experimental_rx
+daily_antibiotic_1,daily_clinical_assessment,,text,"Antibiotic 1",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_name
+daily_dose_1,daily_clinical_assessment,,text,"Dose of antibiotic 1",,,number,,,,"[daily_treat_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose
+daily_unit_1,daily_clinical_assessment,,radio,"Unit of antibiotic 1","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_dose_unit
+daily_oth_dose_1,daily_clinical_assessment,,text,"Other dose/unit of antibiotic 1",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_route_1,daily_clinical_assessment,,radio,"Route of antibiotic 1","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_route
+daily_frequency_1,daily_clinical_assessment,,radio,"Frequency of antibiotic 1","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,antibiotic_data-antibiotic_frequency
+daily_frequ_other_1,daily_clinical_assessment,,text,"Other frequency of antibiotic 1",,,,,,,"[daily_frequency_1] = '88'",,,,,,antibiotic_data-antibiotic_frequency_other
+daily_antibiotic_2,daily_clinical_assessment,,text,"Antibiotic 2",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_dose_2,daily_clinical_assessment,,text,"Dose of antibiotic 2",,,integer,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_unit_2,daily_clinical_assessment,,radio,"Unit of antibiotic 2","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_oth_dose_2,daily_clinical_assessment,,text,"Other dose/unit of antibiotic 2",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_route_2,daily_clinical_assessment,,radio,"Route of antibiotic 2","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequency_2,daily_clinical_assessment,,radio,"Frequency of antibiotic 2","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequ_other_2,daily_clinical_assessment,,text,"Other frequency of antibiotic 2",,,,,,,"[daily_frequency_2] = '88'",,,,,,antibiotic_data-antibiotic_frequency_other
+daily_antibiotic_3,daily_clinical_assessment,,text,"Antibiotic 3",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_dose_3,daily_clinical_assessment,,text,"Dose of antibiotic 3",,,integer,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_unit_3,daily_clinical_assessment,,radio,"Unit of antibiotic 3","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_oth_dose_3,daily_clinical_assessment,,text,"Other dose/unit of antibiotic 3",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_route_3,daily_clinical_assessment,,radio,"Route of antibiotic 3","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequency_3,daily_clinical_assessment,,radio,"Frequency of antibiotic 3","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequ_other_3,daily_clinical_assessment,,text,"Other frequency of antibiotic 3",,,,,,,"[daily_frequency_3] = '88'",,,,,,antibiotic_data-antibiotic_frequency_other
+daily_antibiotic_4,daily_clinical_assessment,,text,"Antibiotic 4",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_dose_4,daily_clinical_assessment,,text,"Dose of antibiotic 4",,,integer,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_unit_4,daily_clinical_assessment,,radio,"Unit of antibiotic 4","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_oth_dose_4,daily_clinical_assessment,,text,"Other dose/unit of antibiotic 4",,,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_route_4,daily_clinical_assessment,,radio,"Route of antibiotic 4","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequency_4,daily_clinical_assessment,,radio,"Frequency of antibiotic 4","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_antibiotic] = '1'",,,,,,
+daily_frequ_other_4,daily_clinical_assessment,,text,"Other frequency of antibiotic 4",,,,,,,"[daily_frequency_4] = '88'",,,,,,antibiotic_data-antibiotic_frequency_other
+daily_antimalarial_type,daily_clinical_assessment,,radio,"Type of antimalarial treatment","1, Artesunate|2, Arthemeter|3, Arthemeter/Lumefantrine|4, Artesunate//Amodiaquine",,,,,,"[daily_treat_antimalarial] = '1'",,,,,,antimalarial_data
+daily_med_1,daily_clinical_assessment,,text,"Name of medication 1",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_name
+daily_dose_med_1,daily_clinical_assessment,,text,"Dose of medication 1",,,number,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose
+daily_unit_med_1,daily_clinical_assessment,,radio,"Unit of medication 1","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_dose_unit
+daily_unit_oth_med_1,daily_clinical_assessment,,text,"Other dose/unit of medication 1",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_route_med_1,daily_clinical_assessment,,radio,"Route of medication 1","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_route
+daily_frequency_med_1,daily_clinical_assessment,,radio,"Frequency of medication 1","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency
+daily_frequ_oth_1,daily_clinical_assessment,,text,"Other frequency of medication 1",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,other_rx_data-other_rx_frequency_other
+daily_med_2,daily_clinical_assessment,,text,"Name of medication 2",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_dose_med_2,daily_clinical_assessment,,text,"Dose of medication 2",,,integer,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_med_2,daily_clinical_assessment,,radio,"Unit of medication 2","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_oth_med_2,daily_clinical_assessment,,text,"Other dose/unit of medication 2",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_route_med_2,daily_clinical_assessment,,radio,"Route of medication 2","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequency_med_2,daily_clinical_assessment,,radio,"Frequency of medication 2","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequ_oth_2,daily_clinical_assessment,,text,"Other frequency of medication 2",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_med_3,daily_clinical_assessment,,text,"Name of medication 3",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_dose_med_3,daily_clinical_assessment,,text,"Dose of medication 3",,,number,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_med_3,daily_clinical_assessment,,radio,"Unit of medication 3","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_oth_med_3,daily_clinical_assessment,,text,"Other dose/unit of medication 3",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_route_med_3,daily_clinical_assessment,,radio,"Route of medication 3","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequency_med_3,daily_clinical_assessment,,radio,"Frequency of medication 3","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequ_oth_3,daily_clinical_assessment,,text,"Other frequency of medication 3",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_med_4,daily_clinical_assessment,,text,"Name of medication 4",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_dose_med_4,daily_clinical_assessment,,text,"Dose of medication 4",,,integer,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_med_4,daily_clinical_assessment,,radio,"Unit of medication 4","1, Gram|2, Milligram|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_unit_oth_med_4,daily_clinical_assessment,,text,"Other dose/unit of medication 4",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_route_med_4,daily_clinical_assessment,,radio,"Route of medication 4","1, Oral|2, IV|99, Unknown",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequency_med_4,daily_clinical_assessment,,radio,"Frequency of medication 4","1, Once a day|2, Twice a day|3, Three times a day|88, Other",,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_frequ_oth_4,daily_clinical_assessment,,text,"Other frequency of medication 4",,,,,,,"[daily_treat_other_rx] = '1'",,,,,,
+daily_exp_rx_name,daily_clinical_assessment,,radio,"Type of Ebola experimental treament","1, Zmapp|2, Remdesivir (GS-5734)|3, REGN3470-3471-3479|4, mAb114",,,,,,"[daily_treat_exp_rx] = '1'",,,,,,experimental_rx_data-experimental_rx_name
+daily_other_treat_note2,daily_clinical_assessment,,text,"Other treatment notes",,,,,,,,,,,,,other_treatment_note2
+daily_ors,daily_clinical_assessment,"Other treatments",radio,"Oral/orogastric fluids","1, Yes|0, No|99, Unknown",,,,,,,,,,,,ors
+daily_oral_fluid_type,daily_clinical_assessment,,radio,"Fluid Type","1, ORS|2, Water|88, Other",,,,,,"[daily_ors] = '1'",,,,,,oral_fluid_type
+daily_ors_fluid_amount,daily_clinical_assessment,,text,"Amount of ORS fluid (ml)",,,integer,,,,"[daily_oral_fluid_type] = '1'",,,,,,ORS_fluid_amount
+daily_h20_fluid_amount,daily_clinical_assessment,,text,"Amount of water (ml)",,,integer,,,,"[daily_oral_fluid_type] = '2'",,,,,,H20_fluid_amount
+daily_other_fluid_amount,daily_clinical_assessment,,text,"Amount of other fluids (ml)",,,integer,,,,"[daily_oral_fluid_type] = '88'",,,,,,Other_fluid_amount
+daily_ivf,daily_clinical_assessment,,radio,IVF,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,ivf
+daily_ivf_nacl,daily_clinical_assessment,"Type of IVF",radio,NaCl,"1, Yes|0, No|99, Unknown",,,,,,"[daily_ivf] = '1'",,,,dialy_ivf_type,,
+daily_ivf_ringers,daily_clinical_assessment,,radio,"Ringer's lactate","1, Yes|0, No|99, Unknown",,,,,,"[daily_ivf] = '1'",,,,dialy_ivf_type,,
+daily_ivf_d5ns,daily_clinical_assessment,,radio,D5NS,"1, Yes|0, No|99, Unknown",,,,,,"[daily_ivf] = '1'",,,,dialy_ivf_type,,
+daily_ivf_d5lr,daily_clinical_assessment,,radio,D5LR,"1, Yes|0, No|99, Unknown",,,,,,"[daily_ivf] = '1'",,,,dialy_ivf_type,,
+daily_ivf_other,daily_clinical_assessment,,radio,Other,"1, Yes|0, No|99, Unknown",,,,,,"[daily_ivf] = '1'",,,,dialy_ivf_type,,
+daily_iv_nacl_amount,daily_clinical_assessment,,text,"Amount of NaCl (ml)",,,integer,,,,"[daily_ivf_nacl] = '1'",,,,,,iv_NACL_amount
+daily_iv_ringers_amount,daily_clinical_assessment,,text,"Amount of Ringer's lactate (ml)",,,integer,,,,"[daily_ivf_ringers] = '1'",,,,,,iv_ringers_amount
+daily_iv_d5ns_amount,daily_clinical_assessment,,text,"Amount of D5NS (ml)",,,integer,,,,"[daily_ivf_d5ns] = '1'",,,,,,iv_D5NS_amount
+daily_iv_d5lr_amount,daily_clinical_assessment,,text,"Amount  of D5LR (ml)",,,integer,,,,"[daily_ivf_d5lr] = '1'",,,,,,iv_D5LR_amount
+daily_route_ivf,daily_clinical_assessment,,radio,"Access type of IVF","1, Intra-osseous|2, Peripheral|3, Central|99, Unknown",,,,,,,,,,,,other_treatments_group-route_ivf
+daily_oxygen,daily_clinical_assessment,,radio,"Oxygen therapy","1, Yes|0, No|99, Unknown",,,,,,,,,,,,oxygen
+daily_oxygen_flow,daily_clinical_assessment,,text,"Oxygen Flow (L/min)",,,integer,,,,"[daily_oxygen] = '1'",,,,,,oxygen_group-oxygen_flow
+daily_oxygen_route,daily_clinical_assessment,,radio,"Oxygen Route ","1, Nasal cannula|2, Face mask|3, Face mask with reservoir bag|99, Unknown",,,,,,"[daily_oxygen] = '1'",,,,,,oxygen_group-oxygen_route
+daily_blood_transfusion,daily_clinical_assessment,,radio,"Blood transfusion","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-blood
+daily_rrt,daily_clinical_assessment,,radio,"Renal replacement therapy","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-rrt
+daily_vasopressors,daily_clinical_assessment,,radio,Vasopressors/inotropes,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-vasopressors
+daily_ventilation,daily_clinical_assessment,,radio,"Invasive mechanical ventilation","1, Yes|0, No|99, Unknown",,,,,,,,,,,,other_treatments_group-ventilation
+daily_form_completed_by,daily_clinical_assessment,,text,"Form completed by",,,,,,,,,,,,,pers_qui_rempli-nom_pers_rempli
+consent_given,drug_administration,"Drug administration",radio,"Consent given?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,consent_given
+date_of_admin,drug_administration,,text,"Date of drug administration",,,date_dmy,,,,,,,,,,c-date_of_data
+drug_infused,drug_administration,,radio,"Drug infused?","1, Zmapp|2, Remdesivir (GS-5734)|3, REGN3470-3471-3479|4, mAb114",,,,,,,,,,,,c-drug_infused
+drug_infused_check,drug_administration,,radio,"Infused drug checked?","1, Zmapp|2, Remdesivir (GS-5734)|3, REGN3470-3471-3479|4, mAb114",,,,,,,,,,,,c-drug_infused_check
+drug_infused_other,drug_administration,,text,"Other drug infused?",,,,,,,,,,,,,c-drug_infused_other
+dose_mab114,drug_administration,,text,"Dose of mAb114 (mg/kg)",,,integer,,,,"[drug_infused] = '4'",,,,,,c-dose_mAb114_mg_kg
+dose_regn34xx,drug_administration,,text,"Dose of REGN3470-3471-3479 (mg/kg)",,,integer,,,,"[drug_infused] = '3'",,,,,,c-dose_REGN34xx_mg_kg
+dose_remdesivir,drug_administration,,text,"Dose of Remdesivir (mg)",,,integer,,,,"[drug_infused] = '2'",,,,,,c-dose_remdesivir_mg
+dose_zmapp,drug_administration,,text,"Dose of Zmapp (mg/kg)",,,integer,,,,"[drug_infused] = '1'",,,,,,c-dose_Zmapp_mg_kg
+dose_other_drug,drug_administration,,text,"Dose of other drug",,,integer,,,,"[drug_infused_other] <> """"",,,,,,c-other_drug_dose-dose_other_drug
+units_other_drug,drug_administration,,text,"Units of other drug",,,,,,,"[drug_infused_other] <> """"",,,,,,c-other_drug_dose-units_other_drug
+antihistamine,drug_administration,"Medication before infusion",radio,Antihistamines,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-premedication-antihistaminique
+paracetamol,drug_administration,,radio,Paracetamol,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-premedication-paracetamol
+liquides_iv,drug_administration,,radio,"IV liquids","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-premedication-liquides_IV
+premed_other,drug_administration,,radio,"Other medications?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-premedication-premed_autre
+med_other_specify,drug_administration,,text,"Please specify",,,,,,,"[premed_other] = '1'",,,,,,
+infusion_note_1,drug_administration,,text,"Infusion Note",,,,,,,,,,,,,c-infusion_note_1
+pre_infu_dizziness,drug_administration,"Severity of symptoms before infusion",radio,Dizziness,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_1-pre_dizziness
+pre_infu_dyspepsia,drug_administration,,radio,Dyspepsia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_1-pre_dyspepsia
+pre_infu_tremor,drug_administration,,radio,Tremor,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_1-pre_tremor
+pre_infu_pruritis,drug_administration,,radio,Pruritis,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_pruritis
+pre_infu_eruption,drug_administration,,radio,Eruption,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_eruption
+pre_infu_bleeding,drug_administration,,radio,Bleeding,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_saignement
+pre_infu_anorexia,drug_administration,,radio,Anorexia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_anorexia
+pre_infu_diarrhoea,drug_administration,,radio,Diarrhoea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_diarhee
+pre_infu_nausea,drug_administration,,radio,Nausea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_nausee
+pre_infu_vomiting,drug_administration,,radio,Vomiting,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_vomissement
+pre_infu_constipation,drug_administration,,radio,Constipation,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_constipation
+pre_infu_headache,drug_administration,,radio,Headache,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_maux_de_tete
+pre_infu_hypertension,drug_administration,,radio,Hypertension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_hypertension
+pre_infu_hypotension,drug_administration,,radio,Hypotension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_hypotension
+pre_infu_tachycardia,drug_administration,,radio,Tachycradia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_tachycardie
+pre_infu_heartattack,drug_administration,,radio,"Heart attack","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_infarctus_cardiaque
+pre_infu_angioedema,drug_administration,,radio,Angioedema,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_angioedeme
+pre_infu_bronchospasm,drug_administration,,radio,Bronchospasm,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_bronchospasme
+pre_infu_fever,drug_administration,,radio,Fever,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_fievre
+pre_infu_short_breath,drug_administration,,radio,"Shortness of breath","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,pre_infusion,,c-pre_infusion_symp_2-pre_souffle_court
+pre_other_symptoms,drug_administration,,radio,"Other symptoms","1, Yes|0, No|99, Unknown",,,,,,,,,,,,
+pre_other_symptom_1,drug_administration,,text,"Other symptom 1",,,,,,,"[pre_other_symptoms] = '1'",,,,,,pre_infusion_symp_other-pre_other_symptom_type
+pre_other_symp_sever_1,drug_administration,,radio,"Severity of  other symptom 1","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[pre_other_symptoms] = '1'",,,,,,pre_infusion_symp_other-pre_other_symptom_severity
+pre_other_symp_res_1,drug_administration,,radio,"Other symptom 1 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[pre_other_symptoms] = '1'",,,,,,pre_infusion_symp_other-pre_other_symptom_resolved
+pre_other_symptom_2,drug_administration,,text,"Other symptom 2",,,,,,,"[pre_other_symptom_1] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_type
+pre_other_symp_sever_2,drug_administration,,radio,"Severity of other symptom 2","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[pre_other_symptom_2] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_severity
+pre_other_symp_res_2,drug_administration,,radio,"Other symptom 2 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[pre_other_symptom_2] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_resolved
+pre_other_symptom_3,drug_administration,,text,"Other symptom 3",,,,,,,"[pre_other_symptom_2] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_type
+pre_other_symp_sever_3,drug_administration,,radio,"Severity of  other symptom 3","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[pre_other_symptom_3] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_severity
+pre_other_symp_res_3,drug_administration,,radio,"Other symptom 3 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[pre_other_symptom_3] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_resolved
+pre_other_symptom_4,drug_administration,,text,"Other symptom 4",,,,,,,"[pre_other_symptom_3] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_type
+pre_other_symp_sever_4,drug_administration,,radio,"Severity of  other symptom 4","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[pre_other_symptom_4] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_severity
+pre_other_symp_res_4,drug_administration,,radio,"Other symptom 4 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[pre_other_symptom_4] <> """"",,,,,,pre_infusion_symp_other-pre_other_symptom_resolved
+infu_note,drug_administration,,text,"Infusion notes",,,,,,,,,,,,,c-Perfusion_note
+infu_start_date_time,drug_administration,"Details on infusion",text,"Start date and time of infusion",,,datetime_seconds_dmy,,,,,,,,,,c-perfusion_details-infusion_start_date_time
+infu_end_date_time,drug_administration,,text,"End date and time of infusion",,,datetime_seconds_dmy,,,,,,,,,,c-perfusion_details-infusion_end_date_time
+infu_complete,drug_administration,,radio,"Was the volume of infusion completely administered?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-perfusion_details-infusion_complete
+infu_incomplete,drug_administration,,radio,"Specify the reasons for incomplete administration","1, Undesirable reaction|2, Patient wish|3, Decision of the clinician|88, Other",,,,,,"[infu_complete] = '0'",,,,,,c-incomplete_other
+infu_incompl_decision,drug_administration,,text,"Decision of clinician",,,,,,,"[infu_incomplete] = '3'",,,,,,c-incomplete_clinician_decision
+infu_incomplete_other,drug_administration,,text,"Please specify other reason",,,,,,,"[infu_incomplete] = '88'",,,,,,c-infusion_incomplete
+vit_date_1,drug_administration,"Vital signs before infusion",text,"Date and time of vital signs",,,datetime_seconds_dmy,,,,,,,,,,signes_vitaux_g-datetime
+vit_timepoint_1,drug_administration,,radio,"Define timepoint","1, Before infusion|2, Beginning of infusion|3, During infusion|4, End of infusion|5, After infusion",,,,,,,,,,,,signes_vitaux_g-infusion_timepoint_define
+vit_rate_infusion_1,drug_administration,,text,"Rate of infusion",,,,,,,,,,,,,signes_vitaux_g-infusion_rate
+vit_heartrate_1,drug_administration,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,signes_vitaux_g-heartrate_bpm
+vit_bp_systolic_1,drug_administration,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-systolic
+vit_bp_diastolic_1,drug_administration,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-diastolic
+vit_resp_rate_1,drug_administration,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,signes_vitaux_g-respiration_rate
+vit_oxy_saturation_1,drug_administration,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,signes_vitaux_g-saturation_oxygen
+vit_temperature_1,drug_administration,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,signes_vitaux_g-temperature
+vit_notes_1,drug_administration,,text,"Notes on vital signs",,,alpha_only,,,,,,,,,,signes_vitaux_g-consignes
+vit_date_2,drug_administration,"Vital signs at the beginning of infusion",text,"Date and time of vital signs",,,datetime_seconds_dmy,,,,,,,,,,signes_vitaux_g-datetime
+vit_timepoint_2,drug_administration,,radio,"Define timepoint","1, Before infusion|2, Beginning of infusion|3, During infusion|4, End of infusion|5, After infusion",,,,,,,,,,,,signes_vitaux_g-infusion_timepoint_define
+vit_rate_infusion_2,drug_administration,,text,"Rate of infusion",,,,,,,,,,,,,signes_vitaux_g-infusion_rate
+vit_heartrate_2,drug_administration,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,signes_vitaux_g-heartrate_bpm
+vit_bp_systolic_2,drug_administration,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-systolic
+vit_bp_diastolic_2,drug_administration,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-diastolic
+vit_resp_rate_2,drug_administration,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,signes_vitaux_g-respiration_rate
+vit_oxy_saturation_2,drug_administration,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,signes_vitaux_g-saturation_oxygen
+vit_temperature_2,drug_administration,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,signes_vitaux_g-temperature
+vit_notes_2,drug_administration,,text,"Notes on vital signs",,,alpha_only,,,,,,,,,,signes_vitaux_g-consignes
+vit_date_3,drug_administration,"Vital signs during infusion",text,"Date and time of vital signs",,,datetime_seconds_dmy,,,,,,,,,,signes_vitaux_g-datetime
+vit_timepoint_3,drug_administration,,radio,"Define timepoint","1, Before infusion|2, Beginning of infusion|3, During infusion|4, End of infusion|5, After infusion",,,,,,,,,,,,signes_vitaux_g-infusion_timepoint_define
+vit_rate_infusion_3,drug_administration,,text,"Rate of infusion",,,,,,,,,,,,,signes_vitaux_g-infusion_rate
+vit_heartrate_3,drug_administration,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,signes_vitaux_g-heartrate_bpm
+vit_bp_systolic_3,drug_administration,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-systolic
+vit_bp_diastolic_3,drug_administration,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-diastolic
+vit_resp_rate_3,drug_administration,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,signes_vitaux_g-respiration_rate
+vit_oxy_saturation_3,drug_administration,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,signes_vitaux_g-saturation_oxygen
+vit_temperature_3,drug_administration,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,signes_vitaux_g-temperature
+vit_notes_3,drug_administration,,text,"Notes on vital signs",,,alpha_only,,,,,,,,,,signes_vitaux_g-consignes
+vit_date_4,drug_administration,"Vital signs at end of infusion",text,"Date and time of vital signs",,,datetime_seconds_dmy,,,,,,,,,,signes_vitaux_g-datetime
+vit_timepoint_4,drug_administration,,radio,"Define timepoint","1, Before infusion|2, Beginning of infusion|3, During infusion|4, End of infusion|5, After infusion",,,,,,,,,,,,signes_vitaux_g-infusion_timepoint_define
+vit_rate_infusion_4,drug_administration,,text,"Rate of infusion",,,,,,,,,,,,,signes_vitaux_g-infusion_rate
+vit_heartrate_4,drug_administration,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,signes_vitaux_g-heartrate_bpm
+vit_bp_systolic_4,drug_administration,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-systolic
+vit_bp_diastolic_4,drug_administration,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-diastolic
+vit_resp_rate_4,drug_administration,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,signes_vitaux_g-respiration_rate
+vit_oxy_saturation_4,drug_administration,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,signes_vitaux_g-saturation_oxygen
+vit_temperature_4,drug_administration,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,signes_vitaux_g-temperature
+vit_notes_4,drug_administration,,text,"Notes on vital signs",,,alpha_only,,,,,,,,,,signes_vitaux_g-consignes
+vit_date_5,drug_administration,"Vital signs after infusion",text,"Date and time of vital signs",,,datetime_seconds_dmy,,,,,,,,,,signes_vitaux_g-datetime
+vit_timepoint_5,drug_administration,,radio,"Define timepoint","1, Before infusion|2, Beginning of infusion|3, During infusion|4, End of infusion|5, After infusion",,,,,,,,,,,,signes_vitaux_g-infusion_timepoint_define
+vit_rate_infusion_5,drug_administration,,text,"Rate of infusion",,,,,,,,,,,,,signes_vitaux_g-infusion_rate
+vit_heartrate_5,drug_administration,,text,"Heart rate (bpm)",,,integer,,,,,,,,,,signes_vitaux_g-heartrate_bpm
+vit_bp_systolic_5,drug_administration,,text,"Systolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-systolic
+vit_bp_diastolic_5,drug_administration,,text,"Diastolic blood pressure (mmHg)",,,integer,,,,,,,,,,signes_vitaux_g-diastolic
+vit_resp_rate_5,drug_administration,,text,"Respiration rate (per min)",,,integer,,,,,,,,,,signes_vitaux_g-respiration_rate
+vit_oxy_saturation_5,drug_administration,,text,"Oxygen saturation (%)",,,integer,,,,,,,,,,signes_vitaux_g-saturation_oxygen
+vit_temperature_5,drug_administration,,text,"Temperature (°C)",,,number_1dp,,,,,,,,,,signes_vitaux_g-temperature
+vit_notes_5,drug_administration,,text,"Notes on vital signs",,,alpha_only,,,,,,,,,,signes_vitaux_g-consignes
+post_infu_dizziness,drug_administration,"Severity of symptoms after Infusion",radio,Dizziness,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_1-post_dizziness
+post_infu_dyspepsia,drug_administration,,radio,Dyspepsia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_1-post_dyspepsia
+post_infu_tremor,drug_administration,,radio,Tremor,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_1-post_tremor
+post_infu_pruritis,drug_administration,,radio,Pruritis,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_pruritis
+post_infu_eruption,drug_administration,,radio,Eruption,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_eruption
+post_infu_bleeding,drug_administration,,radio,Bleeding,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_saignement
+post_infu_anorexia,drug_administration,,radio,Anorexia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_anorexia
+post_infu_diarrhoea,drug_administration,,radio,Diarrhoea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_diarhee
+post_infu_nausea,drug_administration,,radio,Nausea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_nausee
+post_infu_vomiting,drug_administration,,radio,Vomiting,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_vomissement
+post_infu_constipation,drug_administration,,radio,Constipation,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_constipation
+post_infu_headache,drug_administration,,radio,Headache,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_maux_de_tete
+post_infu_hypertension,drug_administration,,radio,Hypertension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_hypertension
+post_infu_hypotension,drug_administration,,radio,Hypotension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_hypotension
+post_infu_tachycardia,drug_administration,,radio,Tachycradia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_tachycardie
+post_infu_heartattack,drug_administration,,radio,"Heart attack","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_infarctus_cardiaque
+post_infu_angioedema,drug_administration,,radio,Angioedema,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_angioedeme
+post_infu_bronchospasm,drug_administration,,radio,Bronchospasm,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_bronchospasme
+post_infu_fever,drug_administration,,radio,Fever,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_fievre
+post_infu_short_breath,drug_administration,,radio,"Shortness of breath","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,after_infusion,,c-post_infusion_symp_2-post_souffle_court
+post_infu_other_symp,drug_administration,,radio,"Other symptoms after infusion","1, Yes|0, No|99, Unknown",,,,,,,,,,,,
+post_infu_other_symp_1,drug_administration,,text,"Other symptom 1",,,,,,,"[post_infu_other_symp] = '1'",,,,,,post_infusion_symp_other-post_other_symptom_type
+post_oth_symp_sev_1,drug_administration,,radio,"Severity of symptom 1","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[post_infu_other_symp] = '1'",,,,,,post_infusion_symp_other-post_other_symptom_severity
+post_infu_oth_symp_caus_1,drug_administration,,radio,"Causality with treatment","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[post_infu_other_symp] = '1'",,,,,,post_infusion_symp_other-post_other_symptom_attribution
+post_infu_oth_symp_res_1,drug_administration,,radio,"Symptom 1 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[post_infu_other_symp] = '1'",,,,,,post_infusion_symp_other-post_other_symptom_resolved
+post_infu_other_symp_2,drug_administration,,text,"Other symptom 2",,,,,,,"[post_infu_other_symp_1] <> """"",,,,,,post_infusion_symp_other-post_other_symptom_type
+post_oth_symp_sev_2,drug_administration,,radio,"Severity of symptom 2","1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,"[post_infu_other_symp_2] <> """"",,,,,,post_infusion_symp_other-post_other_symptom_severity
+post_infu_oth_symp_caus_2,drug_administration,,radio,"Causality with treatment","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[post_infu_other_symp_2] <> """"",,,,,,post_infusion_symp_other-post_other_symptom_attribution
+post_infu_oth_symp_res_2,drug_administration,,radio,"Symptom 2 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[post_infu_other_symp_2] <> """"",,,,,,post_infusion_symp_other-post_other_symptom_resolved
+post_attrib_dizziness,drug_administration,"Causality with treatment",radio,Dizziness,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-dizziness
+post_attrib_dyspepsia,drug_administration,,radio,Dyspepsia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-dyspepsia
+post_attrib_tremor,drug_administration,,radio,Tremor,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-tremor
+post_attrib_pruritis,drug_administration,,radio,Pruritis,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-pruritis
+post_attrib_eruption,drug_administration,,radio,Eruption,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-eruption
+post_attrib_bleeding,drug_administration,,radio,Bleeding,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-bleeding
+post_attrib_anorexia,drug_administration,,radio,Anorexia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-anorexia
+post_attrib_diarrhoea,drug_administration,,radio,Diarrhoea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-diarrhea
+post_attrib_nausea,drug_administration,,radio,Nausea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-nausea
+post_attrib_vomiting,drug_administration,,radio,Vomiting,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-vomiting
+post_attrib_constipation,drug_administration,,radio,Constipation,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-constipation
+post_attrib_headache,drug_administration,,radio,Headache,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-headache
+post_attrib_hypertension,drug_administration,,radio,Hypertension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-hypertension
+post_attrib_hypotension,drug_administration,,radio,Hypotension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-hypotension
+post_attrib_tachycardia,drug_administration,,radio,Tachycradia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-tachycardie
+post_attrib_heartattack,drug_administration,,radio,"Heart attack","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-infarctus_cardiaque
+post_attrib_angioedema,drug_administration,,radio,Angioedema,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-angioedeme
+post_attrib_bronchospasm,drug_administration,,radio,Bronchospasm,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-bronchospasme
+post_attrib_fever,drug_administration,,radio,Fever,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-fievre
+post_attrib_short_breath,drug_administration,,radio,"Shortness of breath","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,symptoms_related,,c-post_infu_symp_attrib_to_meds-souffle_court
+post_slowed_infusion,drug_administration,"Details after infusion",radio,"Infusion slowed?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-slowed_infusion
+post_stopped_infusion,drug_administration,,radio,"Infusion stopped?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-stopped_infusion
+post_iv_fluids,drug_administration,,radio,"IV fluids","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-IV_fluids
+post_epinephrine_im,drug_administration,,radio,"Epinephrine intramuscular","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-epinephrine_IM
+post_paracetamol,drug_administration,,radio,Paracetamol,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-paracetamol
+post_salbutamol_inhaled,drug_administration,,radio,"Salbutamol inhaled","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-salbutamol_inhaled
+post_steroid,drug_administration,,radio,Steroid,"1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-steroid
+post_treatment_other,drug_administration,,radio,"Other treatments given","1, Yes|0, No|99, Unknown",,,,,,,,,,,,c-post_infusion_treatment-post_infusion_treatment_other
+post_infu_treat_other2,drug_administration,,text,"If other, please specify",,,,,,,"[post_treatment_other] = '1'",,,,,,c-post_infusion_treatment_other2
+post_resolv_dizziness,drug_administration,"Symptoms resolved?",radio,Dizziness,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-dizziness
+post_resolv_dyspepsia,drug_administration,,radio,Dyspepsia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-dyspepsia
+post_resolv_tremor,drug_administration,,radio,Tremor,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-tremor
+post_resolv_pruritis,drug_administration,,radio,Pruritis,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-pruritis
+post_resolv_eruption,drug_administration,,radio,Eruption,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-eruption
+post_resolv_bleeding,drug_administration,,radio,Bleeding,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-bleeding
+post_resolv_anorexia,drug_administration,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-anorexia
+post_resolv_diarrhoea,drug_administration,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-diarrhea
+post_resolv_nausea,drug_administration,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-nausea
+post_resolv_vomiting,drug_administration,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-vomiting
+post_resolv_constipation,drug_administration,,radio,Constipation,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-constipation
+post_resolv_headache,drug_administration,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-headache
+post_resolv_hypertension,drug_administration,,radio,Hypertension,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-hypertension
+post_resolv_hypotension,drug_administration,,radio,Hypotension,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-hypotension
+post_resolv_tachycardia,drug_administration,,radio,Tachycradia,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-tachycardie
+post_resolv_heartattack,drug_administration,,radio,"Heart attack","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-infarctus_cardiaque
+post_resolv_angioedema,drug_administration,,radio,Angioedema,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-angioedeme
+post_resolv_bronchospasm,drug_administration,,radio,Bronchospasm,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-bronchospasme
+post_resolv_fever,drug_administration,,radio,Fever,"1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-fievre
+post_resolv_short_breath,drug_administration,,radio,"Shortness of breath","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-souffle_court
+post_resolv_other_symp,drug_administration,,radio,"Other symptoms after infusion?","1, Yes|0, No|99, Unknown",,,,,,,,,,symptoms_resolved,,c-post_infusion_symp_resolved-other_symptoms
+admin_form_compl_by,drug_administration,,text,"Form completed by",,,,,,,,,,,,,pers_qui_rempli-nom_pers_rempli
+date_discharge,discharge,,text,"Date of discharge/transfer from health facility/death",,,date_dmy,,,,,,,,,,date_discharge
+diagnosis,discharge,,radio,"Final diagnosis","1, Ebola|88, Other",,,,,,,,,,,,diagnosis
+diagnosis_other,discharge,,text,"Other diagnosis",,,,,,,"[diagnosis] = '88'",,,,,,diagnosis_other
+outcome,discharge,,radio,"Outcome at discharge","1, Full recovery without sequelae|2, Full recovery with sequelae|3, Death|4, Referred to another facility|5, Left against medical advice",,,,,,,,,,,,outcome
+sequelae_hearing,discharge,,radio,"Hearing loss","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-hearing
+sequelae_abortion,discharge,,radio,"If pregnant, spontaneous abortion","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2' and [admission_arm_1][sex] = '2'",,,,,,sequale-abortion
+sequelae_ocular,discharge,,radio,"Ocular complications","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-ocular
+sequelae_fatigue,discharge,,radio,"Extreme Fatigue","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-fatigue
+sequelae_arthralgia,discharge,,radio,Arthralgia,"1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-arthralgia
+sequelae_neurology,discharge,,radio,"Neurological complications","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-neurology
+sequelae_other,discharge,,radio,"Other complications","1, Yes|0, No|99, Unknown",,,,,,"[outcome] = '2'",,,,,,sequale-other
+neurology_details,discharge,,text,"Neurological details",,,,,,,"[sequelae_neurology] = '1'",,,,,,neurology_details
+other_details,discharge,,text,"Other details",,,,,,,"[sequelae_other] = '1'",,,,,,other_Details
+transferred_to,discharge,,text,"Transferred to which facility?",,,,,,,"[outcome] = '4'",,,,,,transferred_to
+counselling,discharge,,radio,"Survivor counselling provided?","1, Yes|0, No|99, Unknown",,,,,,,,,,,,counselling
+dis_from_comp_by,discharge,,text,"Form completed by",,,,,,,,,,,,,pers_qui_rempli-nom_pers_rempli
+ae_etu_number,adverse_event,"<font size=6><center>Adverse event",descriptive,"Study center: [admission_arm_1][etu_number]",,,,,,,,,,,,,
+ae_etu_participant_id,adverse_event,,descriptive,"Participant ID: [admission_arm_1][etu_participant_id]",,,,,,,,,,,,,
+ae_age,adverse_event,,descriptive,"Age at admission: [admission_arm_1][age]",,,,,,,,,,,,,
+ae_sex,adverse_event,,descriptive,"Gender: [admission_arm_1][sex]",,,,,,,,,,,,,
+ae_adm_date_onset,adverse_event,,descriptive,"Date of onset of EBOLA symptoms: [admissiom_arm_1][admission_date_onset]",,,,,,,,,,,,,
+ae_date_adm_hosp,adverse_event,,descriptive,"Date of admission to hospital: [admission_arm_1][date_adm_hosp]",,,,,,,,,,,,,
+ae_pregnant,adverse_event,,descriptive,"Pregnant: [admission_arm_1][pregnant]",,,,,,,"[admission_arm_1][sex] = '2'",,,,,,
+ae_drug_infused,adverse_event,,radio,"Type of experimental therapeutic","1, Zmapp|2, Remdesivir (GS-5734)|3, mAb114|4, REGN3470-3471-3479",,,,,,,,,,,,
+ae_infu_start_date_time,adverse_event,,text,"Date of first administration",,,datetime_seconds_dmy,,,,,,,,,,
+ae_infu_end_date_time,adverse_event,,text,"Date of last administration",,,datetime_seconds_dmy,,,,,,,,,,
+ae_dizziness,adverse_event,"Severity of symptoms after infusion",radio,Dizziness,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_dyspepsia,adverse_event,,radio,Dyspepsia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_tremor,adverse_event,,radio,Tremor,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_pruritis,adverse_event,,radio,Pruritis,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_eruption,adverse_event,,radio,Eruption,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_bleeding,adverse_event,,radio,Bleeding,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_anorexia,adverse_event,,radio,Anorexia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_diarrhoea,adverse_event,,radio,Diarrhoea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_nausea,adverse_event,,radio,Nausea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_vomiting,adverse_event,,radio,Vomiting,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_constipation,adverse_event,,radio,Constipation,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_headache,adverse_event,,radio,Headache,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_hypertension,adverse_event,,radio,Hypertension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_hypotension,adverse_event,,radio,Hypotension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_tachycardia,adverse_event,,radio,Tachycardia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_heartattack,adverse_event,,radio,"Heart attack","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_angioedema,adverse_event,,radio,Angioedema,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_bronchospasm,adverse_event,,radio,Bronchospasm,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_fever,adverse_event,,radio,Fever,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_short_breath,adverse_event,,radio,"Shortness of breath","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,ae_after_infusion,,
+ae_post_infu_other_symp_1,adverse_event,,text,"Other symptom 1",,,,,,,,,,,,,
+ae_post_oth_symp_sev_1,adverse_event,,radio,"Severity of symptom 1
+","1, 1 - Mild|2, 2 - Moderate|3, 3 - Severe|4, 4 - Life-threatening",,,,,,"[ae_post_infu_other_symp_1] <> '""""'",,,,,,
+ae_post_infu_other_symp_2,adverse_event,,text,"Other symptom 2",,,,,,,"[ae_post_infu_other_symp_1] <> '""""'",,,,,,
+ae_post_oth_symp_sev_2,adverse_event,,radio,"Severity of symptom 2
+","1, 1 - Mild|2, 2 - Moderate|3, 3 - Severe|4, 4 - Life-threatening",,,,,,"[ae_post_infu_other_symp_2] <> '""""'",,,,,,
+ae_attrib_dizziness,adverse_event,"Causality with treatment",radio,Dizziness,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_dyspepsia,adverse_event,,radio,Dyspepsia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_tremor,adverse_event,,radio,Tremor,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_pruritis,adverse_event,,radio,Pruritis,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_eruption,adverse_event,,radio,Eruption,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_bleeding,adverse_event,,radio,Bleeding,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_anorexia,adverse_event,,radio,Anorexia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_diarrhoea,adverse_event,,radio,Diarrhoea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_nausea,adverse_event,,radio,Nausea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_vomiting,adverse_event,,radio,Vomiting,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_constipation,adverse_event,,radio,Constipation,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_headache,adverse_event,,radio,Headache,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_hypertension,adverse_event,,radio,Hypertension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_hypotension,adverse_event,,radio,Hypotension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_tachycardia,adverse_event,,radio,Tachycardia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_heartattack,adverse_event,,radio,"Heart attack","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_angioedema,adverse_event,,radio,Angioedema,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_bronchospasm,adverse_event,,radio,Bronchospasm,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_fever,adverse_event,,radio,Fever,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_attrib_short_breath,adverse_event,,radio,"Shortness of breath","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,ae_symptoms_related,,
+ae_post_oth_symp_caus_1,adverse_event,,radio,"Causality with treatment for other symptom 1","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[ae_post_infu_other_symp_1] <> '""""'",,,,,,
+ae_post_oth_symp_caus_2,adverse_event,,radio,"Causality with treatment for other symptom 2","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[ae_post_infu_other_symp_2] <> '""""'",,,,,,
+ae_resolv_dizziness,adverse_event,"Symptoms resolved?",radio,Dizziness,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_dyspepsia,adverse_event,,radio,Dyspepsia,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_tremor,adverse_event,,radio,Tremor,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_pruritis,adverse_event,,radio,Pruritis,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_eruption,adverse_event,,radio,Eruption,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_bleeding,adverse_event,,radio,Bleeding,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_anorexia,adverse_event,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_diarrhoea,adverse_event,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_nausea,adverse_event,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_vomiting,adverse_event,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_constipation,adverse_event,,radio,Constipation,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_headache,adverse_event,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_hypertension,adverse_event,,radio,Hypertension,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_hypotension,adverse_event,,radio,Hypotension,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_tachycardia,adverse_event,,radio,Tachycardia,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_heartattack,adverse_event,,radio,"Heart attack","1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_angioedema,adverse_event,,radio,Angioedema,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_bronchospasm,adverse_event,,radio,Bronchospasm,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_fever,adverse_event,,radio,Fever,"1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_resolv_short_breath,adverse_event,,radio,"Shortness of breath","1, Yes|0, No|99, Unknown",,,,,,,,,,ae_symptoms_resolved,,
+ae_post_oth_symp_res_1,adverse_event,,radio,"Other symptom 1 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[ae_post_infu_other_symp_1] <> '""""'",,RH,,,,
+ae_post_oth_symp_res_2,adverse_event,,radio,"Other symptom 2 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[ae_post_infu_other_symp_2] <> '""""'",,RH,,,,
+ae_ebola_outcome,adverse_event,,descriptive,"Ebola outcome at discharge:  [discharge_arm_1][outcome]",,,,,,,"[discharge_arm_1][diagnosis] = '1'",,,,,,
+ae_date_discharge,adverse_event,,descriptive,"Date of discharge/death:  [discharge_arm_1][date_discharge]",,,,,,,,,,,,,
+sae_etu_number,serious_adverse_event,"<font size=6><center>Serious adverse event (SAE)",descriptive,"Study center: [admission_arm_1][etu_number]",,,,,,,,,,,,,
+sae_etu_participant_id,serious_adverse_event,,descriptive,"Participant ID: [admission_arm_1][etu_participant_id]",,,,,,,,,,,,,
+sae_age,serious_adverse_event,,descriptive,"Age at admission:[admission_arm_1][age]",,,,,,,,,,,,,
+sae_sex,serious_adverse_event,,descriptive,"Gender: [admission_arm_1][sex]",,,,,,,,,,,,,
+sae_adm_date_onset,serious_adverse_event,,descriptive,"Date of onset of EBOLA symptoms : [admissiom_arm_1][admission_date_onset]",,,,,,,,,,,,,
+sae_date_adm_hosp,serious_adverse_event,,descriptive,"Date of admission to hospital:[admission_arm_1][date_adm_hosp]",,,,,,,,,,,,,
+sae_pregnant,serious_adverse_event,,descriptive,"Preganant: [admission_arm_1][pregnant]",,,,,,,"[admission_arm_1][sex] = '2'",,,,,,
+sae_drug_infused,serious_adverse_event,,radio,"Type of experimental therapeutic","1, Zmapp|2, Remdesivir (GS-5734)|3, mAb114|4, REGN3470-3471-3479",,,,,,,,,,,,
+sae_infu_start_date_time,serious_adverse_event,,text,"Date of first administration",,,datetime_seconds_dmy,,,,,,,,,,
+sae_infu_end_date_time,serious_adverse_event,,text,"Date of last administration",,,datetime_seconds_dmy,,,,,,,,,,
+sae_serious,serious_adverse_event,,radio,"Seriousness criteria","1, Death|2, Life-threatening illness or injury|3, Results in significant disability/incapacity|4, Requires hospitalization or prolongation of existing hospitalization|5, Congenital anomaly/birth defect|6, Other (clinically significant condition/intervention)",,,,,,,,,,,,
+sae_dizziness,serious_adverse_event,"Severity of symptoms after infusion",radio,Dizziness,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_dyspepsia,serious_adverse_event,,radio,Dyspepsia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_tremor,serious_adverse_event,,radio,Tremor,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_pruritis,serious_adverse_event,,radio,Pruritis,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_eruption,serious_adverse_event,,radio,Eruption,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_bleeding,serious_adverse_event,,radio,Bleeding,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_anorexia,serious_adverse_event,,radio,Anorexia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_diarrhoea,serious_adverse_event,,radio,Diarrhoea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_nausea,serious_adverse_event,,radio,Nausea,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_vomiting,serious_adverse_event,,radio,Vomiting,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_constipation,serious_adverse_event,,radio,Constipation,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_headache,serious_adverse_event,,radio,Headache,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_hypertension,serious_adverse_event,,radio,Hypertension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_hypotension,serious_adverse_event,,radio,Hypotension,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_tachycardia,serious_adverse_event,,radio,Tachycardia,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_heartattack,serious_adverse_event,,radio,"Heart attack","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_angioedema,serious_adverse_event,,radio,Angioedema,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_bronchospasm,serious_adverse_event,,radio,Bronchospasm,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_fever,serious_adverse_event,,radio,Fever,"0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_short_breath,serious_adverse_event,,radio,"Shortness of breath","0, Not present|1, Mild|2, Moderate|3, Severe|4, Life-threatening",,,,,,,,,,sae_after_infusion,,
+sae_post_infu_other_symp_1,serious_adverse_event,,text,"Other symptom 1",,,,,,,,,,,,,
+sae_post_oth_symp_sev_1,serious_adverse_event,,radio,"Severity of symptom 1
+","1, 1 - Mild|2, 2 - Moderate|3, 3 - Severe|4, 4 - Life-threatening",,,,,,"[sae_post_infu_other_symp_1] <> '""""'",,,,,,
+sae_post_infu_other_symp_2,serious_adverse_event,,text,"Other symptom 2",,,,,,,"[sae_post_infu_other_symp_1] <> '""""'",,,,,,
+sae_post_oth_symp_sev_2,serious_adverse_event,,radio,"Severity of symptom 2
+","1, 1 - Mild|2, 2 - Moderate|3, 3 - Severe|4, 4 - Life-threatening",,,,,,"[sae_post_infu_other_symp_2] <> '""""'",,,,,,
+sae_attrib_dizziness,serious_adverse_event,"Causality with treatment",radio,Dizziness,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_dyspepsia,serious_adverse_event,,radio,Dyspepsia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_tremor,serious_adverse_event,,radio,Tremor,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_pruritis,serious_adverse_event,,radio,Pruritis,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_eruption,serious_adverse_event,,radio,Eruption,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_bleeding,serious_adverse_event,,radio,Bleeding,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_anorexia,serious_adverse_event,,radio,Anorexia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_diarrhoea,serious_adverse_event,,radio,Diarrhoea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_nausea,serious_adverse_event,,radio,Nausea,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_vomiting,serious_adverse_event,,radio,Vomiting,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_constipation,serious_adverse_event,,radio,Constipation,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_headache,serious_adverse_event,,radio,Headache,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_hypertension,serious_adverse_event,,radio,Hypertension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_hypotension,serious_adverse_event,,radio,Hypotension,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_tachycardia,serious_adverse_event,,radio,Tachycardia,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_heartattack,serious_adverse_event,,radio,"Heart attack","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_angioedema,serious_adverse_event,,radio,Angioedema,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_bronchospasm,serious_adverse_event,,radio,Bronchospasm,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_fever,serious_adverse_event,,radio,Fever,"0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_attrib_short_breath,serious_adverse_event,,radio,"Shortness of breath","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,,,,,sae_symptoms_related,,
+sae_post_oth_symp_caus_1,serious_adverse_event,,radio,"Causality with treatment for other symptom 1","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[sae_post_infu_other_symp_1] <> '""""'",,,,,,
+sae_post_oth_symp_caus_2,serious_adverse_event,,radio,"Causality with treatment for other symptom 2","0, Not related|1, Unlikely|2, Probably|3, Definitely|99, Unknown",,,,,,"[sae_post_infu_other_symp_2] <> '""""'",,,,,,
+sae_resolv_dizziness,serious_adverse_event,"Symptoms resolved?",radio,Dizziness,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_dyspepsia,serious_adverse_event,,radio,Dyspepsia,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_tremor,serious_adverse_event,,radio,Tremor,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_pruritis,serious_adverse_event,,radio,Pruritis,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_eruption,serious_adverse_event,,radio,Eruption,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_bleeding,serious_adverse_event,,radio,Bleeding,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_anorexia,serious_adverse_event,,radio,Anorexia,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_diarrhoea,serious_adverse_event,,radio,Diarrhoea,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_nausea,serious_adverse_event,,radio,Nausea,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_vomiting,serious_adverse_event,,radio,Vomiting,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_constipation,serious_adverse_event,,radio,Constipation,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_headache,serious_adverse_event,,radio,Headache,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_hypertension,serious_adverse_event,,radio,Hypertension,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_hypotension,serious_adverse_event,,radio,Hypotension,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_tachycardia,serious_adverse_event,,radio,Tachycardia,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_heartattack,serious_adverse_event,,radio,"Heart attack","1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_angioedema,serious_adverse_event,,radio,Angioedema,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_bronchospasm,serious_adverse_event,,radio,Bronchospasm,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_fever,serious_adverse_event,,radio,Fever,"1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_resolv_short_breath,serious_adverse_event,,radio,"Shortness of breath","1, Yes|0, No|99, Unknown",,,,,,,,,,sae_symptoms_resolved,,
+sae_post_oth_symp_res_1,serious_adverse_event,,radio,"Symptom 1 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[sae_post_infu_other_symp_1] <> '""""'",,RH,,,,
+sae_post_oth_symp_res_2,serious_adverse_event,,radio,"Symptom 2 resolved?","1, Yes|0, No|99, Unknown",,,,,,"[sae_post_infu_other_symp_2] <> '""""'",,RH,,,,
+sae_ebola_outcome,serious_adverse_event,,descriptive,"Ebola outcome at discharge:  [discharge_arm_1][outcome]",,,,,,,[discharge_arm_1][diagnosis]=1,,,,,,
+sae_date_discharge,serious_adverse_event,,descriptive,"Date of discharge/death:  [discharge_arm_1][date_discharge]",,,,,,,,,,,,,
