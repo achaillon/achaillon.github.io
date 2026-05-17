@@ -1,0 +1,577 @@
+---
+title: "Bundibugyo (BDBV) maps"
+author: 
+  - name: Antoine Chaillon
+    affiliations:
+      -id: ucsd
+      name: <br>University of California, San Diego<br>Department of Medicine
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-location: left
+    toc-depth: 3
+    page-layout: full
+date: "`r format(Sys.time(), '%d %B %Y')`"
+warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# Prepare
+
+```{r}
+#| echo: false
+#| show: false
+#| warning: false
+#| message: false
+#| include: false
+
+source("~/prepare.R")
+source(here("function/","mpox_dash.R"))
+
+pacman::p_load(whomapper,whotools, sf, lubridate,cowplot,countrycode,
+               leaflet,htmltools,htmlwidgets,base64enc)
+color_palette <- c("#CC79A7", "#009E73")
+
+
+
+```
+
+
+
+# Map of Ituri province and surrounding provinces
+
+## Random Data
+
+```{r}
+
+
+
+
+sfs <- whomapper::pull_sfs(adm_level = 0, query_server = FALSE)
+sfs_adm1 <- whomapper::pull_sfs(adm_level = 1, query_server = FALSE)
+sfs_drc<- sfs_adm1[sfs_adm1$iso_3_code=="COD",]
+dput(unique(sfs_drc$adm1_viz_n))
+
+# Isolate the Ituri polygon vector
+ituri_boundary <- sfs_adm1 %>%
+  filter(iso_3_code == "COD", adm1_viz_n == "Ituri")
+
+# Ensure the data frame is recognized as an sf spatial object
+if (!inherits(sfs_adm1, "sf")) {
+  sfs_adm1 <- st_as_sf(sfs_adm1)
+}
+# Set up interactive markers with conditional styling for status
+getColor <- function(hubs_df) {
+  sapply(hubs_df$status, function(status) {
+    if(status == "Confirmed Cases") { "darkred" } 
+    else if(status == "Potential Cases") { "orange" } 
+    else { "blue" }
+  })
+}
+msf_url    <- "msf_logo.png"
+alima_url  <- "alima_logo.png"# "https://alima.ng/wp-content/uploads/2021/11/logo-alima.png"
+generic_url <- "blue_dot.png"
+
+calculated_widths <- ifelse(
+  ituri_cases$primary_ngo %in% c("MSF", "MSF_ALIMA", "ALIMA"), 
+  48, # Size for NGO logos
+  24  # Smaller size specifically for the blue dot
+)
+
+# 3. Compile your conditional iconography map layer
+ngo_icons <- icons(
+  iconUrl = ifelse(ituri_cases$primary_ngo %in% c("MSF", "MSF_ALIMA"), msf_url,
+            ifelse(ituri_cases$primary_ngo == "ALIMA", alima_url, generic_url)),
+  
+  # Pass the calculated vectors so each marker scales independently
+  iconWidth  = calculated_widths,
+  iconHeight = calculated_widths, # Assumes a square ratio box
+  
+  # Keep anchors perfectly centered by dividing the specific width by 2
+  iconAnchorX = calculated_widths / 2,
+  iconAnchorY = calculated_widths / 2
+)
+
+
+
+# 1. Coordinate Hubs Setup (Ituri Footprints & Key Cities)
+hubs <- data.frame(
+  name = c("Bunia", "Mongbwalu", "Rwampara", "Fataki", "Abelkoso", "Kinshasa", "Kampala"),
+  lat = c(1.5636, 1.9522, 1.4880, 2.0104, 1.2500, -4.3224, 0.3136),
+  lon = c(30.2494, 30.0381, 30.2030, 30.4116, 29.9500, 15.3070, 32.5811),
+  type = c("Capital/Hub", "Health Center Area", "Health Center Area", "Health Center Area", "Border Post Area", "National Capital", "Uganda Capital"),
+  ngo_footprint = c("MSF & ALIMA Trauma Support", "MSF Medical Emergency", "Local HC Support", "MSF & Samaritan's Purse Nutrition", "ALIMA Border Health", "HQ Operations", "Regional Logistics Hub"),
+  status = c("Confirmed Cases", "Potential Cases", "Potential Cases", "Confirmed Cases", "Under Review", "Control Center", "International Border Hub")
+)
+
+ituri_cases <- data.frame(
+  name = c("Bunia", "Mongbwalu", "Rwampara", "Fataki", "Abelkoso"),
+  lat = c(1.5636, 1.9522, 1.4880, 2.0104, 1.2500),
+  lon = c(30.2494, 30.0381, 30.2030, 30.4116, 29.9500),
+  type = c("Capital/Hub", "Health Center Area", "Health Center Area", "Health Center Area", "Border Post Area"),
+  ngo_footprint = c("MSF & ALIMA Trauma Support", "MSF Medical Emergency", "Local HC Support", "MSF & Samaritan's Purse Nutrition", "ALIMA Border Health"),
+  status = c("Confirmed Cases", "Potential Cases", "Potential Cases", "Confirmed Cases", "Under Review"),
+  
+  # Injecting random integers for counts
+  total_cases = sample(15:120, 5),
+  deaths = sample(2:35, 5),
+  
+  # Assign dominant NGO for customized iconography selection
+  primary_ngo = c("MSF_ALIMA", "MSF", "LOCAL", "MSF_SAMARITAN", "ALIMA")
+)
+# ==========================================
+# PANEL 1: Ituri Regional & Uganda Border Focus
+# ==========================================
+
+
+
+p1 <- leaflet(options = leafletOptions(minZoom = 6, maxZoom = 13)) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addProviderTiles(providers$CyclOSM, group = "Road Networks (CyclOSM)") %>%
+  addPolygons(data = ituri_boundary, color = "#FF0000", weight = 1, fillOpacity = 0, opacity = 1) %>%
+  setView(lng = 30.2, lat = 1.6, zoom = 8) %>%
+  
+  # LAYER A: Total Cases (Proportional Red Circles)
+  addCircleMarkers(
+    data = ituri_cases, lat = ~lat, lng = ~lon,
+    # Square-root scale ensures visual balance across high variance variables
+    radius = ~sqrt(total_cases) * 3, 
+    color = "#015385", fillColor = "#009ADE", fillOpacity = 0.6, weight = 2,
+    group = "Total Cases Pipeline",
+    popup = ~paste0("<b>", name, "</b><br>Total Cases: ", total_cases)
+  ) %>%
+  
+  # LAYER B: Deaths (Proportional Dark Crimson Circles)
+  addCircleMarkers(
+    data = ituri_cases, lat = ~lat, lng = ~lon,
+    radius = ~sqrt(deaths) * 4, 
+    color = "#581845", fillColor = "#900C3F", fillOpacity = 0.7, weight = 2,
+    group = "Mortality Grid",
+    popup = ~paste0("<b>", name, "</b><br>Deaths: ", deaths)
+  ) %>%
+  
+  # Layer Toggle Matrix Control
+  addLayersControl(
+    overlayGroups = c("Total Cases Pipeline", "Mortality Grid"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+p1
+# ==========================================
+# PANEL 2: Deep Dive Health Centers & NGO Footprint
+# ==========================================
+
+
+p2 <- leaflet(options = leafletOptions(minZoom = 7, maxZoom = 12)) %>%
+  # Dual Base Layer Options for tactical road tracing
+  addProviderTiles(providers$OpenStreetMap.Mapnik, group = "Street View") %>%
+  addProviderTiles(providers$OPNVKarte, group = "Transportation Routes") %>%
+  setView(lng = 30.2, lat = 1.6, zoom = 9) %>%
+  addAwesomeMarkers(
+    data = ituri_cases, 
+    lat = ~lat, lng = ~lon,
+    icon = awesomeIcons(icon = "ios-medical", iconColor = "white", library = "ion", markerColor = getColor(ituri_cases)),
+    popup = ~paste0(
+      "<h3>", name, "</h3>",
+      "<b>Type:</b> ", type, "<br>",
+      "<b>Status:</b> ", status, "<br>",
+      "<b>NGO Activity:</b> <span style='color:red;'>", ngo_footprint, "</span>"
+    )
+  ) %>%
+  addLayersControl(
+    baseGroups = c("Street View", "Transportation Routes"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+
+p2 <- leaflet(options = leafletOptions(minZoom = 7, maxZoom = 15)) %>%
+    addProviderTiles(providers$OpenStreetMap.Mapnik, group = "Street View") %>%
+  addProviderTiles(providers$OPNVKarte, group = "Transportation Routes") %>%
+  # addPolygons(data = ituri_boundary, color = "#FF0000", weight = 1, fillOpacity = 0, opacity = 1) %>%
+  setView(lng = 30.2, lat = 1.6, zoom = 9) %>%
+  
+  # Plotting locations using our customized NGO branding matrix
+  addMarkers(
+    data = ituri_cases, 
+    lat = ~lat, lng = ~lon,
+    icon = ngo_icons,
+    popup = ~paste0(
+      "<h3>", name, "</h3>",
+      "<b>Primary Deployment:</b> ", primary_ngo, "<br>",
+      "<b>Operational Metrics:</b> ", total_cases, " Cases / ", deaths, " Deaths"
+    )
+  )%>%
+  addLayersControl(
+    baseGroups = c("Street View", "Transportation Routes"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+p2
+
+# ==========================================
+# RENDER AS A 3-PANEL INTERACTIVE TABBED SYSTEM
+# ==========================================
+# Using htmltools to arrange the maps in a clean multi-panel web page layout
+
+
+# ==========================================
+# 1. OPTIONAL: BASE64 IMAGE ENCODING
+# ==========================================
+# This reads your local PNGs and converts them into text strings 
+# so they are 100% self-contained in the final HTML file.
+# Replace the file paths below with your actual local paths.
+
+inline_logo_rect <- ""
+inline_logo_circ <- ""
+
+if (file.exists("who_logo.png")) {
+  inline_logo_rect <- paste0("data:image/png;base64,", base64encode("who_logo.png"))
+} else {
+  # Fallback placeholder if file isn't found yet
+  inline_logo_rect <- "https://via.placeholder.com/150x50?text=WHO+Rectangular"
+}
+
+if (file.exists("who_logo_circle.png")) {
+  inline_logo_circ <- paste0("data:image/png;base64,", base64encode("who_logo_circle.png"))
+} else {
+  inline_logo_circ <- "https://via.placeholder.com/50?text=WHO"
+}
+
+
+# ==========================================
+# 2. DEFINE THE WHO-BRANDED HTML STRUCTURE
+# ==========================================
+dashboard_html <- tags$div(
+  style = "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background-color: #f4f6f8; min-height: 100vh;",
+  
+  # WHO Branding Header Banner
+  tags$div(
+    style = "display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #009ADE; padding-bottom: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+    tags$div(
+      style = "display: flex; align-items: center; gap: 20px;",
+      tags$img(src = inline_logo_rect, height = "50px", alt = "WHO Logo"),
+      tags$div(
+        tags$h2(style = "margin: 0; color: #015385; font-weight: 700; font-size: 24px;", "DRC Operational Mapping Dashboard"),
+        tags$p(style = "margin: 4px 0 0 0; color: #666; font-size: 14px;", "Health Infrastructure & Emergency Surveillance — Ituri Focus")
+      )
+    ),
+    tags$img(src = inline_logo_circ, height = "50px", style = "border-radius: 50%;")
+  ),
+  
+  # WHO Custom Styled Navigation Tabs
+  tags$head(tags$style(HTML("
+    .tab { overflow: hidden; border-bottom: 2px solid #e0e0e0; background-color: transparent; display: flex; gap: 5px; }
+    .tab button { background-color: #e4e7eb; color: #495057; float: left; border: none; outline: none; cursor: pointer; padding: 12px 20px; transition: 0.2s; font-size: 15px; font-weight: 600; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+    .tab button:hover { background-color: #d8dce2; color: #015385; }
+    .tab button.active { background-color: #009ADE; color: white; }
+    .tabcontent { display: none; padding: 20px 0; }
+    .map-container { background: white; padding: 10px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; }
+  "))),
+  
+  # JavaScript Panel Logic & Auto-Resize
+  tags$script(HTML("
+    function openPanel(evt, panelName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName('tabcontent');
+      for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = 'none'; }
+      tablinks = document.getElementsByClassName('tablinks');
+      for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(' active', ''); }
+      document.getElementById(panelName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+      window.dispatchEvent(new Event('resize'));
+    }
+    window.onload = function() { document.getElementById('defaultOpen').click(); };
+  ")),
+  
+  # Navigation Row
+  tags$div(
+    class = "tab",
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel1')", id = "defaultOpen", "1) Ituri Regional & Border Focus"),
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel2')", "2) Health Infrastructure & NGO Footprints")
+  ),
+  
+  # Panel Elements
+  tags$div(id = "Panel1", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Ituri and Bordering Provinces View"), p1)),
+  tags$div(id = "Panel2", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Operational Health Centers & Active NGO Sectors"), p2))
+)
+
+# Convert layout to a browseable/savable object
+final_widget <- browsable(dashboard_html)
+final_widget
+save_html(final_widget,"bdbv.map.report.html") # Produces HTML with external dependencies
+
+
+
+# EPI SUMMARY
+
+summary_table_html <- tags$div(
+  style = "display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px;",
+  
+  # Card 1: Strain Profile
+  tags$div(
+    style = "background: white; padding: 15px; border-left: 5px solid #009ADE; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+    tags$h4(style = "margin:0; color:#666; font-size:12px; text-transform: uppercase;", "Pathogen Profile"),
+    tags$p(style = "margin:5px 0 0 0; font-size:18px; font-weight:bold; color:#015385;", "Bundibugyo ebolavirus (BDBV)"),
+    tags$span(style = "font-size:12px; color:#d9534f; font-weight:bold;", "WHO Grade 3 Emergency")
+  ),
+  
+  # Card 2: DRC Overall Metrics
+  tags$div(
+    style = "background: white; padding: 15px; border-left: 5px solid #d9534f; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+    tags$h4(style = "margin:0; color:#666; font-size:12px; text-transform: uppercase;", "DRC Situation (Ituri)"),
+    tags$p(style = "margin:5px 0 0 0; font-size:22px; font-weight:bold; color:#333;", "8 Confirmed | 246 Suspected"),
+    tags$span(style = "font-size:12px; color:#666;", "84 Total Deaths (4 Confirmed)")
+  ),
+  
+  # Card 3: Health Zone Specific Breakdowns
+  tags$div(
+    style = "background: white; padding: 15px; border-left: 5px solid #f0ad4e; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+    tags$h4(style = "margin:0; color:#666; font-size:12px; text-transform: uppercase;", "Active Isolation Hubs"),
+    tags$p(style = "margin:5px 0 0 0; font-size:16px; font-weight:bold; color:#333;", "12 Patients in Isolation"),
+    tags$span(style = "font-size:12px; color:#666;", "3 Mongbwalu / 5 Rwampara / 4 Bunia")
+  ),
+  
+  # Card 4: Cross-Border Alert Status
+  tags$div(
+    style = "background: white; padding: 15px; border-left: 5px solid #5cb85c; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+    tags$h4(style = "margin:0; color:#666; font-size:12px; text-transform: uppercase;", "Cross-Border (Uganda)"),
+    tags$p(style = "margin:5px 0 0 0; font-size:22px; font-weight:bold; color:#5cb85c;", "1 Imported Case"),
+    tags$span(style = "font-size:12px; color:#666;", "Kibuli Muslim Hospital (Isolated)")
+  )
+)
+
+
+
+dashboard_html <- tags$div(
+  style = "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background-color: #f4f6f8; min-height: 100vh;",
+  
+  # # WHO Branding Header Banner
+  # tags$div(
+  #   style = "display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #009ADE; padding-bottom: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+  #   tags$div(
+  #     style = "display: flex; align-items: center; gap: 20px;",
+  #     tags$img(src = inline_logo_rect, height = "50px", alt = "WHO Logo"),
+  #     tags$div(
+  #       tags$h2(style = "margin: 0; color: #015385; font-weight: 700; font-size: 24px;", "DRC Operational Mapping Dashboard"),
+  #       tags$p(style = "margin: 4px 0 0 0; color: #666; font-size: 14px;", "Health Infrastructure & Emergency Surveillance — Ituri Focus")
+  #     )
+  #   ),
+  #   tags$img(src = inline_logo_circ, height = "50px", style = "border-radius: 50%;")
+  # ),
+   # Header Banner
+  tags$div(
+    style = "display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #009ADE; padding-bottom: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 4px;",
+    tags$div(
+      tags$h2(style = "margin: 0; color: #015385; font-weight: 700;", "DRC-Uganda BDBV Outbreak Response Dashboard"),
+      tags$p(style = "margin: 4px 0 0 0; color: #666;", "Official WHO Situation Data Update — As of May 2026")
+    )
+  ),
+  
+  # Summary Data Block Injection
+  summary_table_html,
+  # WHO Custom Styled Navigation Tabs
+  tags$head(tags$style(HTML("
+    .tab { overflow: hidden; border-bottom: 2px solid #e0e0e0; background-color: transparent; display: flex; gap: 5px; }
+    .tab button { background-color: #e4e7eb; color: #495057; float: left; border: none; outline: none; cursor: pointer; padding: 12px 20px; transition: 0.2s; font-size: 15px; font-weight: 600; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+    .tab button:hover { background-color: #d8dce2; color: #015385; }
+    .tab button.active { background-color: #009ADE; color: white; }
+    .tabcontent { display: none; padding: 20px 0; }
+    .map-container { background: white; padding: 10px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; }
+  "))),
+  
+  # JavaScript Panel Logic & Auto-Resize
+  tags$script(HTML("
+    function openPanel(evt, panelName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName('tabcontent');
+      for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = 'none'; }
+      tablinks = document.getElementsByClassName('tablinks');
+      for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(' active', ''); }
+      document.getElementById(panelName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+      window.dispatchEvent(new Event('resize'));
+    }
+    window.onload = function() { document.getElementById('defaultOpen').click(); };
+  ")),
+  
+  # Navigation Row
+  tags$div(
+    class = "tab",
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel1')", id = "defaultOpen", "1) Ituri Regional & Border Focus"),
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel2')", "2) Health Infrastructure & NGO Footprints")
+  ),
+  
+  # Panel Elements
+  tags$div(id = "Panel1", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Ituri and Bordering Provinces View"), p1)),
+  tags$div(id = "Panel2", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Operational Health Centers & Active NGO Sectors"), p2))
+)
+
+
+dashboard_html
+final_widget <- browsable(dashboard_html)
+final_widget
+save_html(final_widget,"bdbv.map.report.html") # Produces HTML with external dependencies
+
+
+```
+
+
+## With health Zones
+
+```{r}
+
+
+# 1. Update the localized case dataset with real WHO situation data
+ituri_hz_data <- data.frame(
+  name = c("Mongbwalu", "Rwampara", "Bunia"),
+  lat = c(1.9522, 1.4880, 1.5636),
+  lon = c(30.0381, 30.2030, 30.2494),
+  confirmed_cases = c(0, 8, 0),
+  suspected_in_isolation = c(3, 5, 4),
+  suspected_deaths = c(57, 10, 0), # Using 0 where data is currently 'Not Available'
+  primary_ngo = c("MSF", "LOCAL", "MSF_ALIMA")
+)
+
+# 2. Cross-border Kampala Index Case Location
+uganda_case <- data.frame(
+  name = "Kibuli Muslim Hospital",
+  lat = 0.3082,  # Precise coordinates for Kibuli, Kampala
+  lon = 32.5962,
+  status = "1 Confirmed Case (BDBV, Imported)"
+)
+# 1. Read the shapefile directly from your local directory
+drc_health_zones <- st_read("./grid3/grid3_hz/GRID3_COD_health_zones_v8_0.shp")
+
+# Pro-Tip: Run this next line in your console to check your column names:
+# head(drc_health_zones)
+
+# 2. Filter the shapefile down to just your three active health zones.
+# Replace 'NAME_COLUMN' with the actual column name found from your head() call above.
+affected_hz_geometries <- drc_health_zones %>%
+  filter(zonesante %in% c("Mongbwalu", "Rwampara", "Bunia"))
+
+# 3. Transform the projection to match Leaflet's coordinate standard (WGS84)
+affected_hz_geometries <- st_transform(affected_hz_geometries, crs = 4326)
+
+p1 <- leaflet(options = leafletOptions(minZoom = 5, maxZoom = 13)) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addProviderTiles(providers$CyclOSM, group = "Road Networks (CyclOSM)") %>%
+  
+  # Injecting health zone shapes
+  addPolygons(
+    data = affected_hz_geometries,
+    color = "#FF0000",       # Bold Red line border
+    weight = 2, 
+    fillColor = "#FF0000",   # Soft transparent red fill
+    fillOpacity = 0.1,       
+    label = ~zonesante,            # Using case-sensitive column name 'Nom' from your data
+    group = "Affected Health Zones"
+  ) %>%
+  
+  # Cleaned layer elements
+  addCircleMarkers(
+    data = ituri_hz_data, 
+    lat = ~lat, lng = ~lon, 
+    radius = 8, 
+    color = "#015385",
+    group = "DRC Active Transmission"
+  ) %>%
+  
+  # ADJUSTED CENTER VIEW: Set directly over the center of your Bounding Box
+  # This guarantees your polygons print dead-center on load
+  setView(lng = 29.8, lat = 1.9, zoom = 8) %>% 
+  addLayersControl(
+    overlayGroups = c("Affected Health Zones", "DRC Active Transmission"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+p1
+
+dashboard_hz_html <- tags$div(
+  style = "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background-color: #f4f6f8; min-height: 100vh;",
+  
+  # # WHO Branding Header Banner
+  # tags$div(
+  #   style = "display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #009ADE; padding-bottom: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);",
+  #   tags$div(
+  #     style = "display: flex; align-items: center; gap: 20px;",
+  #     tags$img(src = inline_logo_rect, height = "50px", alt = "WHO Logo"),
+  #     tags$div(
+  #       tags$h2(style = "margin: 0; color: #015385; font-weight: 700; font-size: 24px;", "DRC Operational Mapping Dashboard"),
+  #       tags$p(style = "margin: 4px 0 0 0; color: #666; font-size: 14px;", "Health Infrastructure & Emergency Surveillance — Ituri Focus")
+  #     )
+  #   ),
+  #   tags$img(src = inline_logo_circ, height = "50px", style = "border-radius: 50%;")
+  # ),
+   # Header Banner
+  tags$div(
+    style = "display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #009ADE; padding-bottom: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 4px;",
+    tags$div(
+      tags$h2(style = "margin: 0; color: #015385; font-weight: 700;", "DRC-Uganda BDBV Outbreak Response Dashboard"),
+      tags$p(style = "margin: 4px 0 0 0; color: #666;", "Official WHO Situation Data Update — As of May 2026")
+    )
+  ),
+  
+  # Summary Data Block Injection
+  summary_table_html,
+  # WHO Custom Styled Navigation Tabs
+  tags$head(tags$style(HTML("
+    .tab { overflow: hidden; border-bottom: 2px solid #e0e0e0; background-color: transparent; display: flex; gap: 5px; }
+    .tab button { background-color: #e4e7eb; color: #495057; float: left; border: none; outline: none; cursor: pointer; padding: 12px 20px; transition: 0.2s; font-size: 15px; font-weight: 600; border-top-left-radius: 4px; border-top-right-radius: 4px; }
+    .tab button:hover { background-color: #d8dce2; color: #015385; }
+    .tab button.active { background-color: #009ADE; color: white; }
+    .tabcontent { display: none; padding: 20px 0; }
+    .map-container { background: white; padding: 10px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; }
+  "))),
+  
+  # JavaScript Panel Logic & Auto-Resize
+  tags$script(HTML("
+    function openPanel(evt, panelName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName('tabcontent');
+      for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = 'none'; }
+      tablinks = document.getElementsByClassName('tablinks');
+      for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(' active', ''); }
+      document.getElementById(panelName).style.display = 'block';
+      evt.currentTarget.className += ' active';
+      window.dispatchEvent(new Event('resize'));
+    }
+    window.onload = function() { document.getElementById('defaultOpen').click(); };
+  ")),
+  
+  # Navigation Row
+  tags$div(
+    class = "tab",
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel1')", id = "defaultOpen", "1) Ituri Regional & Border Focus"),
+    tags$button(class = "tablinks", onclick = "openPanel(event, 'Panel2')", "2) Health Infrastructure & NGO Footprints")
+  ),
+  
+  # Panel Elements
+  tags$div(id = "Panel1", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Ituri and Bordering Provinces View"), p1)),
+  tags$div(id = "Panel2", class = "tabcontent", 
+           tags$div(class = "map-container", tags$h3(style = "margin-top:0; color:#015385;", "Operational Health Centers & Active NGO Sectors"), p2))
+)
+
+
+dashboard_hz_html
+final_widget <- browsable(dashboard_hz_html)
+save_html(final_widget,"bdbv.map.report.html") # Produces HTML with external dependencies
+
+```
+
+
+## Health facilities and Settlement
+
+```{r}
+
+
+```
+
+
+
+
+
